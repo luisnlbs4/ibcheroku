@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IBC</title>
+
+     <style media="screen">
+        body {
+          background: url(<%= asset_path 'Fondo.png'%>)
+        }
+    </style>
+  </head>
+  <body>
+    <script language='javascript'>
+               $(document).ready(function(){
+                 $('.ui.dropdown').dropdown();
+               });
+  </script>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+
+
+
+      <!-- formulario -->
+
+      <div class="ui form container ">
+        <div class="ui segment">
+          <div class="ui header">
+              A.- LUGAR DE REGISTRO EN EL I.B.C.
+          </div>
+          <div class="ui divider"> </div>
+
+        <div class="two fields">
+          <div class="field">
+            <label>Departamental</label>
+            <input placeholder="Ingrese el Departamento" type="text">
+          </div>
+          <div class="field">
+            <label>Regional</label>
+            <input placeholder="Ingrese la Region" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+
+    <div class="ui form">
+      <div class="ui  segment">
+        <div class="ui header">
+          B.- DATOS PERSONALES
+        </div>
+        <div class="ui divider"> </div>
+
+      <div class="six fields">
+        <div class="field">
+          <label>Primer Nombre</label>
+          <input placeholder="Primer nombre" type="text">
+        </div>
+        <div class="field">
+          <label>Segundo Nombre</label>
+          <input placeholder="Segundo nombre" type="text">
+        </div>
+        <div class="field">
+          <label>Apellido Paterno</label>
+          <input placeholder="Apellido paterno" type="text">
+        </div>
+        <div class="field">
+          <label>Apellido Materno</label>
+          <input placeholder="Apellido Materno" type="text">
+        </div>
+        <div class="field">
+          <label>Apellido Casada</label>
+          <input placeholder="Apellido Casada" type="text">
+        </div>
+        <div class="field">
+          <label>Estado Civil</label>
+          <input placeholder="Estado Civil" type="text">
+        </div>
+      </div>
+      <div class="ui divider"></div>
+
+      <div class="four fields">
+        <div class="field">
+          <label>Dirección</label>
+          <input placeholder="Dirección" type="text">
+        </div>
+        <div class="field">
+          <label>Zona</label>
+          <input placeholder="Zona" type="text">
+        </div>
+        <div class="field">
+          <label>Provincia-Cantón</label>
+          <input placeholder="Provincia-Cantón" type="text">
+        </div>
+        <div class="field">
+          <label>Departamento</label>
+          <input placeholder="Departamento" type="text">
+        </div>
+      </div>
+
+      <div class="ui divider"></div>
+
+      <div class="five fields">
+        <div class="field">
+          <label>Nacionalidad</label>
+          <input placeholder="Nacionalidad" type="text">
+        </div>
+        <div class="field">
+          <label>Idioma</label>
+          <input placeholder="Idioma" type="text">
+        </div>
+        <div class="field">
+          <label>Sexo</label>
+          <div class="ui selection dropdown">
+            <input type="hidden" name="gender">
+            <i class="dropdown icon"></i>
+            <div class="default text">Gender</div>
+            <div class="menu">
+              <div class="item" data-value="1">Masculino</div>
+              <div class="item" data-value="0">Femenino</div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>FECHA DE REGISTRO AL IBC</label>
+          <input placeholder="FECHA DE REGISTRO AL IBC" type="text">
+        </div>
+        <div class="field">
+          <label>CODIGO DE REGISTRO(SIGMA)</label>
+          <input placeholder="CODIGO DE REGISTRO(SIGMA)" type="text">
+        </div>
+      </div>
+
+      <div class="ui divider"></div>
+
+
+      <div class="six fields">
+        <div class="field">
+          <label>Fecha de Nacimiento</label>
+          <input placeholder="dd/mm/aa" type="text">
+        </div>
+            <div class="field">
+            <label>País</label>
+            <input placeholder="Idioma" type="text">
+          </div>
+          <div class="field">
+            <label>Ciudad</label>
+            <input placeholder="Idioma" type="text">
+          </div>
+          <div class="field">
+            <label>Provincia</label>
+            <input placeholder="Idioma" type="text">
+          </div>
+        <div class="field">
+          <label>Documento de Identificación y Número</label>
+          <input placeholder="FECHA DE REGISTRO AL IBC" type="text">
+        </div>
+        <div class="field">
+          <label>Teléfono o Celular de Referencia</label>
+          <input placeholder="CODIGO DE REGISTRO(SIGMA)" type="text">
+        </div>
+      </div>
+
+      <div class="three fields">
+        <div class="field">
+            <label>Ingresos del Beneficiario</label>
+            <div class="ui fluid search multiple selection dropdown">
+                <input type="hidden" name="country">
+                <i class="dropdown icon"></i>
+                <div class="default text">Seleccione los Ingresos</div>
+                <div class="menu">
+                <div class="item" data-value="IngreSu">Sueldo</div>
+                <div class="item" data-value="IngreSub">Subsidio</div>
+                <div class="item" data-value="IngreRent">Renta(s)</div>
+                <div class="item" data-value="IngreAho">Ahorro(s)</div>
+                <div class="item" data-value="IngreBon">Bono</div>
+                <div class="item" data-value="IngreProp">Ingresos Propios</div>
+                <div class="item" data-value="IngreDep">Dependientes</div>
+                <div class="item" data-value="IngreOtro">Otros</div>
+              </div>
+            </div>
+          </div>
+        <div class="field">
+          <label>Ocupacion Actual</label>
+          <input placeholder="Ocupacion Actual" type="text">
+        </div>
+        <div class="field">
+          <label>Ocupacion Anterior</label>
+          <input placeholder="Ocupacion Anterior" type="text">
+        </div>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+            <label>Grado de Instruccion</label>
+            <div class="ui fluid search selection dropdown">
+                <input type="hidden" name="country">
+                <i class="dropdown icon"></i>
+                <div class="default text">Seleccione los grados de Instrucción</div>
+                <div class="menu">
+                <div class="item" data-value="InsPri">Primaria</div>
+                <div class="item" data-value="InsSec">Secundaria</div>
+                <div class="item" data-value="InsBach">Bachiller</div>
+                <div class="item" data-value="InsTec">Técnico</div>
+                <div class="item" data-value="InsUni">Universitario</div>
+                <div class="item" data-value="InsLic">Licenciatura</div>
+                <div class="item" data-value="InsNin">Ninguno</div>
+              </div>
+            </div>
+          </div>
+        <div class="field">
+          <label>Otros estudios</label>
+          <input placeholder="Otros estudios" type="text">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+
+  <div class="ui form container ">
+    <div class="ui   segment">
+      <div class="ui header">
+          C.- DATOS MEDICOS GENERALES DEL BENEFICIARIO:
+      </div>
+      <div class="ui horizontal divider"><h5>DIAGNOSTICO MEDICO OFTALMOLÓGICOS DEL BENEFICIARO (copia del FORM. IBC - 02)</h5></div>
+     <div class="three fields">
+      <div class="field">
+        <label>TIPO DE CEGUERA</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="gender">
+          <i class="dropdown icon"></i>
+          <div class="default text">Selecione el tipo de ceguera</div>
+          <div class="menu">
+            <div class="item" data-value="CT">Ceguera Total</div>
+            <div class="item" data-value="BV">Baja Visión</div>
+            <div class="item" data-value="OI">O.I.</div>
+            <div class="item" data-value="OD">O.D.</div>
+            <div class="item" data-value="AO">A.O.</div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>CAUSAS DE LA CUEGUERA</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="gender">
+          <i class="dropdown icon"></i>
+          <div class="default text">Selecione causa de ceguera</div>
+          <div class="menu">
+            <div class="item" data-value="Cong">Congenito</div>
+            <div class="item" data-value="Enf">Enfermedad</div>
+            <div class="item" data-value="Acci">Accidente</div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>TIEMPO DE LA CEGUERA (Años - Meses)</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" maxlength="2" placeholder="Años">
+          </div>
+          <div class="field">
+            <input type="text" maxlength="2" placeholder="Meses">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui horizontal divider"><h5>CONDICIÓN GENERAL DE SALUD DEL BENEFICIARIO</h5></div>
+    <div class="field">
+      <label>Diagnóstico médico general(Especifique)</label>
+      <input placeholder="Diagnostico Médico" type="text">
+    </div>
+    <div class="field">
+      <label>Dónde recibió atención médica</label>
+      <div class="field">
+        <label>Atención Médica</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="gender">
+          <i class="dropdown icon"></i>
+          <div class="default text">Selecione causa de ceguera</div>
+          <div class="menu">
+            <div class="item" data-value="CNS">CNS</div>
+            <div class="item" data-value="HP">Hospital público</div>
+            <div class="item" data-value="CP">Clínica privada</div>
+            <div class="item" data-value="MP">Médico Particular</div>
+            <div class="item" data-value="AMO">Otro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Discapacidad adicional</label>
+      <input placeholder="Especifique la discapacidad Adicional" type="text">
+    </div>
+    <div class="field">
+      <label>Cuenta con Seguro Médico</label>
+      <input placeholder="Nombre de la institucion del Seguro Médico" type="text">
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<div class="ui form container ">
+  <div class="ui   segment">
+    <div class="ui header">
+         D.- DATOS SOBRE LA VIVIENDA
+    </div>
+   <div class="two fields">
+    <div class="field">
+      <label>La vivienda se encuentra en la Zona</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">Seleccione la Zona de la Vivienda</div>
+        <div class="menu">
+          <div class="item" data-value="URB">Urbana</div>
+          <div class="item" data-value="SURB">Sub-urbana</div>
+          <div class="item" data-value="RRL">Rural</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Tipo de vivienda</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">Selecione el tipo de vivienda</div>
+        <div class="menu">
+          <div class="item" data-value="CsI">Casa Independiente</div>
+          <div class="item" data-value="EdifM">Edificación multifamiliar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Servicios con que cuenta la vivienda</label>
+    <div class="ui fluid multiple search selection dropdown">
+        <input type="hidden" name="country">
+        <i class="dropdown icon"></i>
+        <div class="default text">Seleccione los Servicios</div>
+        <div class="menu">
+        <div class="item" data-value="Luz">Luz</div>
+        <div class="item" data-value="Agu">Agua</div>
+        <div class="item" data-value="Alc">Alcantarrillados</div>
+        <div class="item" data-value="Gas">Gas domicilario</div>
+        <div class="item" data-value="Telf">Teléfono</div>
+        <div class="item" data-value="ServO">Otro</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Tenencia de la vivienda</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione el tipo de Accesibilidad</div>
+      <div class="menu">
+        <div class="item" data-value="TenPro">Propia</div>
+        <div class="item" data-value="TenAlqui">Alquilada</div>
+        <div class="item" data-value="TenAnticre">Anticrético</div>
+        <div class="item" data-value="TenContr">Contrato Mixto</div>
+        <div class="item" data-value="TenPrest">Prestada</div>
+        <div class="item" data-value="TenOtro">Otro</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Accesibilidad de la vivienda</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione el tipo de Accesibilidad</div>
+      <div class="menu">
+        <div class="item" data-value="AAv">Avenida</div>
+        <div class="item" data-value="ACll">Calle</div>
+        <div class="item" data-value="ACallejon">Callejon</div>
+        <div class="item" data-value="Acamin">Camino</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui horizontal divider"><h5>La Vivienda Cuenta con: </h5></div>
+  <div class="three fields">
+   <div class="field">
+     <label>Numero de habitaciones</label>
+     <input type="text" maxlength="2" placeholder="Nro">
+   </div>
+   <div class="field">
+     <label>Baño</label>
+     <div class="ui selection dropdown">
+       <input type="hidden" name="gender">
+       <i class="dropdown icon"></i>
+       <div class="default text">Cuenta con Baño</div>
+       <div class="menu">
+         <div class="item" data-value="Bsi">Si</div>
+         <div class="item" data-value="Bno">No</div>
+       </div>
+     </div>
+   </div>
+   <div class="field">
+     <label>Cocina</label>
+     <div class="ui selection dropdown">
+       <input type="hidden" name="gender">
+       <i class="dropdown icon"></i>
+       <div class="default text">Cuenta con Cocina</div>
+       <div class="menu">
+         <div class="item" data-value="Bsi">Si</div>
+         <div class="item" data-value="Bno">No</div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="three fields">
+  <div class="field">
+    <label>Paredes</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione el tipo de paredes</div>
+      <div class="menu">
+        <div class="item" data-value="PAdob">Adobe</div>
+        <div class="item" data-value="PLadri">Ladrillo</div>
+        <div class="item" data-value="PMAd">Madera</div>
+        <div class="item" data-value="Potr">Otro</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="field">
+    <label>Techo</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione el tipo de Techo</div>
+      <div class="menu">
+        <div class="item" data-value="TCala">Calamina</div>
+        <div class="item" data-value="TTej">Teja</div>
+        <div class="item" data-value="TPaj">Paja</div>
+        <div class="item" data-value="Piotr">Otro</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Piso</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione el tipo de Piso</div>
+      <div class="menu">
+        <div class="item" data-value="PiAdob">Adobe</div>
+        <div class="item" data-value="PiLadri">Ladrillo</div>
+        <div class="item" data-value="PiMAd">Madera</div>
+        <div class="item" data-value="Piotr">Otro</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+<br>
+
+
+<div class="ui form container ">
+  <div class="ui   segment">
+    <div class="ui header">
+         E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
+    </div>
+   <div class="four fields">
+    <div class="field">
+      <label>RECIBIO REHABILITACION</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">Seleccione una opcion</div>
+        <div class="menu">
+          <div class="item" data-value="URB">Si</div>
+          <div class="item" data-value="SURB">No</div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Donde:</label>
+      <input placeholder="Donde Recibio Rehabilitacion" type="text">
+    </div>
+    <div class="field">
+      <label>Desde:</label>
+      <input placeholder="Donde Recibio Rehabilitacion" type="date">
+    </div>
+    <div class="field">
+      <label>Hasta:</label>
+      <input placeholder="Donde Recibio Rehabilitacion" type="date">
+    </div>
+  </div>
+
+  <div class="field">
+    <label>TIPO DE REHABILITACION</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="gender">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione el tipo de Rehabilitacion</div>
+      <div class="menu">
+        <div class="item" data-value="RehFun">Funcional</div>
+        <div class="item" data-value="RehTec">Técnica</div>
+        <div class="item" data-value="RehLab">Laboral</div>
+        <div class="item" data-value="RehOtro">Otro</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>CAPACITACIÓN Y HABILIDADES</label>
+    <input placeholder="Donde Recibio Rehabilitacion" type="text">
+   </div>
+  </div>
+</div>
+
+<br>
+
+<div class="ui form container ">
+  <div class="ui   segment">
+    <div class="ui header">
+         F.- DATOS DE PARENTESCO O RELACION SOCIAL
+    </div>
+     <button class="ui positive button"><i class="icon plus"></i>Agregar Familiar</button>
+
+  </div>
+</div>
+
+<br>
+<br>
+
+
+
+
+  <!-- Fin contacto -->
+
+
+  </body>
+</html>

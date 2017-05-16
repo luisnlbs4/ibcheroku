@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  received?: false
+  place: MyString
+  first_date: 2017-04-17
+  last_date: 2017-04-17
+  type_rehab: MyString
+  training_skils: MyString
+
+two:
+  received?: false
+  place: MyString
+  first_date: 2017-04-17
+  last_date: 2017-04-17
+  type_rehab: MyString
+  training_skils: MyString

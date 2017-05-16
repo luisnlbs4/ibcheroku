@@ -1,0 +1,465 @@
+  <body>
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+
+
+
+      <!-- formulario -->
+
+      <div class="ui form container ">
+        <div class="ui  segment">
+          <div class="ui header">
+              A.- LUGAR DE REGISTRO EN EL I.B.C.
+          </div>
+          <div class="ui divider"> </div>
+
+        <div class="two fields">
+          <div class="field">
+            <label>Departamental</label>
+            <input placeholder="Ingrese el Departamento" type="text">
+          </div>
+          <div class="field">
+            <label>Regional</label>
+            <input placeholder="Ingrese la Region" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="ui form">
+      <div class="ui    segment">
+        <div class="ui header">
+          B.- DATOS PERSONALES
+        </div>
+        <div class="ui divider"> </div>
+
+      <div class="six fields">
+        <div class="field">
+          <label>Primer Nombre</label>
+          <p><%=@blind.first_name%></p>
+        </div>
+        <div class="field">
+          <label>Segundo Nombre</label>
+          <p><%=@blind.second_name%></p>
+        </div>
+        <div class="field">
+          <label>Apellido Paterno</label>
+          <p><%=@blind.first_lastname%></p>
+        </div>
+        <div class="field">
+          <label>Apellido Materno</label>
+          <p><%=@blind.second_lastname%></p>
+        </div>
+        <div class="field">
+          <label>Apellido Casada</label>
+          <p><%=@blind.lastname_married%></p>
+        </div>
+        <div class="field">
+          <label>Estado Civil</label>
+          <p><%=@blind.civil_status%></p>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+
+      <div class="four fields">
+        <div class="field">
+          <label>Dirección</label>
+          <p><%=@blind.address%></p>
+        </div>
+        <div class="field">
+          <label>Zona</label>
+          <p><%=@blind.zone%></p>
+        </div>
+        <div class="field">
+          <label>Provincia-Cantón</label>
+          <p><%=@blind.province%></p>
+        </div>
+        <div class="field">
+          <label>Departamento</label>
+          <p><%=@blind.department%></p>
+        </div>
+      </div>
+
+      <div class="ui divider"></div>
+
+      <div class="five fields">
+        <div class="field">
+          <label>Nacionalidad</label>
+          <p><%=@blind.nationality%></p>
+        </div>
+        <div class="field">
+          <label>Idioma</label>
+          <p><%=@blind.language%></p>
+        </div>
+        <div class="field">
+          <label>Sexo</label>
+          <p><%=@blind.sex%></p>
+        </div>
+        <div class="field">
+          <label>FECHA DE REGISTRO AL IBC</label>
+          <p><%=@blind.registration_date%></p>
+        </div>
+        <div class="field">
+          <label>CODIGO DE REGISTRO(SIGMA)</label>
+        </div>
+      </div>
+
+      <div class="ui divider"></div>
+
+
+      <div class="six fields">
+        <div class="field">
+          <label>Fecha de Nacimiento</label>
+          <p><%=@blind.birthday%></p>
+        </div>
+            <div class="field">
+            <label>País</label>
+            <p><%=@blind.country_birth%></p>
+          </div>
+          <div class="field">
+            <label>Ciudad</label>
+            <p><%=@blind.city_birth%></p>
+          </div>
+          <div class="field">
+            <label>Provincia</label>
+            <p><%=@blind.province_birth%></p>
+          </div>
+        <div class="field">
+          <label>Documento de Identificación y Número</label>
+          <p><%=@blind.ci%></p>
+        </div>
+        <div class="field">
+          <label>Teléfono o Celular de Referencia</label>
+          <p><%=@blind.cellphone%></p>
+        </div>
+      </div>
+
+      <div class="three fields">
+        <div class="field">
+            <label>Ingresos del Beneficiario</label>
+            <p><%=@blind.beneficiary_income%></p>
+          </div>
+        <div class="field">
+          <label>Ocupacion Actual</label>
+          <p><%=@blind.current_occupation%></p>
+        </div>
+        <div class="field">
+          <label>Ocupacion Anterior</label>
+          <p><%=@blind.previous_occupation%></p>
+        </div>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+            <label>Grado de Instruccion</label>
+            <p><%=@blind.degree_instruction%></p>
+          </div>
+        <div class="field">
+          <label>Otros estudios</label>
+          <p><%=@blind.other_studies%></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+
+  <div class="ui form container ">
+    <div class="ui    segment">
+      <div class="ui header">
+          C.- DATOS MEDICOS GENERALES DEL BENEFICIARIO:
+      </div>
+      <div class="ui horizontal divider"><h5>DIAGNOSTICO MEDICO OFTALMOLÓGICOS DEL BENEFICIARO (copia del FORM. IBC - 02)</h5></div>
+     <div class="three fields">
+      <div class="field">
+        <label>TIPO DE CEGUERA</label>
+        <p><%=@blind.medical.type_blindness%></p>
+      </div>
+      <div class="field">
+        <label>CAUSAS DE LA CUEGUERA</label>
+         <p><%=@blind.medical.causes_blindness%></p>
+      </div>
+      <div class="field">
+        <label>TIEMPO DE LA CEGUERA (Años - Meses)</label>
+         <p><%=@blind.medical.time_blindness%></p>
+      </div>
+    </div>
+
+    <div class="ui horizontal divider"><h5>CONDICIÓN GENERAL DE SALUD DEL BENEFICIARIO</h5></div>
+    <div class="field">
+      <label>Diagnóstico médico general(Especifique)</label>
+       <p><%=@blind.medical.general_diagnosis%></p>
+    </div>
+    <div class="field">
+      <label>Dónde recibió atencion médica</label>
+      <p><%=@blind.medical.medical_attention_place%></p>
+    </div>
+    <div class="field">
+      <label>Discapacidad adicional</label>
+      <p><%=@blind.medical.additional_disability%></p>
+    </div>
+    <div class="field">
+      <label>Cuenta con Seguro Médico</label>
+      <% if@blind.medical.health_insurance? %>
+        <p>Si</p>
+      <%else%>
+        <p>No</p>
+      <%end%>
+
+    </div>
+    <div class="field">
+      <label>Nombre de la institución del Seguro Médico</label>
+       <p><%=@blind.medical.name_health_insurance%></p>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="ui form container ">
+  <div class="ui   segment">
+    <div class="ui header">
+         D.- DATOS SOBRE LA VIVIENDA
+    </div>
+   <div class="two fields">
+    <div class="field">
+      <label>La vivienda se encuentra en la Zona</label>
+      <p><%=@blind.home.zone%></p>
+    </div>
+    <div class="field">
+      <label>Tipo de vivienda</label>
+        <p><%=@blind.home.home_type%></p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Servicios con que cuenta la vivienda</label>
+      <p><%=@blind.home.services%></p>
+  </div>
+  <div class="field">
+    <label>Tenencia de la vivienda</label>
+      <p><%=@blind.home.tenecia%></p>
+  </div>
+  <div class="field">
+    <label>Accesibilidad de la vivienda</label>
+      <p><%=@blind.home.accessibility%></p>
+  </div>
+
+  <div class="ui horizontal divider"><h5>La Vivienda Cuenta con: </h5></div>
+  <div class="three fields">
+   <div class="field">
+     <label>Numero de habitaciones</label>
+     <p><%=@blind.home.rooms%></p>
+   </div>
+   <div class="field">
+     <label>Baño</label>
+     <% if@blind.home.bathroom? %>
+        <p>Si</p>
+      <%else%>
+        <p>No</p>
+      <%end%>
+   </div>
+   <div class="field">
+     <label>Cocina</label>
+     <% if@blind.home.kitchen? %>
+        <p>Si</p>
+      <%else%>
+        <p>No</p>
+      <%end%>
+   </div>
+ </div>
+
+         <div class="three fields">
+            <div class="field">
+              <label>Paredes</label>
+              <p><%=@blind.home.wall_type%></p>
+            </div>
+            <div class="field">
+              <label>Techo</label>
+              <p><%=@blind.home.roof_type%></p>
+            </div>
+            <div class="field">
+              <label>Piso</label>
+              <p><%=@blind.home.floor_type%></p>
+            </div>
+         </div>
+        </div>
+      </div>
+
+
+      <br>
+
+
+      <div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+               E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
+          </div>
+         <div class="four fields">
+          <div class="field">
+            <label>RECIBIO REHABILITACION</label>
+            <% if@blind.rehabilitation.received? %>
+              <p>Si</p>
+            <%else%>
+              <p>No</p>
+            <%end%>
+          </div>
+          <div class="field">
+            <label>Donde:</label>
+            <p><%=@blind.rehabilitation.place%></p>
+          </div>
+          <div class="field">
+            <label>Desde:</label>
+            <p><%=@blind.rehabilitation.first_date%></p>
+          </div>
+          <div class="field">
+            <label>Hasta:</label>
+            <p><%=@blind.rehabilitation.last_date%></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>TIPO DE REHABILITACION</label>
+          <p><%=@blind.rehabilitation.type_rehab%></p>
+        </div>
+        <div class="field">
+          <label>CAPACITACIÓN Y HABILIDADES</label>
+          <p><%=@blind.rehabilitation.training_skils%></p>
+         </div>
+        </div>
+      </div>
+      <br>
+
+      <% if !@blind.original%>
+      <div class="ui form">
+        <div class="ui   segment">
+          <div class="ui header">
+               F.- DATOS DE PARENTESCO O RELACION SOCIAL
+          </div>
+            <table class="ui very basic table">
+            <thead>
+              <tr>
+                <th>TIPO DE PARENTESCO</th>
+                <th>NOMBRES</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>GRADO DE INSTRUCCION</th>
+                <th>OCUPACION</th>
+                <th>DISCAPACIDAD</th>
+                <th>FECHA DE NACIMIENTO</th>
+                <th>OBSERVACION</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @blind.familiars.each do |familiar| %>
+              <tr>
+                    <td><%=familiar.relationship%></td>
+                    <td><%=familiar.names%></td>
+                    <td><%=familiar.first_lastname%>  </td>
+                    <td><%=familiar.second_lastname%></td>
+                    <td><%=familiar.degree_instruction%></td>
+                    <td><%=familiar.occupation%></td>
+                    <td><%=familiar.disability%>  </td>
+                    <td><%=familiar.birthday%></td>
+                    <td><%=familiar.observation%></td>
+                    <td><a href="/familiars/<%=familiar.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a></td>
+             </tr>
+                <% end %>
+            </tbody>
+          </table>
+          <div class="ui horizontal divider"><a class="ui green button familiar" ><i class="plus icon"></i> Agregar Familiar</a></div>
+        </div>
+      </div>
+      <br>
+
+
+      <div id="familiar-modal" class="ui modal">
+      <div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+               Formulario nuevo familiar
+          </div>
+          <form class="ui form" action="/familiars" method="post">
+            <div class="four   fields">
+                <div class="field">
+                  <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
+                  <label>Tipo de parentesco</label>
+                  <input name="familiar[relationship]" placeholder="Parentesco" type="text">
+                </div>
+                <div class="field">
+                  <label>Nombres</label>
+                  <input type="text" name="familiar[names]" placeholder="Primer y/o segundo nombre" required>
+                </div>
+                <div class="field">
+                  <label>Apellido Paterno</label>
+                  <input name="familiar[first_lastname]" placeholder="Apellido paterno" type="text">
+                </div>
+                <div class="field">
+                  <label>Apellido Materno</label>
+                  <input name="familiar[second_lastname]"  placeholder="Apellido Materno" type="text">
+                </div>
+            </div>
+            <div class="field">
+              <label>Grado de instruccion</label>
+              <div class="ui selection dropdown">
+                 <input type="hidden" name="familiar[degree_instruction]">
+                 <i class="dropdown icon"></i>
+                 <div class="default text">Seleccione grado de instruccion</div>
+                 <div class="menu">
+                    <div class="item" value= "Ninguno" >Ninguno</div>
+                    <div class="item" value= "Primaria" >Primaria</div>
+                    <div class="item" value= "Secundaria" >Secundaria</div>
+                    <div class="item" value= "Tecnio" >Tecnio</div>
+                    <div class="item" value= "Universitario" >Universitario</div>
+                    <div class="item" value= "Licenciatura" >Licenciatura</div>
+                </div>
+              </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                  <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
+                  <label>Ocupacion</label>
+                  <input name="familiar[occupation]" placeholder="Ocupacion" type="text">
+                </div>
+                <div class="field">
+                  <label>Discapacidad</label>
+                  <input type="text" name="familiar[disability]" placeholder="Discapacidad" required>
+                </div>
+                <div class="field">
+                  <label>Fecha de nacimiento</label>
+                  <input name="familiar[birthday]"  type="date">
+                </div>
+            </div>
+            <div class="field">
+              <label>Observacion</label>
+              <input name="familiar[observation]"  placeholder="Observacion" type="text">
+            </div>
+              <button type="input" class="ui green fluid button"><i class="ui add icon"></i>Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%end%>
+        <script type="text/javascript">
+         $(document).ready(function(){
+             $('.familiar').click(function(){
+                 $('#familiar-modal').modal({blurring: true}).modal('show');
+             });
+              $('.ui.dropdown').dropdown();
+         });
+        </script>
+
+
+  </body>

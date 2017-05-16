@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    $(document).on('ready', function () {
+        $('.ui.accordion').accordion();
+        $('.ui.checkbox').checkbox();
+    });
+</script>
+<%= form_for(@publication) do |f| %>
+
+  <% if @publication.errors.any? %>
+
+        <div class="ui error message">
+          <div class="header">
+            <%= pluralize(@publication.errors.count, "error") %>:
+          </div>
+          <ul class="list">
+            <% @publication.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+  <div class="ui form container ">
+    <div class="ui   segment">
+      <div class="ui header">
+          Formulario de Publicaciones
+      </div>
+      <div class="ui divider"> </div>
+          <div class="field">
+            <%= f.label :"Ruta de la Imagen" %>
+            <%= f.text_field :image_path%>
+          </div>
+        <div class="field">
+          <%= f.label :titulo %>
+          <%= f.text_field :title%>
+        </div>
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <%= f.label :"Fecha Inicial" %>
+            <%= f.date_field :initialDate %>
+          </div>
+          <div class="field">
+            <%= f.label :"Fecha final" %>
+            <%= f.date_field :finalDate %>
+          </div>
+        </div>
+        <div class="inline field">
+        <div class="ui toggle checkbox">
+          <%= f.check_box :showP %>
+          <%= f.label :Activo %>
+        </div>
+      </div>
+        <div class="ui center aligned basic segment">
+        <div class="actions">
+          <%= f.submit "Guardar",class:"ui green fluid button" %>
+        </div>
+    </div>
+  </div>
+</div>
+<% end %>

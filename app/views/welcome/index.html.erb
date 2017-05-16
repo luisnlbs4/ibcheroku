@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>IBC</title>
+   <script>
+     function initMap() {
+       var uluru = {lat: -17.4040812, lng: -66.164119};
+       var map = new google.maps.Map(document.getElementById('map'), {
+         zoom: 16,
+         center: uluru
+       });
+       var marker = new google.maps.Marker({
+         position: uluru,
+         map: map
+       });
+     }
+   </script>
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlmcJFfdNxXVqDs86tw-XaL01S7c-1sKA&callback=initMap"></script>
+    <style media="screen">
+    body {
+      background: url(<%= asset_path 'Fondo.png'%>)
+    }
+
+    #map {
+        height: 300px;
+        width: 100%;
+       }
+  </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+            $(".regular").slick({
+               dots: true,
+               infinite: true,
+               speed: 500,
+               fade: true,
+               cssEase: 'linear',
+               autoplay: true,
+               autoplaySpeed: 2000
+            });
+            $('.ui.accordion').accordion();
+        });
+  </script>
+  </head>
+  <body>
+    <!-- fin menu -->
+
+
+
+    <div id="section1">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <div class="ui container">
+
+        <!-- Inicio Carrousel -->
+
+        <div class="ui center aligned piled segment">
+        <section class="regular slider">
+         <div>
+           <div class="item active">
+             <%= image_tag("Principal.png", class: "ui fluid bordered image") %>
+             <h2 class="ui header"><font color="green">IBC-Cochabamba</font></h2>
+           </div>
+         </div>
+         <div>
+           <div class="item">
+             <%= image_tag("Somos.png", class: "ui fluid bordered image") %>
+            <a class="fluid large ui teal button" href="#section2">¿Quienes Somos?</a>
+           </div>
+         </div>
+         <div>
+           <div class="item">
+             <%= image_tag("Publicaciones.png", class: "ui fluid bordered image") %>
+               <a class="fluid large ui teal button" href="#section3">Visita Nuestras Publicaciones</a>
+           </div>
+         </div>
+     </section>
+   </div>
+
+
+
+          <!-- fin Carousel -->
+
+     </div>
+
+     <!-- Quienes somos -->
+
+
+     <div  id="section2">
+       <br><br><br><br><br><br>
+      <div class="ui green segment">
+      <div class="ui container">
+
+          <br>
+          <div class="ui horizontal divider"> <h1 class="ui header"><font color="green" size="6">¿Quienes Somos?</font></h1></div>
+          <br>
+
+
+
+          <div class="ui equal width stackable internally celled grid">
+            <div class="row">
+              <div class="column">
+                <p2><font size="3">El Instituto Boliviano de la Ceguera es una entidad pública especializada, con personalidad juridica propia y autonomia
+                de gestión técnica, administratica y legal , con tuición sobre todas las organizaciones de, y para personas ciegas.
+                Planifica la acción del Estado para la inclusión plena de las personas ciegas y logren una forma individual de vida,
+                desarrollen sus potenciales, alcancen sus objetivos y metas personales a tráves de la habilitacion y rehabilitacion integral para Vivir Bien.</font></p2>
+
+
+                  <div class="ui horizontal divider"> <h1 class="ui header"><font color="green">Misión</font></h1></div>
+
+                <p2><font size="3">En el ámbito de la Ley de 22 de enero de 1957, el Instituto Boliviano de la Ceguera,
+                   entidad pública descentralizada con tuición sobre todas las instituciones de y para personas ciegas en Bolivia,
+                    se encarga de:Planificar y organizar la acción del estado para asegurar la inclusión social,
+                    promover la independencia socio-económica de las personas ciegas (totales y de baja visión),
+                     residentes en Bolivia, promover la prevención de la ceguera en la sociedad,
+                     dictaminar normas y administrar programas de habilitación, rehabilitación,
+                     capacitación laboral y asistencia social para la persona ciega, además de prevención de la ceguera,
+                     contribuyendo a la mejora de su salud y calidad de vida, para vivir bien con equidad, dignidad y justicia social;
+                     cumpliendo su compromiso social con eficiencia y transparencia.</font></p2>
+              </div>
+
+
+              <div class="column">
+
+                  <%= image_tag("Quienes.jpg", class: "ui centered medium image") %>
+
+                    <div class="ui horizontal divider"> <h1 class="ui header"><font color="green">Visión</font></h1></div>
+
+                  <p2><font size="3">“En el año 2016 en el Instituto Boliviano de la Ceguera, a través de liderazgo y gestión eficiente,
+                    consolidamos nuestra tuición sobre todas las instituciones de y para personas ciegas en Bolivia y tenemos presencia a nivel nacional,
+                    nuestros programas mejoran continuamente la calidad de vida y la independencia socio-económica de las personas ciegas”.</font></p2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui divider">
+          </div>
+    </div>
+  </div>
+
+    <!-- fin quienes  Somos -->
+
+    <!-- Pulbicaciones -->
+
+
+   <div id="section3">
+     <div class="ui container">
+       <br><br><br><br><br><br>
+
+       <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Publicaciones</font></h1></div>
+
+       <br><br>
+       <div class="ui four column grid">
+       <% @publications.each do |publication| %>
+
+       <% if publication.showP%>
+       <div class="column">
+         <div class="ui fluid card">
+              <img class="ui centered image"  WIDTH=220 HEIGHT=200 src="<%= publication.image_path%>">
+               <div class="content">
+               <h2 class="header"><%= publication.title %></h2>
+               <div class="ui divider"></div>
+                 Fecha: <%= publication.initialDate %> al <%= publication.finalDate %>
+                 <div class="ui divider"></div>
+               <div class="ui accordion">
+                   <div class="title"><i class="dropdown icon"></i> Descripcion </div>
+                   <div class="content">
+                     <p class="transition hidden"><%= publication.description %></p>
+                   </div>
+               </div>
+             </div>
+         </div>
+
+       </div>
+     <% end %>
+     <% end%>
+   </div>
+
+     </div>
+
+
+  </div>
+
+
+  <!-- fin Publicaciones -->
+
+
+  <!-- Porq -->
+
+
+  <div  id="section4">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+   <div class="ui green segment">
+   <div class="ui container">
+
+       <br>
+       <div class="ui horizontal divider"> <h1 class="ui header"><font color="green" size="6">¿Por que Registrarse?</font></h1></div>
+       <br>
+
+
+
+       <div class="ui equal width stackable internally celled grid">
+         <div class="row">
+           <div class="column">
+
+             <p2><font size="3">Con el carnet de afiliacion del Instituto Boliviano de la Ceguera, las personas ciegas acceden a los beneficios.</font></p2>
+
+
+             <div class="ui horizontal divider"> <h1 class="ui header"><font color="green">Beneficios</font></h1></div>
+
+             <font size="3">
+               <ul>
+               <li>Bono anual de Indigencia</li>
+               <li>Seguro a Corto plazo en la Caja Nacional de Salud.</li>
+               <li>Descuentos en el transporte de pasajeros e las rutas interdepartamentales e interprovinciales.</li>
+               <li>Tarifa solidaria en telefonia movil (pre pago).</li>
+               <li>Extensión de la Libreta de Servicio Militar.</li>
+               <li>Ingreso libre al Sistema Universitario Boliviano y las Escuelas Superiores de Formacion de Maestros</li>
+               <li>Acceso a crédito en todas las entidades de intermediación financiera.</li>
+               <li>Acceso a Centros de Educación Especial.</li>
+
+             </ul>
+             </font>
+           </div>
+
+
+           <div class="column">
+             <%= image_tag("Somos.png", class: "ui centered image") %>
+               <div class="ui divider"></div>
+               <a href="#"class="ui fluid large blue button">¿Como obtener el Carnet?</a>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="ui divider">
+       </div>
+ </div>
+</div>
+  <!-- fin porq -->
+
+  <!-- Servicios -->
+
+  <div  id="section5">
+    <br><br><br><br><br><br><br>
+   <div class="ui green segment">
+   <div class="ui container">
+
+       <br>
+       <div class="ui horizontal divider"> <h1 class="ui header"><font color="green" size="6">Servicios que Brinda el Instituto Boliviano de la Ceguera</font></h1></div>
+       <div class="ui equal width stackable internally celled grid">
+         <div class="row">
+           <div class="column">
+               <ul>
+               <li>Afiliaciones de personas ciegas a nivel nacional.</li>
+               <li>Datos estadísticos relativos a la ceguera a nivel nacional.</li>
+               <li>Produce material en sistema braille,relieve y audio.</li>
+               <li>Apoyo psicológico y social a las perosnas ciegas y sus familias.</li>
+               <li>Acceso a material en formto accesible a través de bibliotecas especializadas para personas ciegas.</li>
+               <li>Acceso a :
+               <ul>
+                 <li>Habilitación básica funcional y estimulación visual para niños y niñas.</li>
+                 <li>Rehabilitación básica funcional y rehabilitación visual para personas adultas.</li>
+               </ul></li>
+               <li>Capacitación y asesoramiento en la temática de la ceguera.</li>
+
+             </ul>
+           </div>
+
+
+           <div class="column">
+             <%= image_tag("Servicios.jpg", class: "ui centered image") %>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="ui divider"></div>
+ </div>
+
+<!-- servicios -->
+
+  <!-- Contacto -->
+
+  <div id="section6">
+
+      <br><br><br><br><br><br><br>
+
+
+
+      <div class="ui container">
+
+      <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Contacto</font></h1></div>
+
+      <div class="ui four column grid">
+          <div class="column">
+           <%= image_tag("Mascota.png", class: "ui centered aligned tiny image") %>
+          </div>
+          <div class="column">
+            <div class="ui center aligned basic segment">
+              <i class="call huge green icon"></i>
+              <div class="ui horizontal divider"> <h3 class="ui header"><font color="green">Teléfono</font></h3></div>
+              <h3 class="ui header"><font color="green">+591 (4) 4222565</font></h3>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui center aligned basic segment">
+              <i class="marker huge  green icon"></i>
+              <div class="ui horizontal divider"> <h3 class="ui header"><font color="green">Dirección</font></h3></div>
+              <h3 class="ui header"><font color="green">Calle Huáscar Nro 4772 <br> Cochabamba - Bolivia </font></h3>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui center aligned basic segment">
+              <i class="mail huge green icon"></i>
+              <div class="ui horizontal divider"> <h3 class="ui header"><font color="green">Email</font></h3></div>
+              <h3 class="ui header"><font color="green">ibc@ibcbolivia.org</font></h3>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="ui divider"> </div>
+
+      <div class="ui two column grid">
+
+        <div class="column">
+
+          <div class="ui form">
+            <div class="three fields">
+              <div class="field">
+                <input placeholder="Nombre" type="text">
+              </div>
+              <div class="field">
+                <input placeholder="Email" type="text">
+              </div>
+              <div class="field">
+                <input placeholder="Asunto" type="text">
+              </div>
+            </div>
+            <textarea rows="11" placeholder="Mensaje"></textarea>
+          <br><br><div class="ui blue fluid button">Enviar Mensaje</div>
+          </div>
+
+
+        </div>
+
+        <div class="column">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+  </div>
+
+
+
+  <!-- Fin contacto -->
+
+
+  </body>
+</html>

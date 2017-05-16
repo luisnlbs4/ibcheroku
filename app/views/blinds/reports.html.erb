@@ -1,0 +1,146 @@
+<br><br><br><br><br><br>
+
+<script language='javascript'>
+           $(document).ready(function(){
+             $('.ui.dropdown').dropdown();
+           });
+</script>
+
+<div class="ui container green segment">
+
+  <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Reportes Afiliados</font></h1></div>
+  <a href="/reports" class="ui teal fluid button">Resetear Filtros</a><br>
+  <form class="ui form" action="/reports" method="get">
+
+    <div class="five fields">
+      <div class="field">
+        <label>Sexo</label>
+        <div class="ui selection dropdown">
+             <input type="hidden" name="sexo" value="<%= @sexo %>">
+             <i class="dropdown icon"></i>
+             <div class="default text">Seleccione Sexo</div>
+             <div class="menu">
+              <div class="item" value= "Masculino" >Masculino</div>
+              <div class="item" value= "Femenino" >Femenino</div>
+              <div class="item" value= "sexoAmbos" >Ambos</div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Edad</label>
+        <div class="ui selection dropdown">
+             <input type="hidden" name="Edad" value="<%= @edad %>">
+             <i class="dropdown icon"></i>
+             <div class="default text">Seleccione Edad</div>
+             <div class="menu">
+              <div class="item" value= "Mayor">Mayor18</div>
+              <div class="item" value= "Menor">Menor18</div>
+              <div class="item" value= "edadAmbos" >Ambos</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Discapacidad</label>
+        <div class="ui selection dropdown">
+             <input type="hidden" name="Discapacidad" value="<%= @discapacidad %>">
+             <i class="dropdown icon"></i>
+             <div class="default text">Seleccione Discapacidad</div>
+             <div class="menu">
+              <div class="item" value= "uno">Solo Ceguera</div>
+              <div class="item" value= "mas">Multiple</div>
+              <div class="item" value= "discapacidadAmbos" >Ambos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Afiliación a la Caja</label>
+        <div class="ui selection dropdown">
+             <input type="hidden" name="caja" value="<%= @caja %>">
+             <i class="dropdown icon"></i>
+             <div class="default text">Seleccione Afiliacion</div>
+             <div class="menu">
+              <div class="item" value= "Masculino">Proporcionado por IBC</div>
+              <div class="item" value= "Femenino">Individual</div>
+              <div class="item" value="cajaAmbos" >Ambos</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+          <label>Grado de Instruccion</label>
+          <div class="ui selection dropdown">
+             <input type="hidden" name="grado" value="<%= @grado %>">
+             <i class="dropdown icon"></i>
+             <div class="default text">Grado de Instruccion</div>
+             <div class="menu">
+                <div class="item" value= "Primaria" >Primaria</div>
+                <div class="item" value= "Secundaria" >Secundaria</div>
+                <div class="item" value= "Bachiller" >Bachiller</div>
+                <div class="item" value= "Tecnico" >Tecnico</div>
+                <div class="item" value= "Universitario" >Universitario</div>
+                <div class="item" value= "Licenciatura" >Licenciatura</div>
+                <div class="item" value= "Ninguno" >Ninguno</div>
+                <div class="item" value= "gradoTodos" >Todos</div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+      <button type="input" class="ui blue fluid button">Generar</button>
+
+  </form>
+  <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Resultados</font></h1></div><br>
+  <table class="ui very basic table">
+  <thead>
+    <tr>
+      <th>CI</th>
+      <th>Nombres</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
+      <th>
+        <div class="ui mini statistic">
+          <div class="value">
+             <%= @blinds.length %>
+          </div>
+          <div class="label">
+            Afiliados
+          </div>
+        </div>
+     </th>
+  </thead>
+  <!-- <% if @blinds.length != 0%> -->
+  <tbody>
+      <% @blinds.each do |blind| %>
+    <tr>
+          <td><%= blind.ci %></td>
+          <td><%= blind.first_name %> <%= blind.second_name %></td>
+          <td><%= blind.first_lastname %>  </td>
+          <td><%= blind.second_lastname %></td>
+          <td> <a class="ui yellow tiny button" href="/blinds/<%=blind.id%>/">Ver a detalle</a></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <!-- <% else %>
+   <tbody>
+    <div class="ui negative message">
+     <div class="header">
+      Seleccione por lo menos un campo
+     </div>
+     <p>para mostrar algun Resultado</p>
+   </div><br>
+  </tbody> -->
+
+
+  <% end %>
+</table>
+<div class="ui divider"></div>
+
+
+
+
+</div>

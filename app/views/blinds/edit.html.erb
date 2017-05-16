@@ -1,0 +1,528 @@
+    <script language='javascript'>
+               $(document).ready(function(){
+                 $('.ui.dropdown').dropdown();
+               });
+  </script>
+  <body>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- formulario -->
+      <div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+              A.- LUGAR DE REGISTRO EN EL I.B.C.
+          </div>
+          <div class="ui divider"> </div>
+          <div class="two fields">
+            <div class="field">
+              <label>Departamental</label>
+              <input placeholder="Ingrese el Departamento" type="text" >
+            </div>
+            <div class="field">
+              <label>Regional</label>
+              <input placeholder="Ingrese la Region" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <br>
+
+    <form action="/blinds/<%=@blind.id%>/update" method="post" onsubmit="return confirm('Quiere enviar el formulario?');">>
+    <div class="ui form">
+      <div class="ui   segment">
+        <div class="ui header">
+          B.- DATOS PERSONALES
+        </div>
+        <div class="ui divider"> </div>
+
+      <div class="six fields">
+        <div class="field">
+          <label>Primer Nombre</label>
+          <input type="text" name="blind[first_name]" placeholder="Primer nombre" value="<%=@blind.first_name%>" required>
+        </div>
+        <div class="field">
+          <label>Segundo Nombre</label>
+          <input  name="blind[second_name]"  placeholder="Segundo nombre" value="<%=@blind.second_name%>" type="text">
+        </div>
+        <div class="field">
+          <label>Apellido Paterno</label>
+          <input name="blind[first_lastname]" placeholder="Apellido paterno" value="<%=@blind.first_lastname%>" type="text">
+        </div>
+        <div class="field">
+          <label>Apellido Materno</label>
+          <input name="blind[second_lastname]"  placeholder="Apellido Materno" value="<%=@blind.second_lastname%>" type="text">
+        </div>
+        <div class="field">
+          <label>Apellido Casada</label>
+          <input name="blind[lastname_married]" placeholder="Apellido Casada" value="<%=@blind.lastname_married%>" type="text">
+        </div>
+        <div class="field">
+          <label>Estado Civil</label>
+           <div class="ui selection dropdown">
+               <input type="hidden" name="blind[civil_status]" value="<%=@blind.civil_status%>" >
+               <i class="dropdown icon"></i>
+               <div class="default text">Estado Civil</div>
+               <div class="menu">
+                <div class="item" value= "Soltero(a)" >Soltero(a)</div>
+                <div class="item" value= "Casado(o)" >Casado(o)</div>
+                <div class="item" value= "Viudo(a)" >Viudo(a)</div>
+                <div class="item" value= "Divoriciado(a)" >Divoriciado(a)</div>
+                <div class="item" value= "Concubino(a)" >Concubino(a)</div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="ui divider"></div>
+
+      <div class="four fields">
+        <div class="field">
+          <label>Dirección</label>
+          <input name="blind[address]"  placeholder="Dirección" type="text" value="<%=@blind.address%>" >
+        </div>
+        <div class="field">
+          <label>Zona</label>
+          <input name="blind[zone]"  placeholder="Zona" type="text" value="<%=@blind.zone%>">
+        </div>
+        <div class="field">
+          <label>Provincia-Cantón</label>
+          <input name="blind[province]"  placeholder="Provincia-Cantón" type="text" value="<%=@blind.province%>">
+        </div>
+        <div class="field">
+          <label>Departamento</label>
+          <input name="blind[department]"  value="Cochabamba" type="text" value="<%=@blind.province%>">
+        </div>
+      </div>
+
+      <div class="ui divider"></div>
+
+      <div class="five fields">
+        <div class="field">
+          <label>Nacionalidad</label>
+          <input name="blind[nationality]"  placeholder="Nacionalidad" type="text"value="<%=@blind.nationality%>">
+        </div>
+        <div class="field">
+          <label>Idioma</label>
+          <input name="blind[language]"  placeholder="Idioma" type="text" value="<%=@blind.language%>">
+        </div>
+        <div class="field">
+          <label>Sexo</label>
+          <div class="ui selection dropdown" >
+               <input type="hidden" name="blind[sex]"value="<%=@blind.sex%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione genero</div>
+               <div class="menu">
+                <div class="item" value= "Masculino" >Masculino</div>
+                <div class="item" value= "Femenino" >Femenino</div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>FECHA DE REGISTRO AL IBC</label>
+          <input type="date" name="blind[registration_date]" value="<%=@blind.registration_date%>">
+        </div>
+        <div class="field">
+          <label>CODIGO DE REGISTRO(SIGMA)</label>
+          <input  placeholder="CODIGO DE REGISTRO(SIGMA)" type="text">
+        </div>
+      </div>
+
+      <div class="ui divider"></div>
+
+
+      <div class="six fields">
+        <div class="field">
+          <label>Fecha de Nacimiento</label>
+          <input type="date" name="blind[birthday]" value="<%=@blind.birthday%>">
+        </div>
+            <div class="field">
+            <label>País</label>
+            <input name="blind[country_birth]"  placeholder="Pais" type="text" value="<%=@blind.country_birth%>">
+          </div>
+          <div class="field">
+            <label>Ciudad</label>
+            <input name="blind[city_birth]"  placeholder="Ciudad" type="text" value="<%=@blind.city_birth%>">
+          </div>
+          <div class="field">
+            <label>Provincia</label>
+            <input name="blind[province_birth]"  placeholder="Idioma" type="text" value="<%=@blind.province_birth%>">
+          </div>
+        <div class="field">
+          <label>Documento de Identificación y Número</label>
+          <input name="blind[ci]"  placeholder="CI" type="text" value="<%=@blind.ci%>">
+        </div>
+        <div class="field">
+          <label>Teléfono o Celular de Referencia</label>
+          <input name="blind[cellphone]"  placeholder="Teléfono o Celular" type="text" value="<%=@blind.cellphone%>">
+        </div>
+      </div>
+
+      <div class="three fields">
+        <div class="field">
+            <label>Ingresos del Beneficiario</label>
+            <div class="ui fluid search multiple selection dropdown">
+               <input type="hidden" name="blind[beneficiary_income]"value="<%=@blind.beneficiary_income%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipos de ingreso</div>
+               <div class="menu">
+                <div class="item" value= "Sueldo" >Sueldo</div>
+                <div class="item" value= "Subsidio" >Subsidio</div>
+                <div class="item" value= "Renta(s)" >Renta(s)</div>
+                <div class="item" value= "Ahorro(s)" >Ahorro(s)</div>
+                <div class="item" value= "Bono" >Bono</div>
+                <div class="item" value= "Ingresos propios" >Ingresos propios</div>
+                <div class="item" value= "Dependientes" >Dependientes</div>
+                <div class="item" value= "Otros" >Otros</div>
+            </div>
+          </div>
+          </div>
+        <div class="field">
+          <label>Ocupacion Actual</label>
+          <input name="blind[current_occupation]"  placeholder="Ocupacion Actual" type="text" value="<%=@blind.current_occupation%>">
+        </div>
+        <div class="field">
+          <label>Ocupacion Anterior</label>
+          <input name="blind[previous_occupation]"  placeholder="Ocupacion Anterior" type="text" value="<%=@blind.previous_occupation%>">
+        </div>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+            <label>Grado de Instruccion</label>
+            <div class="ui selection dropdown">
+               <input type="hidden" name="blind[degree_instruction]" value="<%=@blind.degree_instruction%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione grado de instruccion</div>
+               <div class="menu">
+                  <div class="item" value= "Primaria" >Primaria</div>
+                  <div class="item" value= "Secundaria" >Secundaria</div>
+                  <div class="item" value= "Bachiller" >Bachiller</div>
+                  <div class="item" value= "Tecnio" >Tecnio</div>
+                  <div class="item" value= "Universitario" >Universitario</div>
+                  <div class="item" value= "Licenciatura" >Licenciatura</div>
+                  <div class="item" value= "Ninguno" >Ninguno</div>
+              </div>
+            </div>
+          </div>
+        <div class="field">
+          <label>Otros estudios</label>
+          <input name="blind[other_studies]"  placeholder="Otros estudios" type="text" value="<%=@blind.other_studies%>">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+
+  <div class="ui form container ">
+    <div class="ui   segment">
+      <div class="ui header">
+          C.- DATOS MEDICOS GENERALES DEL BENEFICIARIO:
+      </div>
+      <div class="ui horizontal divider"><h5>DIAGNOSTICO MEDICO OFTALMOLÓGICOS DEL BENEFICIARO (copia del FORM. IBC - 02)</h5></div>
+     <div class="three fields">
+      <div class="field">
+        <label>TIPO DE CEGUERA</label>
+        <div class="ui fluid search multiple selection dropdown">
+               <input type="hidden" name="blind[type_blindness]" value="<%=@blind.medical.type_blindness%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de ceguera</div>
+               <div class="menu">
+                  <div class="item" value= "Ceguera total" >Ceguera total</div>
+                  <div class="item" value= "Bajo vision" >Bajo vision</div>
+                  <div class="item" value= "O.I." >O.I.</div>
+                  <div class="item" value= "O.D." >O.D.</div>
+                  <div class="item" value= "A.O." >A.O.</div>
+              </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>CAUSAS DE LA CUEGUERA</label>
+        <div class="ui selection dropdown">
+               <input type="hidden" name="blind[causes_blindness]" value="<%=@blind.medical.causes_blindness%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione una causa</div>
+               <div class="menu">
+                  <div class="item" value= "Congenito" >Congenito</div>
+                  <div class="item" value= "Enfermedad" >Enfermedad</div>
+                  <div class="item" value= "Accidente" >Accidente</div>
+              </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>TIEMPO DE LA CEGUERA (Años - Meses)</label>
+        <input name="blind[time_blindness]" placeholder="Ingrese la Region" type="text" value="<%=@blind.medical.time_blindness%>">
+      </div>
+    </div>
+
+    <div class="ui horizontal divider"><h5>CONDICIÓN GENERAL DE SALUD DEL BENEFICIARIO</h5></div>
+    <div class="field">
+      <label>Diagnóstico médico general(Especifique)</label>
+      <input name="blind[general_diagnosis]" placeholder="Diagnostico Médico" type="text" value="<%=@blind.medical.general_diagnosis%>">
+    </div>
+    <div class="field">
+      <label>Dónde recibió atencion médica</label>
+      <input name="blind[medical_attention_place]" placeholder="Ingrese la Region" type="text" value="<%=@blind.medical.medical_attention_place%>">
+    </div>
+    <div class="field">
+      <label>Discapacidad adicional</label>
+      <input name="blind[additional_disability]" placeholder="Ingrese la Region" type="text" value="<%=@blind.medical.additional_disability%>">
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Cuenta con Seguro Médico</label>
+        <div class="ui selection dropdown">
+               <input type="hidden" name="blind[health_insurance?]" value="<%=@blind.medical.health_insurance?%>">
+               <i class="dropdown icon"></i>
+               <div class="default text"></div>
+               <div class="menu">
+                  <div class="item" value= "true" >Si</div>
+                  <div class="item" value= "false" >No</div>
+              </div>
+        </div>
+      <div class="field">
+        <label>Nombre de la institución del Seguro Médico</label>
+        <input name="blind[name_health_insurance]" placeholder="Ingrese la Region" type="text" value="<%=@blind.medical.name_health_insurance%>">
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="ui form container ">
+  <div class="ui   segment">
+    <div class="ui header">
+         D.- DATOS SOBRE LA VIVIENDA
+    </div>
+   <div class="two fields">
+    <div class="field">
+      <label>La vivienda se encuentra en la Zona</label>
+      <div class="ui selection dropdown">
+               <input type="hidden" name="blind[zone]" value="<%=@blind.home.zone%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione zona</div>
+               <div class="menu">
+                  <div class="item" value= "Urbana" >Urbana</div>
+                  <div class="item" value= "Sub-urbana" >Sub-urbana</div>
+                  <div class="item" value= "Rural" >Rural</div>
+              </div>
+        </div>
+    </div>
+    <div class="field">
+      <label>Tipo de vivienda</label>
+      <div class="ui selection dropdown">
+               <input type="hidden" name="blind[home_type]" value="<%=@blind.home.home_type%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de vivienda</div>
+               <div class="menu">
+                  <div class="item" value= "Casa Independiente" >Casa Independiente</div>
+                  <div class="item" value= "Edificación multifamiliar" >Edificación multifamiliar</div>
+                </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Servicios con que cuenta la vivienda</label>
+    <div class="ui fluid search multiple selection dropdown">
+      <input type="hidden" name="blind[services]" value="<%=@blind.home.services%>">
+      <i class="dropdown icon"></i>
+      <div class="default text">Tenecia</div>
+      <div class="menu">
+        <div class="item" value= "Luz" >Luz</div>
+        <div class="item" value= "Agua" >Agua</div>
+        <div class="item" value= "Alcantarillado" >Alcantarillado</div>
+        <div class="item" value= "Gas domicilario" >Gas domicilario</div>
+        <div class="item" value= "Teléfono" >Teléfono</div>
+        <div class="item" value= "Otro" >Otro</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Tenencia de la vivienda</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="blind[tenecia]" value="<%=@blind.home.tenecia%>">
+      <i class="dropdown icon"></i>
+      <div class="default text">Tenecia</div>
+      <div class="menu">
+        <div class="item" value= "Propia" >Propia</div>
+        <div class="item" value= "Alquilada" >Alquilada</div>
+        <div class="item" value= "Anticretico" >Anticretico</div>
+        <div class="item" value= "Contrato Mixto" >Contrato Mixto</div>
+        <div class="item" value= "Prestadao" >Prestadao</div>
+        <div class="item" value= "Otro" >Otro</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Accesibilidad de la vivienda</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="blind[accessibility]" value="<%=@blind.home.accessibility%>">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione accesibilidad</div>
+      <div class="menu">
+        <div class="item" value= "Avenida" >Avenida</div>
+        <div class="item" value= "Calle" >Calle</div>
+        <div class="item" value= "Callejon" >Callejon</div>
+        <div class="item" value= "Callejon" >Callejon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui horizontal divider"><h5>La Vivienda Cuenta con: </h5></div>
+  <div class="three fields">
+   <div class="field">
+     <label>Numero de habitaciones</label>
+     <input name="blind[rooms]" type="text" maxlength="2" placeholder="Nro" value="<%=@blind.home.rooms%>">
+   </div>
+   <div class="field">
+     <label>Baño</label>
+     <div class="ui selection dropdown">
+               <input type="hidden" name="blind[bathrom?]" >
+               <i class="dropdown icon"></i>
+               <div class="default text">Tiene baño?</div>
+               <div class="menu">
+                  <div class="item" value= "true" >Si</div>
+                  <div class="item" value= "false" >No</div>
+              </div>
+        </div>
+   </div>
+   <div class="field">
+     <label>Cocina</label>
+     <div class="ui selection dropdown">
+               <input type="hidden" name="blind[kitchen?]" value="<%=@blind.home.kitchen?%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Tiene cocina?</div>
+               <div class="menu">
+                  <div class="item" value= "true" >Si</div>
+                  <div class="item" value= "false" >No</div>
+              </div>
+        </div>
+   </div>
+ </div>
+
+         <div class="three fields">
+            <div class="field">
+              <label>Paredes</label>
+              <div class="ui selection dropdown">
+               <input type="hidden" name="blind[wall_type]" value="<%=@blind.home.wall_type%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de pared</div>
+               <div class="menu">
+                  <div class="item" value= "Adobe" >Adobe</div>
+                  <div class="item" value= "Ladrillo" >Ladrillo</div>
+                  <div class="item" value= "Madera" >Madera</div>
+                  <div class="item" value= "Otros" >Otros</div>
+              </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Techo</label>
+              <div class="ui selection dropdown">
+               <input type="hidden" name="blind[roof_type]" value="<%=@blind.home.roof_type%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de techo</div>
+               <div class="menu">
+                  <div class="item" value= "Calamina" >Calamina</div>
+                  <div class="item" value= "Teja" >Teja</div>
+                  <div class="item" value= "Paja" >Paja</div>
+                  <div class="item" value= "Otros" >Otros</div>
+              </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Piso</label>
+              <div class="ui selection dropdown">
+               <input type="hidden" name="blind[floor_type]" value="<%=@blind.home.floor_type%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de piso</div>
+               <div class="menu">
+                 <div class="item" value= "Adobe" >Tierra</div>
+                 <div class="item" value= "Ladrillo" >Cemento</div>
+                 <div class="item" value= "Madera" >Madera</div>
+                 <div class="item" value= "Otros" >Otro</div>
+              </div>
+              </div>
+            </div>
+         </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+      <br>
+
+
+      <div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+               E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
+          </div>
+         <div class="four fields">
+          <div class="field">
+            <label>RECIBIO REHABILITACION</label>
+            <div class="ui selection dropdown">
+               <input type="hidden" name="blind[received?]" value="<%=@blind.rehabilitation.received?%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Tiene cocina?</div>
+               <div class="menu">
+                  <div class="item" value= "true" >Si</div>
+                  <div class="item" value= "false" >No</div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Donde:</label>
+            <input  name="blind[place]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitation.place%>">
+          </div>
+          <div class="field">
+            <label>Desde:</label>
+            <input  name="blind[first_date]"  type="date" value="<%=@blind.rehabilitation.first_date%>">
+          </div>
+          <div class="field">
+            <label>Hasta:</label>
+            <input  name="blind[last_date]"  type="date" value="<%=@blind.rehabilitation.last_date%>">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>TIPO DE REHABILITACION</label>
+          <div class="ui selection dropdown">
+               <input type="hidden" name="blind[type_rehab]" value="<%=@blind.rehabilitation.type_rehab%>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de rehabilitacion</div>
+               <div class="menu">
+                  <div class="item" value= "Funcional" >Funcional</div>
+                  <div class="item" value= "Tecnica" >Tecnica</div>
+                  <div class="item" value= "Laboral" >Laboral</div>
+                  <div class="item" value= "Otros" >Otros</div>
+              </div>
+            </div>
+        </div>
+        <div class="field">
+          <label>CAPACITACIÓN Y HABILIDADES</label>
+          <input name="blind[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitation.training_skils%>">
+         </div>
+        </div>
+      </div>
+      <div class="ui center aligned basic segment">
+        <button type="input" class="ui green button"><i class="ui add icon"></i>Modificar ficha</button>
+      </div>
+      <br>
+    </form>
+
+  <!-- Fin contacto -->
+
+  </body>

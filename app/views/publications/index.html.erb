@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+<script type="text/javascript">
+    $(document).on('ready', function () {
+        $('.ui.accordion').accordion();
+    });
+</script>
+
+<br><br><br><br><br>
+<div class="ui form container ">
+  <div class="ui   segment">
+    <div class="ui horizontal divider"><h5>Publicaciones Activas</h5></div>
+            <div class="ui four column grid">
+            <% @publications.each do |publication| %>
+
+            <% if publication.showP%>
+            <div class="column">
+              <div class="ui fluid card">
+                  <img class="ui centered image"  WIDTH=178 HEIGHT=180 src="<%= publication.image_path%>">
+                  <div class="content">
+                    <h2 class="header"><%= publication.title %></h2>
+                    <div class="ui divider"></div>
+                      Fecha: <%= publication.initialDate %> al <%= publication.finalDate %>
+                    <div class="ui divider"></div>
+                      <%= link_to 'Editar', edit_publication_path(publication),class:"ui yellow mini button" %>
+                      <%= link_to 'Eliminar', publication, method: :delete, data: { confirm: 'Esta Seguro de Eliminar la Publicacion?' } ,class:"ui red mini  button"  %>
+                      <div class="ui divider"></div>
+                    <div class="ui accordion">
+                        <div class="title"><i class="dropdown icon"></i> Descripcion </div>
+                        <div class="content">
+                          <p class="transition hidden"><%= publication.description %></p>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+          <% end %>
+          <% end%>
+        </div>
+         <div class="ui horizontal divider"><h5>Publicaciones Inactivas</h5></div>
+         <div class="ui four column grid">
+             <% @publications.each do |publication| %>
+               <tr>
+                 <% if !publication.showP%>
+                 <div class="column">
+                   <div class="ui fluid card">
+                          <img class="ui centered image"  WIDTH=178 HEIGHT=180 src="<%= publication.image_path%>">
+                         <div class="content">
+                         <h2 class="header"><%= publication.title %></h2>
+                         <div class="ui divider"></div>
+                           Fecha: <%= publication.initialDate %> al <%= publication.finalDate %>
+                         <div class="ui divider"></div>
+                         <%= link_to 'Editar', edit_publication_path(publication),class:"ui yellow mini button" %>
+                         <%= link_to 'Eliminar', publication, method: :delete, data: { confirm: 'Esta Seguro de Eliminar la Publicacion' } ,class:"ui red mini  button"  %>
+                         <div class="ui divider"></div>
+                         <div class="ui accordion">
+                             <div class="title"><i class="dropdown icon"></i> Descripcion </div>
+                             <div class="content">
+                               <p class="transition hidden"><%= publication.description %></p>
+                             </div>
+                         </div>
+                       </div>
+                   </div>
+
+                 </div>
+               <% end %>
+              <%end%>
+            </div>
+
+<div class="ui center aligned basic segment">
+              <%= link_to 'Agragar Publicacion', new_publication_path , class:"ui green button " %>
+            </div>
+
+  </div>
+</div>
+
+<br>

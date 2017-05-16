@@ -1,0 +1,84 @@
+
+  <body>
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+<div class="ui container green segment">
+
+
+   <div class="ui horizontal divider"><h1 class="ui green header center aligned">
+       Afiliados IBC
+   </h1></div>
+
+      <div class="ui center aligned basic segment">
+        <div class="ui search">
+       <div class="ui icon input">
+         <input class="prompt" type="text" placeholder="CI o Nombre o Apellido">
+         <i class="search icon"></i>
+       </div>
+       <div class="results"></div>
+     </div>
+</div>
+
+<div class="ui divider">
+</div>
+
+
+
+  <div class="ui container">
+  <table class="ui very basic table">
+  <thead>
+    <tr>
+      <th>CI</th>
+      <th>Nombres</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
+      <th>Detalle</th>
+      <th>Editar</th>
+      <th>Original</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @blinds.each do |blind| %>
+    <tr>
+          <td><%= blind.ci %></td>
+          <td><%= blind.first_name %> <%= blind.second_name %></td>
+          <td><%= blind.first_lastname %>  </td>
+          <td><%= blind.second_lastname %></td>
+          <td> <a class="ui yellow tiny button" href="/blinds/<%=blind.id%>/">Ver Copia</a></td>
+          <td> <a class="ui green tiny button" href="/blinds/<%=blind.id%>/edit">Editar Copia</a></td>
+          <td> <a class="ui blue tiny button" href="/blinds/<%=blind.id+1%>/">Ver original</a></td>
+    </tr>
+      <% end %>
+  </tbody>
+
+  <tfoot>
+  <tr>
+    <th><a class="ui green button" href="/blinds/new"><i class="plus icon"></i> Agregar Afiliado </a></th>
+    <th colspan="5">
+    <div class="ui right floated pagination menu">
+      <a class="icon item">
+        <i class="left chevron icon"></i>
+      </a>
+      <a class="item">1</a>
+      <a class="item">2</a>
+      <a class="item">3</a>
+      <a class="item">4</a>
+      <a class="icon item">
+        <i class="right chevron icon"></i>
+      </a>
+    </div>
+  </th>
+</tr>
+</tfoot>
+</table>
+
+</div>
+</div>
+</body>

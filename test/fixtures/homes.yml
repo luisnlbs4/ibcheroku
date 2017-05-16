@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zone: MyString
+  type: 
+  services: MyString
+  tenecia: MyString
+  accessibility: MyString
+  rooms: 1
+  bathroom?: false
+  kitchen?: false
+  wall_type: MyString
+  roof_type: MyString
+  floor_type: MyString
+
+two:
+  zone: MyString
+  type: 
+  services: MyString
+  tenecia: MyString
+  accessibility: MyString
+  rooms: 1
+  bathroom?: false
+  kitchen?: false
+  wall_type: MyString
+  roof_type: MyString
+  floor_type: MyString
