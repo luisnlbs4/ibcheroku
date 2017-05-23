@@ -61,24 +61,31 @@
 
         <div class="ui dropdown green item">Afiliados<i class="dropdown icon"></i>
         <div class="menu">
+          <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
           <a class="green item" href="/blinds/new">Nuevo Afiliado</a>
+          <%end%>
           <a class="green item" href="/blinds">Ver Afiliados</a>
         </div>
       </div>
 
       <div class="ui dropdown green item">Publicaciones<i class="dropdown icon"></i>
       <div class="menu">
+        <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
         <a class="green item" href="/publications/new">Nueva Publicacion</a>
+        <%end%>
         <a class="green item" href="/publications">Ver Publicaciones</a>
       </div>
     </div>
         <a class="green item" href="/reports">Reportes Afiliados</a>
-        <div class="green item ui dropdown">Usuarios<i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="green item" href="#">Crear</a>
-          <!-- <a class="green item" href="#"</a> -->
-        </div>
-      </div>
+        <%if current_user.has_role? :Administrador%>        
+          <div class="green item ui dropdown">Usuarios<i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="green item" href="/user">Lista</a>
+              <a class="green item" href="/user/new">Crear</a>
+              <!-- <a class="green item" href="#"</a> -->
+            </div>
+          </div>
+        <%end%>  
       <%end%>
 
       <div class="right menu">

@@ -11,8 +11,10 @@
       <br>
       <br>
       <!-- formulario -->
+      <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
       <div class="ui form container ">
         <div class="ui   segment">
+
           <div class="ui header">
               A.- LUGAR DE REGISTRO EN EL I.B.C.
           </div>
@@ -76,10 +78,7 @@
             </div>
           </div>
         </div>
-
-
-
-      </div>
+    </div>
       <div class="ui divider"></div>
 
       <div class="four fields">
@@ -522,7 +521,11 @@
       </div>
       <br>
     </form>
-
+    <%else%>
+    <div class="ui segment">
+      <h1>No deberias estar aqui</h1> 
+      </div>  
+    <%end%>
   <!-- Fin contacto -->
 
   </body>

@@ -1,0 +1,84 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
+<div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+               Editar Familiar
+          </div>
+          <form action="/familiars/<%=@familiar.id%>/update" method="post">
+            <div class="six fields">
+                <div class="field">
+                  <label>Tipo de parentesco</label>
+                  <input value = "<%=@familiar.relationship%>" name="familiar[relationship]" placeholder="Parentesco" type="text" >
+                </div>
+                <div class="field">
+                  <label>Nombres</label>
+                  <input type="text" value = "<%=@familiar.names%>" name="familiar[names]" placeholder="Primer y/o segundo nombre" required>
+                </div>
+                <div class="field">
+                  <label>Apellido Paterno</label>
+                  <input value = "<%=@familiar.first_lastname%>" name="familiar[first_lastname]" placeholder="Apellido paterno" type="text">
+                </div>
+                <div class="field">
+                  <label>Apellido Materno</label>
+                  <input value = "<%=@familiar.second_lastname%>" name="familiar[second_lastname]"  placeholder="Apellido Materno" type="text">
+                </div>
+                <div class="field">
+                  <label>Grado de instruccion</label>
+                  <div class="ui selection dropdown">
+                     <input type="hidden" value = "<%=@familiar.degree_instruction%>" name="familiar[degree_instruction]">
+                     <i class="dropdown icon"></i>
+                     <div class="default text">Seleccione grado de instruccion</div>
+                     <div class="menu">
+                        <div class="item" value= "Ninguno" >Ninguno</div>
+                        <div class="item" value= "Primaria" >Primaria</div>
+                        <div class="item" value= "Secundaria" >Secundaria</div>
+                        <div class="item" value= "Tecnio" >Tecnio</div>
+                        <div class="item" value= "Universitario" >Universitario</div>
+                        <div class="item" value= "Licenciatura" >Licenciatura</div> 
+                    </div>
+                  </div>
+                </div>         
+            </div>
+            <div class="five fields">
+                <div class="field">
+                  <label>Ocupacion</label>
+                  <input value = "<%=@familiar.occupation%>" name="familiar[occupation]" placeholder="Ocupacion" type="text">
+                </div>
+                <div class="field">
+                  <label>Discapacidad</label>
+                  <input type="text" value = "<%=@familiar.disability%>" name="familiar[disability]" placeholder="Discapacidad" required>
+                </div>
+                <div class="field">
+                  <label>Fecha de nacimiento</label>
+                  <input value = "<%=@familiar.birthday%>" name="familiar[birthday]"  type="date">
+                </div>
+                <div class="field">
+                  <label>Observacion</label>
+                  <input value = "<%=@familiar.observation%>" name="familiar[observation]"  placeholder="Observacion" type="text">
+                </div>   
+                <div class="field">
+                  <label>Telefono</label>
+                  <input value = "<%=@familiar.cellphone%>" name="familiar[cellphone]" maxlength="8"  placeholder="telefono/celular" type="text">
+                </div>      
+            </div>
+            <div class="ui center aligned basic segment">
+              <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
+              <a class="ui red tiny button" href="/blinds/<%=@familiar.blind.id%>">Cancelar</a>
+            </div>
+            <br> 
+          </form>
+        </div>
+      </div>
+
+      <%else%>
+    <div class="ui segment">
+      <h1>No deberias estar aqui</h1> 
+      </div>  
+    <%end%>

@@ -4,20 +4,19 @@
         $('.ui.checkbox').checkbox();
     });
 </script>
+<%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
 <%= form_for(@publication) do |f| %>
 
   <% if @publication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publication.errors.count, "error") %>:</h2>
 
-        <div class="ui error message">
-          <div class="header">
-            <%= pluralize(@publication.errors.count, "error") %>:
-          </div>
-          <ul class="list">
-            <% @publication.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-      </div>
+      <ul>
+      <% @publication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <div class="ui form container ">
@@ -26,10 +25,7 @@
           Formulario de Publicaciones
       </div>
       <div class="ui divider"> </div>
-          <div class="field">
-            <%= f.label :"Ruta de la Imagen" %>
-            <%= f.text_field :image_path%>
-          </div>
+
         <div class="field">
           <%= f.label :titulo %>
           <%= f.text_field :title%>
@@ -40,11 +36,11 @@
         </div>
         <div class="two fields">
           <div class="field">
-            <%= f.label :"Fecha Inicial" %>
+            <%= f.label :initialDate %>
             <%= f.date_field :initialDate %>
           </div>
           <div class="field">
-            <%= f.label :"Fecha final" %>
+            <%= f.label :finalDate %>
             <%= f.date_field :finalDate %>
           </div>
         </div>
@@ -62,3 +58,8 @@
   </div>
 </div>
 <% end %>
+<%else%>
+     <div class="ui segment">
+      <h1>No deberias estar aqui</h1> 
+      </div>  
+<%end%>

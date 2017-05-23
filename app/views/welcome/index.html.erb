@@ -116,27 +116,22 @@
 
                   <div class="ui horizontal divider"> <h1 class="ui header"><font color="green">Misión</font></h1></div>
 
-                <p2><font size="3">En el ámbito de la Ley de 22 de enero de 1957, el Instituto Boliviano de la Ceguera,
-                   entidad pública descentralizada con tuición sobre todas las instituciones de y para personas ciegas en Bolivia,
-                    se encarga de:Planificar y organizar la acción del estado para asegurar la inclusión social,
-                    promover la independencia socio-económica de las personas ciegas (totales y de baja visión),
-                     residentes en Bolivia, promover la prevención de la ceguera en la sociedad,
-                     dictaminar normas y administrar programas de habilitación, rehabilitación,
-                     capacitación laboral y asistencia social para la persona ciega, además de prevención de la ceguera,
-                     contribuyendo a la mejora de su salud y calidad de vida, para vivir bien con equidad, dignidad y justicia social;
-                     cumpliendo su compromiso social con eficiencia y transparencia.</font></p2>
+                <p>Planifica la acción del estado para contruir una nueva visión de la ceguera, con inclusión pena de las personas ciegas a través
+                de la prevención, la habilitación y rehabilitacioón integral, con tuici;on sobre todas las organizaciones de, y para personas ciegas.</p>
+
+                <div class="ui horizontal divider"> <h1 class="ui header"><font color="green">Visión</font></h1></div>
+
+              <p>En el año 2018  el Instituto Boliviano de la Ceguera se consolida como la entidad especializada
+                en el ámbito de ceguera con rectoria sovre todas las organizaciones públicas y privadas de, y para personas ciegas,
+                ejecutando programas de prevención y rehabilitacion para Vivir Bien.</p>
+
               </div>
 
 
               <div class="column">
 
-                  <%= image_tag("Quienes.jpg", class: "ui centered medium image") %>
+                  <%= image_tag("Quienes.jpg", class: "ui centered massive image") %>
 
-                    <div class="ui horizontal divider"> <h1 class="ui header"><font color="green">Visión</font></h1></div>
-
-                  <p2><font size="3">“En el año 2016 en el Instituto Boliviano de la Ceguera, a través de liderazgo y gestión eficiente,
-                    consolidamos nuestra tuición sobre todas las instituciones de y para personas ciegas en Bolivia y tenemos presencia a nivel nacional,
-                    nuestros programas mejoran continuamente la calidad de vida y la independencia socio-económica de las personas ciegas”.</font></p2>
                 </div>
               </div>
             </div>
@@ -158,14 +153,14 @@
        <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Publicaciones</font></h1></div>
 
        <br><br>
-       <div class="ui four column grid">
+       <div class="ui three column grid">
        <% @publications.each do |publication| %>
 
        <% if publication.showP%>
        <div class="column">
          <div class="ui fluid card">
-              <img class="ui centered image"  WIDTH=220 HEIGHT=200 src="<%= publication.image_path%>">
-               <div class="content">
+             <img class="ui fluid image"  src="https://t3.ftcdn.net/jpg/00/77/89/74/240_F_77897444_jl2OaI63sTxWo9wYzh4XpslGeePVMbdw.jpg">
+             <div class="content">
                <h2 class="header"><%= publication.title %></h2>
                <div class="ui divider"></div>
                  Fecha: <%= publication.initialDate %> al <%= publication.finalDate %>
@@ -275,6 +270,12 @@
                  <li>Rehabilitación básica funcional y rehabilitación visual para personas adultas.</li>
                </ul></li>
                <li>Capacitación y asesoramiento en la temática de la ceguera.</li>
+               <li>Apoyo escolar a las personas ciegas.</li>
+               <li>Capacitaciones tanto  a:
+               <ul>
+                 <li>La poblacion en General.</li>
+                 <li>Lass personas ciegas.</li>
+               </ul></li>
 
              </ul>
            </div>

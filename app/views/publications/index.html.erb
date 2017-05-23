@@ -15,14 +15,16 @@
             <% if publication.showP%>
             <div class="column">
               <div class="ui fluid card">
-                  <img class="ui centered image"  WIDTH=178 HEIGHT=180 src="<%= publication.image_path%>">
+                  <img class="ui fluid image"  src="https://t3.ftcdn.net/jpg/00/77/89/74/240_F_77897444_jl2OaI63sTxWo9wYzh4XpslGeePVMbdw.jpg">
                   <div class="content">
                     <h2 class="header"><%= publication.title %></h2>
                     <div class="ui divider"></div>
                       Fecha: <%= publication.initialDate %> al <%= publication.finalDate %>
                     <div class="ui divider"></div>
+                      <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
                       <%= link_to 'Editar', edit_publication_path(publication),class:"ui yellow mini button" %>
-                      <%= link_to 'Eliminar', publication, method: :delete, data: { confirm: 'Esta Seguro de Eliminar la Publicacion?' } ,class:"ui red mini  button"  %>
+                      <%= link_to 'Eliminar', publication, method: :delete, data: { confirm: 'Are you sure?' } ,class:"ui red mini  button"  %>
+                      <%end%>
                       <div class="ui divider"></div>
                     <div class="ui accordion">
                         <div class="title"><i class="dropdown icon"></i> Descripcion </div>
@@ -44,14 +46,16 @@
                  <% if !publication.showP%>
                  <div class="column">
                    <div class="ui fluid card">
-                          <img class="ui centered image"  WIDTH=178 HEIGHT=180 src="<%= publication.image_path%>">
-                         <div class="content">
+                       <img class="ui fluid image"  src="https://t3.ftcdn.net/jpg/00/77/89/74/240_F_77897444_jl2OaI63sTxWo9wYzh4XpslGeePVMbdw.jpg">
+                       <div class="content">
                          <h2 class="header"><%= publication.title %></h2>
                          <div class="ui divider"></div>
                            Fecha: <%= publication.initialDate %> al <%= publication.finalDate %>
                          <div class="ui divider"></div>
+                         <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
                          <%= link_to 'Editar', edit_publication_path(publication),class:"ui yellow mini button" %>
-                         <%= link_to 'Eliminar', publication, method: :delete, data: { confirm: 'Esta Seguro de Eliminar la Publicacion' } ,class:"ui red mini  button"  %>
+                         <%= link_to 'Eliminar', publication, method: :delete, data: { confirm: 'Are you sure?' } ,class:"ui red mini  button"  %>
+                         <%end%>
                          <div class="ui divider"></div>
                          <div class="ui accordion">
                              <div class="title"><i class="dropdown icon"></i> Descripcion </div>
@@ -66,10 +70,11 @@
                <% end %>
               <%end%>
             </div>
-
-<div class="ui center aligned basic segment">
+            <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
+            <div class="ui center aligned basic segment">
               <%= link_to 'Agragar Publicacion', new_publication_path , class:"ui green button " %>
             </div>
+            <%end%>
 
   </div>
 </div>

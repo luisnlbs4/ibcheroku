@@ -5,20 +5,7 @@ class PublicationsController < ApplicationController
   # GET /publications.json
   def index
     user_auth
-    @dateAct=Date.current
-    @publications1 = Publication.all.order('updated_at DESC')
-    @publications1.each do |publication|
-    # if publication.finalDate == nil
-    #     publication.finalDate = @dateAct
-    # end
-      if (publication.finalDate)-(@dateAct)< 0
-        publication.showP = false
-        publication.save
-      end
-    end
-    @publications = @publications1
-
-
+    @publications = Publication.all.order('updated_at DESC')
   end
 
   # GET /publications/1
@@ -82,6 +69,6 @@ class PublicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:title, :description, :initialDate, :finalDate, :showP, :image_path)
+      params.require(:publication).permit(:title, :description, :initialDate, :finalDate, :showP)
     end
 end

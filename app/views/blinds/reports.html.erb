@@ -8,8 +8,7 @@
 
 <div class="ui container green segment">
 
-  <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Reportes Afiliados</font></h1></div>
-  <a href="/reports" class="ui teal fluid button">Resetear Filtros</a><br>
+  <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Reportes Afiliados</font></h1></div><br>
   <form class="ui form" action="/reports" method="get">
 
     <div class="five fields">
@@ -62,8 +61,8 @@
              <i class="dropdown icon"></i>
              <div class="default text">Seleccione Afiliacion</div>
              <div class="menu">
-              <div class="item" value= "Masculino">Proporcionado por IBC</div>
-              <div class="item" value= "Femenino">Individual</div>
+              <div class="item" value= "si">si</div>
+              <div class="item" value= "no">no</div>
               <div class="item" value="cajaAmbos" >Ambos</div>
 
           </div>
@@ -91,7 +90,9 @@
 
     </div>
 
+    <div class="ui center aligned basic segment">
       <button type="input" class="ui blue fluid button">Generar</button>
+    </div>
 
   </form>
   <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Resultados</font></h1></div><br>
@@ -102,18 +103,9 @@
       <th>Nombres</th>
       <th>Apellido Paterno</th>
       <th>Apellido Materno</th>
-      <th>
-        <div class="ui mini statistic">
-          <div class="value">
-             <%= @blinds.length %>
-          </div>
-          <div class="label">
-            Afiliados
-          </div>
-        </div>
-     </th>
+      <th> Total = <%= @blinds.length %></th>
+    </tr>
   </thead>
-  <!-- <% if @blinds.length != 0%> -->
   <tbody>
       <% @blinds.each do |blind| %>
     <tr>
@@ -123,20 +115,8 @@
           <td><%= blind.second_lastname %></td>
           <td> <a class="ui yellow tiny button" href="/blinds/<%=blind.id%>/">Ver a detalle</a></td>
     </tr>
-  <% end %>
+      <% end %>
   </tbody>
-  <!-- <% else %>
-   <tbody>
-    <div class="ui negative message">
-     <div class="header">
-      Seleccione por lo menos un campo
-     </div>
-     <p>para mostrar algun Resultado</p>
-   </div><br>
-  </tbody> -->
-
-
-  <% end %>
 </table>
 <div class="ui divider"></div>
 

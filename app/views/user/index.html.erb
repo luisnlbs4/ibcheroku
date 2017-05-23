@@ -1,0 +1,62 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="ui form container ">
+  
+  <div class="ui   segment">
+    <%if current_user.has_role? :Administrador%>  
+    <div class="ui header">
+      <strong>Lista de usuarios</strong>
+      <p id="notice"><%= notice %></p>
+      <table class="ui very basic table">
+      <thead>
+        <tr>
+          <th>Correo electronico</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Role</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @users.each do |user| %>
+        <tr>
+            <td><%= user.email %></td>
+            <td><%= user.name %></td>
+            <td><%= user.lastname %></td>
+            <td>
+              <% user.roles.each do |role| %>
+                <%=role.name%><p> </p>
+              <%end%>
+            </td>
+            <td>
+              <%if user.id != current_user.id%>
+                
+              <form action="/lock_unlock" method="get">
+                <input type="hidden" name="id" value="<%=user.id%>">
+                <%if user.locked_at==nil%>
+                  <input type="hidden" name="status" value ="true">
+                   <button type="input" class="ui red button">Bloquear</button>
+                 <%else%>
+                  <input type="hidden" name="status" value ="false">
+                   <button type="input" class="ui green button">Desbloquear</button>
+                <%end%>
+              </form>
+              <%end%>
+          </td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+    </div>
+      <%else%>
+        <h1>No deberias estar aqui</h1>   
+      <%end%>
+  </div>
+</div>
+
+<br>
+<br>

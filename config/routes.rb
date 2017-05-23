@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'familiars/create'
 
   resources :publications
@@ -6,27 +8,31 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/new'=>'welcome#new'
-  get '/familiars/:id/delete' => 'familiars#delete'
+  get '/lock_unlock' => 'user#lock_unlock'
+  get '/user' => 'user#index'
+  get '/user/new' => 'user#new'
+  post '/user' => 'user#create'
+
   get '/blinds/new' => 'blinds#new'
   get '/blinds' => 'blinds#index'
-  post 'blinds' => 'blinds#create'
-  post 'familiars' => 'familiars#create'
-
-
   get '/blinds/:id/edit' => 'blinds#edit'
   get '/blinds/:id' => 'blinds#show'
   post '/blinds/:id/update' => 'blinds#update'
+  post 'blinds' => 'blinds#create'
 
-  get 'welcome/index'
+
+  get '/familiars/:id/delete' => 'familiars#delete'
+  get '/familiars/:id/edit' => 'familiars#edit'
+  post 'familiars' => 'familiars#create'
+  post '/familiars/:id/update' => 'familiars#update'
 
 
+  # get 'welcome/index'
   get '/reports' => 'blinds#reports'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-
-
   get '/publications/new' => 'publications#new'
   get '/publications' => 'publications#index'
   post 'publications' => 'publications#create'

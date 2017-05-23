@@ -342,7 +342,7 @@
       <br>
 
       <% if !@blind.original%>
-      <div class="ui form">
+      <div class="ui form container ">
         <div class="ui   segment">
           <div class="ui header">
                F.- DATOS DE PARENTESCO O RELACION SOCIAL
@@ -353,13 +353,16 @@
                 <th>TIPO DE PARENTESCO</th>
                 <th>NOMBRES</th>
                 <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
+                <th>Apellido Materno</th> 
                 <th>GRADO DE INSTRUCCION</th>
                 <th>OCUPACION</th>
                 <th>DISCAPACIDAD</th>
-                <th>FECHA DE NACIMIENTO</th>
+                <th>FECHA DE NACIMIENTO</th> 
                 <th>OBSERVACION</th>
-                <th>Accion</th>
+                <th>Telefono</th>
+                <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>   
+                <th>Accion</th> 
+                <%end%>
               </tr>
             </thead>
             <tbody>
@@ -374,25 +377,37 @@
                     <td><%=familiar.disability%>  </td>
                     <td><%=familiar.birthday%></td>
                     <td><%=familiar.observation%></td>
-                    <td><a href="/familiars/<%=familiar.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a></td>
+                    <td><%=familiar.cellphone%></td>
+                    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>   
+                    <td>
+                      <a href="/familiars/<%=familiar.id%>/edit" class="ui green tiny button">Editar</a>
+                      <a href="/familiars/<%=familiar.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a>
+                    </td>
+                    <%end%>
+
              </tr>
                 <% end %>
             </tbody>
-          </table>
-          <div class="ui horizontal divider"><a class="ui green button familiar" ><i class="plus icon"></i> Agregar Familiar</a></div>
+              <tfoot>
+              <tr>
+                <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>   
+                <th colspan="9"><a class="ui green button item  familiar " ><i class="plus icon"></i> Agregar Familiar</a></th>
+                <%end%>
+            </tr>
+            </tfoot>
+          </table>  
         </div>
       </div>
-      <br>
 
-
+      
       <div id="familiar-modal" class="ui modal">
       <div class="ui form container ">
         <div class="ui   segment">
           <div class="ui header">
                Formulario nuevo familiar
           </div>
-          <form class="ui form" action="/familiars" method="post">
-            <div class="four   fields">
+          <form action="/familiars" method="post">
+            <div class="six fields">
                 <div class="field">
                   <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
                   <label>Tipo de parentesco</label>
@@ -410,24 +425,24 @@
                   <label>Apellido Materno</label>
                   <input name="familiar[second_lastname]"  placeholder="Apellido Materno" type="text">
                 </div>
+                <div class="field">
+                  <label>Grado de instruccion</label>
+                  <div class="ui selection dropdown">
+                     <input type="hidden" name="familiar[degree_instruction]">
+                     <i class="dropdown icon"></i>
+                     <div class="default text">Seleccione grado de instruccion</div>
+                     <div class="menu">
+                        <div class="item" value= "Ninguno" >Ninguno</div>
+                        <div class="item" value= "Primaria" >Primaria</div>
+                        <div class="item" value= "Secundaria" >Secundaria</div>
+                        <div class="item" value= "Tecnio" >Tecnio</div>
+                        <div class="item" value= "Universitario" >Universitario</div>
+                        <div class="item" value= "Licenciatura" >Licenciatura</div> 
+                    </div>
+                  </div>
+                </div>         
             </div>
-            <div class="field">
-              <label>Grado de instruccion</label>
-              <div class="ui selection dropdown">
-                 <input type="hidden" name="familiar[degree_instruction]">
-                 <i class="dropdown icon"></i>
-                 <div class="default text">Seleccione grado de instruccion</div>
-                 <div class="menu">
-                    <div class="item" value= "Ninguno" >Ninguno</div>
-                    <div class="item" value= "Primaria" >Primaria</div>
-                    <div class="item" value= "Secundaria" >Secundaria</div>
-                    <div class="item" value= "Tecnio" >Tecnio</div>
-                    <div class="item" value= "Universitario" >Universitario</div>
-                    <div class="item" value= "Licenciatura" >Licenciatura</div>
-                </div>
-              </div>
-            </div>
-            <div class="three fields">
+            <div class="five fields">
                 <div class="field">
                   <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
                   <label>Ocupacion</label>
@@ -441,12 +456,19 @@
                   <label>Fecha de nacimiento</label>
                   <input name="familiar[birthday]"  type="date">
                 </div>
+                <div class="field">
+                  <label>Observacion</label>
+                  <input name="familiar[observation]"  placeholder="Observacion" type="text">
+                </div>   
+                <div class="field">
+                  <label>Telefono</label>
+                  <input name="familiar[cellphone]"  maxlength="8" placeholder="telefono/celular" type="text">
+                </div>      
             </div>
-            <div class="field">
-              <label>Observacion</label>
-              <input name="familiar[observation]"  placeholder="Observacion" type="text">
+            <div class="ui center aligned basic segment">
+              <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
             </div>
-              <button type="input" class="ui green fluid button"><i class="ui add icon"></i>Guardar</button>
+            <br> 
           </form>
         </div>
       </div>

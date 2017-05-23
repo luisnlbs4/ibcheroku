@@ -8,7 +8,23 @@ class FamiliarsController < ApplicationController
 		end
   end
 
+  def edit
+    user_auth
+    @familiar = Familiar.find(params[:id])
+  end
+
+  def update
+    
+    @familiar = Familiar.find(params[:id])
+    if @familiar.update_attributes(familiar_params)
+      redirect_to "/blinds/"+@familiar.blind.id.to_s, notice: "Familiar modificado exitosamente"
+    else
+      redirect_to "/blinds/"+@familiar.blind.id.to_s, notice: "Error al modificado familiar"
+    end
+  end
+
   def delete
+    user_auth
   	@familiar = Familiar.find(params[:id])
   	blind_id = @familiar.blind_id
   	if @familiar.destroy
@@ -19,7 +35,7 @@ class FamiliarsController < ApplicationController
   end
 
   def familiar_params
-	params.require(:familiar).permit(:relationship,:names,:first_lastname,:second_lastname,:degree_instruction,:occupation,:disability,:birthday,:observation,:blind_id)
+	params.require(:familiar).permit(:relationship,:names,:first_lastname,:second_lastname,:degree_instruction,:occupation,:disability,:birthday,:observation,:cellphone ,:blind_id)
   end
 
 end

@@ -2,7 +2,7 @@ class BlindsController < ApplicationController
 
 	def index
 		user_auth
-		@blinds = Blind.where(original: false)
+		@blinds = Blind.paginate(page: params[:page],per_page:1).where(original: false)
 	end
 
 	def new
@@ -58,21 +58,19 @@ class BlindsController < ApplicationController
 	end
 
 	def reports
-
      user_auth
      @blinds = Blind.where(original: false)
-		 @blinds = @blinds.joins(:medical)
-		 @grado= params[:grado]
-		 @caja= params[:caja]
-		 @discapacidad= params[:Discapacidad]
-		 @edad= params[:Edad]
-		 @sexo= params[:sexo]
-		 @vacio = ""
+	 @blinds = @blinds.joins(:medical)
+	 @grado= params[:grado]
+	 @caja= params[:caja]
+	 @discapacidad= params[:Discapacidad]
+	 @edad= params[:Edad]
+	 @sexo= params[:sexo]
 
-     if @sexo != "ambos" && @sexo != ""
+     if @sexo != "ambos"
 			 @blinds = @blinds.where("sex=?",@sexo)
      end
-		 if @grado != "todos" && @grado != ""
+		 if @grado != "todos"
        @blinds = @blinds.where("degree_instruction=?",@grado)
 		 end
 
@@ -85,6 +83,7 @@ class BlindsController < ApplicationController
 					@blinds = @blinds.where("birthday >?",@Fecha)
 			end
 		end
+		@vacio = ""
 		if @discapacidad != "ambos"
 			if @discapacidad == "multiple"
 				@blinds = @blinds.where("additional_disability != ?", @vacio)
@@ -101,6 +100,11 @@ class BlindsController < ApplicationController
 				@blinds = @blinds.where("name_health_insurance == ?",@vacio)
 			end
 		end
+				respond_to do |format|
+				format.html
+				format.csv { send_data @blinds.to_csv }
+				format.xls  { send_data @blinds.to_csv(col_sep: "\t") }
+		end
 
 	end
 
@@ -116,21 +120,15 @@ class BlindsController < ApplicationController
 					if @rehab.update_attributes(rehabilitation_params)
 						redirect_to "/blinds/"+@blind.id.to_s, notice: "Editado con Exito"
 					else
-						@blind.destroy
-						@medical.destroy
-						@home.destroy
 						render "edit", notice: "No se pudo editar"
 					end
 				else
-					@blind.destroy
-					@medical.destroy
+
 					render "edit", notice: "No se pudo editar"
 				end
 			else
-				@blind.destroy
 				render "edit", notice: "No se pudo editar"
 			end
-
 		else
 			render "edit", notice: "No se pudo editar"
 		end
