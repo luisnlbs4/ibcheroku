@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  
+
   def index
   	user_auth
   	@users = User.all
@@ -32,7 +32,7 @@ class UserController < ApplicationController
       @user.unlock_access!
     end
     @user.save
-    redirect_to '/user', notice: 'Done.' 
+    redirect_to '/user'
   end
 
   def permitted_params
@@ -52,7 +52,7 @@ class UserController < ApplicationController
         user.add_role :Modificador
       else
         user.add_role :Visitante
-    end     
+    end
   end
 
 end
