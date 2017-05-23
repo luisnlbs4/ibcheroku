@@ -25,14 +25,14 @@ class UserController < ApplicationController
     #This locks and unlocks users
     @user=User.find(params[:id])
     if params[:status]=='true'
-      #To lock user access
       @user.lock_access!
+      @user.save
+      redirect_to '/user'
     else
-      #To unlock user access
       @user.unlock_access!
+      @user.save
+      redirect_to '/user'
     end
-    @user.save
-    redirect_to '/user'
   end
 
   def permitted_params
