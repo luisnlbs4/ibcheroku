@@ -14,7 +14,7 @@ class BlindsController < ApplicationController
 			@blinds = @blinds.where("second_lastname=?",@texto)
 			@blinds = @blinds.order("second_lastname DESC")
 		end
-		@blinds = @blinds.paginate(page: params[:page],per_page:1).where(original: false)
+		@blinds = @blinds.paginate(page: params[:page],per_page:15).where(original: false)
 	end
 
 	def new

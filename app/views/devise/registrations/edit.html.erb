@@ -24,16 +24,17 @@
     <% end %>
     <div class="two fields">
       <div class="field">
-        <%= f.label :Contraseña %> <i>(Dejalo en blanco si no quieres cambiarlo)</i><br />
+        <%= f.label :Contraseña %> <i>(Dejalo en blanco si no quieres cambiarlo)</i><br/>
+        <i>(Debe tener una letra en mayuscula, minuscula, numemro y caracter especial)</i>
         <%= f.password_field :password, autocomplete: "off" %>
         <% if @minimum_password_length %>
           <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
+          <em><%= @minimum_password_length %> Tamaño minimo</em>
         <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :Confirmacion_contraseña  %><br />
+        <%= f.label :Confirmacion_contraseña  %><br /><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
     </div>

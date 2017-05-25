@@ -9,18 +9,21 @@
    </h1></div>
 
    <form class="ui form" action="/blinds" method="get">
-      <div class="inline field">
-          <input type="text" name="texto" placeholder="Ej: Zurita">
-          <div class="ui selection dropdown">
-               <input type="hidden" name="busqueda" value="<%= @sexo %>">
-               <i class="dropdown icon"></i>
-               <div class="default text">Seleccione tipo de Busqueda</div>
-               <div class="menu">
-                <div class="item" value= "AP" >Apellido Paterno</div>
-                <div class="item" value= "AM" >Apellido Materno</div>
-            </div>
-          </div>
-          <button type="input" class="ui blue fluid button">buscar</button>
+       <div class="ui center aligned basic segment">
+         <div class="ui selection dropdown">
+              <input type="hidden" name="busqueda" value="<%= @sexo %>" required>
+              <i class="dropdown icon"></i>
+              <div class="default text">Busqueda por:</div>
+              <div class="menu" >
+               <div class="item" value= "AP" >Apellido Paterno</div>
+               <div class="item" value= "AM" >Apellido Materno</div>
+             </div>
+         </div>
+        <div class="ui left icon action input">
+          <i class="search icon"></i>
+          <input type="text" name="texto" placeholder="Ej: Zurita" required>
+          <button type="input" class="ui blue submit button">buscar</button>
+        </div>
       </div>
    </form>
 
@@ -69,7 +72,7 @@
     <th colspan="6">
     <%end%>
     <div class="ui right floated pagination menu">
-      <a class="icon item">
+      <!-- <a class="icon item">
         <i class="left chevron icon"></i>
       </a>
       <a class="item">1</a>
@@ -78,16 +81,13 @@
       <a class="item">4</a>
       <a class="icon item">
         <i class="right chevron icon"></i>
-      </a>
+      </a> -->
+      <%= will_paginate @blinds, :previous_label => '<=Atras', :next_label => 'Siguiente=>' %>
     </div>
   </th>
 </tr>
 </tfoot>
 </table>
-
-  <%= will_paginate @blinds, :previous_label => '<', :next_label => '>' ,:style => "blue",:class => "ui pagination menu" %>
-
-
 
 </div>
 </div>

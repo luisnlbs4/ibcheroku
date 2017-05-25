@@ -61,38 +61,46 @@
 
         <div class="ui dropdown green item">Afiliados<i class="dropdown icon"></i>
         <div class="menu">
-          <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
-          <a class="green item" href="/blinds/new">Nuevo Afiliado</a>
+          <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+          <a class="green item" href="/blinds/new"><i class="add user icon"></i>Añadir Nuevo Afiliado</a>
           <%end%>
-          <a class="green item" href="/blinds">Ver Afiliados</a>
+          <a class="green item" href="/blinds"><i class="list layout icon"></i>Lista de Afiliados</a>
         </div>
       </div>
 
       <div class="ui dropdown green item">Publicaciones<i class="dropdown icon"></i>
       <div class="menu">
-        <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
-        <a class="green item" href="/publications/new">Nueva Publicacion</a>
+        <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+        <a class="green item" href="/publications/new"><i class="add circle icon"></i>Nueva Publicacion</a>
         <%end%>
-        <a class="green item" href="/publications">Ver Publicaciones</a>
+        <a class="green item" href="/publications"><i class="list layout icon"></i>Ver Publicaciones</a>
       </div>
     </div>
         <a class="green item" href="/reports">Reportes Afiliados</a>
-        <%if current_user.has_role? :Administrador%>        
+        <%if current_user.has_role? :Administrador%>
           <div class="green item ui dropdown">Usuarios<i class="dropdown icon"></i>
             <div class="menu">
-              <a class="green item" href="/user">Lista</a>
-              <a class="green item" href="/user/new">Crear</a>
+              <a class="green item" href="/user/new"><i class="add user icon"></i>Crear Nuevo Usuario</a>
+              <a class="green item" href="/user"><i class="list layout icon"></i>Lista de Usuarios</a>
               <!-- <a class="green item" href="#"</a> -->
             </div>
           </div>
-        <%end%>  
+        <%end%>
       <%end%>
 
       <div class="right menu">
         <% if user_signed_in? %>
-            <P><%=current_user.name%> <%=current_user.lastname%> <%=current_user.email%></P> 
-            <%= link_to "Editar Contraseña", edit_user_registration_path , class:"green item"%>
-             <%= link_to "Cerrar Sesión", destroy_user_session_path,:method => :delete , class:"green item"%>
+            <div class="ui dropdown green item"><i class="user icon"></i> <%=current_user.name%> <%=current_user.lastname%><i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="header"><%=current_user.email%></div>
+              <%= link_to  edit_user_registration_path, class: "green item" do %>
+                  <i class="edit icon"></i> Editar Cuenta
+              <% end %>
+              <%= link_to  destroy_user_session_path, class: "green item" do %>
+                <i class="sign out icon"></i>Cerrar Sesión
+              <% end %>
+              </div>
+          </div>
         <%else%>
             <a class="item  login">Iniciar Sesión</a>
         <%end%>
