@@ -4,12 +4,7 @@
                });
   </script>
   <body>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+    
       <!-- formulario -->
       <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
       <div class="ui form container ">
@@ -22,11 +17,11 @@
           <div class="two fields">
             <div class="field">
               <label>Departamental</label>
-              <input placeholder="Ingrese el Departamento" type="text">
+              <input value="Cochabamba" type="text" disabled>
             </div>
             <div class="field">
               <label>Regional</label>
-              <input placeholder="Ingrese la Region" type="text">
+              <input  type="text" disabled >
             </div>
           </div>
         </div>
@@ -519,7 +514,6 @@
       <div class="ui center aligned basic segment">
         <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
       </div>
-      <br>
     </form>
     <%else%>
     <div class="ui segment">

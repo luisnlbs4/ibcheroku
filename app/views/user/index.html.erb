@@ -1,8 +1,4 @@
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 <div class="ui form container ">
   
@@ -46,6 +42,11 @@
                 <%end%>
               </form>
               <%end%>
+          </td>
+          <td>
+            <%if user.id != current_user.id%>
+            <a class="ui yellow button" href="/user/<%=user.id%>/edit_password"></i> Cambiar contraseña</a>
+            <%end%>
           </td>
         </tr>
           <% end %>

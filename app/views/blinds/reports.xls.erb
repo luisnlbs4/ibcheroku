@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">No</Data></Cell>
+        <Cell><Data ss:Type="String">C.I./RUN</Data></Cell>
+        <Cell><Data ss:Type="String">ORIGEN C.I.</Data></Cell>
+        <Cell><Data ss:Type="String">APELLIDO PATERNO</Data></Cell>
+        <Cell><Data ss:Type="String">APELLIDO MATERNO</Data></Cell>
+        <Cell><Data ss:Type="String">TERCER APELLIDO</Data></Cell>
+        <Cell><Data ss:Type="String">PRIMER NOMBRE</Data></Cell>
+        <Cell><Data ss:Type="String">SEGUNDO NOMBRE</Data></Cell>
+        <Cell><Data ss:Type="String">FECHA DE NACIMIENTO</Data></Cell>
+        <Cell><Data ss:Type="String">EDAD ACTUAL</Data></Cell>
+        <Cell><Data ss:Type="String">ESTADO CIVIL</Data></Cell>
+        <Cell><Data ss:Type="String">SEXO</Data></Cell>
+        <Cell><Data ss:Type="String">FECHA AFILIACION</Data></Cell>
+        <Cell><Data ss:Type="String">GRADO DE INSTRUCCION</Data></Cell>
+        <Cell><Data ss:Type="String">RECIBIO REHABILITACION</Data></Cell>
+        <Cell><Data ss:Type="String">OCUPACION ACTUAL</Data></Cell>
+        <Cell><Data ss:Type="String">NUMERO DE HIJOS</Data></Cell>
+        <Cell><Data ss:Type="String">PROCEDENCIA</Data></Cell>
+        <Cell><Data ss:Type="String">TENENCIA DE LA VIVIENDA</Data></Cell>
+        <Cell><Data ss:Type="String">DIAGNOSTICO ETIOLOGICO</Data></Cell>
+        <Cell><Data ss:Type="String">DIAGNOSTICO CLINICO</Data></Cell>
+        <Cell><Data ss:Type="String">TIPO DE CEGUERA</Data></Cell>
+        <Cell><Data ss:Type="String">CUENTA CON SEGURO</Data></Cell>
+        <Cell><Data ss:Type="String">OTRA DISCAPACIDAD ADICIONAL</Data></Cell>
+        <Cell><Data ss:Type="String">GRUPO SANGUINEO</Data></Cell>
+      </Row>
+      <% @numero = 0%>
+    <% @blinds.each do |blind| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= @numero = @numero+1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.first_lastname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.second_lastname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.lastname_married %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.second_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.birthday %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= 18.to_s%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.civil_status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.sex %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.registration_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.degree_instruction %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.rehabilitation.received? %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.current_occupation %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.home.tenecia %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.medical.type_blindness %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.medical.health_insurance? %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.medical.additional_disability %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

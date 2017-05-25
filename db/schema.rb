@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520191338) do
+ActiveRecord::Schema.define(version: 20170525041916) do
 
   create_table "blinds", force: :cascade do |t|
     t.string   "first_name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170520191338) do
     t.datetime "updated_at",                                 null: false
     t.string   "sex"
     t.boolean  "original",            default: false
+    t.string   "status"
   end
 
   create_table "familiars", force: :cascade do |t|

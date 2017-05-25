@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-
+  
   def index
   	user_auth
   	@users = User.all
@@ -21,18 +21,35 @@ class UserController < ApplicationController
 		end
   end
 
+  def edit_password
+    user_auth
+    @user = User.find(params[:id])
+  end
+
+  def update_password   
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to "/user/", notice: "Contraseña cambiada exitosamente"
+    else
+      redirect_to "/user/"+@user.id.to_s+"/edit_password/", notice: "Error al cambiar Contraseña"
+    end
+  end
+
   def lock_unlock
     #This locks and unlocks users
     @user=User.find(params[:id])
     if params[:status]=='true'
+      #To lock user access
       @user.lock_access!
       @user.save
-      redirect_to '/user'
+      redirect_to '/user', notice: 'Bloqueado con exito.'
     else
+      #To unlock user access
       @user.unlock_access!
       @user.save
-      redirect_to '/user'
+      redirect_to '/user', notice: 'Desbloqueado con exito.'
     end
+     
   end
 
   def permitted_params
@@ -52,7 +69,7 @@ class UserController < ApplicationController
         user.add_role :Modificador
       else
         user.add_role :Visitante
-    end
+    end     
   end
 
 end

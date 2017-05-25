@@ -90,6 +90,8 @@
 
       <div class="right menu">
         <% if user_signed_in? %>
+            <P><%=current_user.name%> <%=current_user.lastname%> <%=current_user.email%></P> 
+            <%= link_to "Editar Contraseña", edit_user_registration_path , class:"green item"%>
              <%= link_to "Cerrar Sesión", destroy_user_session_path,:method => :delete , class:"green item"%>
         <%else%>
             <a class="item  login">Iniciar Sesión</a>
@@ -130,9 +132,14 @@
 
     </div>
   </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <%= yield %>
-
+<br>
 
 <footer style="background-color:black;">
 

@@ -53,11 +53,7 @@
 
     <div id="section1">
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+    
     <div class="ui container">
 
         <!-- Inicio Carrousel -->
@@ -148,18 +144,18 @@
 
    <div id="section3">
      <div class="ui container">
-       <br><br><br><br><br><br>
+       <br><br><br><br>
 
        <div class="ui horizontal divider"> <h1 class="ui header"><font size="6"color="green">Publicaciones</font></h1></div>
 
        <br><br>
-       <div class="ui three column grid">
+       <div class="ui four column grid">
        <% @publications.each do |publication| %>
 
        <% if publication.showP%>
        <div class="column">
          <div class="ui fluid card">
-             <img class="ui fluid image"  src="https://t3.ftcdn.net/jpg/00/77/89/74/240_F_77897444_jl2OaI63sTxWo9wYzh4XpslGeePVMbdw.jpg">
+             <img class="ui fluid image"  src="<%= publication.image_path %>" WIDTH=178 HEIGHT=180 >
              <div class="content">
                <h2 class="header"><%= publication.title %></h2>
                <div class="ui divider"></div>

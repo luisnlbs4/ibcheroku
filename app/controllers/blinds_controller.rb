@@ -2,7 +2,19 @@ class BlindsController < ApplicationController
 
 	def index
 		user_auth
-		@blinds = Blind.paginate(page: params[:page],per_page:1).where(original: false)
+		@blinds = Blind.all.order("first_lastname DESC")
+
+		@tipoBusqueda = params[:busqueda]
+		@texto = params[:texto]
+		if @tipoBusqueda == "apellido paterno"
+			@blinds = @blinds.where("first_lastname=?",@texto)
+			@blinds = @blinds.order("first_lastname DESC")
+		end
+		if @tipoBusqueda == "apellido materno"
+			@blinds = @blinds.where("second_lastname=?",@texto)
+			@blinds = @blinds.order("second_lastname DESC")
+		end
+		@blinds = @blinds.paginate(page: params[:page],per_page:1).where(original: false)
 	end
 
 	def new
@@ -59,7 +71,8 @@ class BlindsController < ApplicationController
 
 	def reports
      user_auth
-     @blinds = Blind.where(original: false)
+	 @blinds = Blind.all
+   @blinds = @blinds.where(original: false)
 	 @blinds = @blinds.joins(:medical)
 	 @grado= params[:grado]
 	 @caja= params[:caja]
@@ -103,8 +116,8 @@ class BlindsController < ApplicationController
 				respond_to do |format|
 				format.html
 				format.csv { send_data @blinds.to_csv }
-				format.xls  { send_data @blinds.to_csv(col_sep: "\t") }
-		end
+				format.xls # { send_data @blinds.to_csv(col_sep: "\t") }
+		   end
 
 	end
 

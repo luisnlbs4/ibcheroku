@@ -4,7 +4,7 @@
         $('.ui.checkbox').checkbox();
     });
 </script>
-<%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
+<%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
 <%= form_for(@publication) do |f| %>
 
   <% if @publication.errors.any? %>
@@ -25,6 +25,10 @@
           Formulario de Publicaciones
       </div>
       <div class="ui divider"> </div>
+        <div class="field">
+          <%= f.label :"ruta de la imagen" %>
+          <%= f.text_field :image_path%>
+        </div>
 
         <div class="field">
           <%= f.label :titulo %>
@@ -60,6 +64,6 @@
 <% end %>
 <%else%>
      <div class="ui segment">
-      <h1>No deberias estar aqui</h1> 
-      </div>  
+      <h1>No deberias estar aqui</h1>
+      </div>
 <%end%>

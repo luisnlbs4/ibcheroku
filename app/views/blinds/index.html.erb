@@ -1,14 +1,6 @@
 
   <body>
 
-
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-
 <div class="ui container green segment">
 
 
@@ -16,15 +8,21 @@
        Afiliados IBC
    </h1></div>
 
-      <div class="ui center aligned basic segment">
-        <div class="ui search">
-       <div class="ui icon input">
-         <input class="prompt" type="text" placeholder="CI o Nombre o Apellido">
-         <i class="search icon"></i>
-       </div>
-       <div class="results"></div>
-     </div>
-</div>
+   <form class="ui form" action="/blinds" method="get">
+      <div class="inline field">
+          <input type="text" name="texto" placeholder="Ej: Zurita">
+          <div class="ui selection dropdown">
+               <input type="hidden" name="busqueda" value="<%= @sexo %>">
+               <i class="dropdown icon"></i>
+               <div class="default text">Seleccione tipo de Busqueda</div>
+               <div class="menu">
+                <div class="item" value= "AP" >Apellido Paterno</div>
+                <div class="item" value= "AM" >Apellido Materno</div>
+            </div>
+          </div>
+          <button type="input" class="ui blue fluid button">buscar</button>
+      </div>
+   </form>
 
 <div class="ui divider">
 </div>
@@ -40,7 +38,7 @@
       <th>Apellido Paterno</th>
       <th>Apellido Materno</th>
       <th>Detalle</th>
-      <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>   
+      <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
       <th>Editar</th>
       <%end%>
       <th>Original</th>
@@ -54,7 +52,7 @@
           <td><%= blind.first_lastname %>  </td>
           <td><%= blind.second_lastname %></td>
           <td> <a class="ui yellow tiny button" href="/blinds/<%=blind.id%>/">Ver Copia</a></td>
-          <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>   
+          <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
           <td> <a class="ui green tiny button" href="/blinds/<%=blind.id%>/edit">Editar Copia</a></td>
           <%end%>
           <td> <a class="ui blue tiny button" href="/blinds/<%=blind.id+1%>/">Ver original</a></td>
@@ -64,7 +62,7 @@
 
   <tfoot>
   <tr>
-    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>  
+    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
     <th><a class="ui green button" href="/blinds/new"><i class="plus icon"></i> Agregar Afiliado </a></th>
     <th colspan="5">
     <%else%>

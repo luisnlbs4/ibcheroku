@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/lock_unlock' => 'user#lock_unlock'
   get '/user' => 'user#index'
   get '/user/new' => 'user#new'
+  get '/user/:id/edit_password' => 'user#edit_password'
+  post '/user/:id/update_password' => 'user#update_password'
   post '/user' => 'user#create'
 
   get '/blinds/new' => 'blinds#new'
