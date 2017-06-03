@@ -198,10 +198,12 @@
     </div>
     <div class="field">
       <label>Cuenta con Seguro Médico</label>
-      <% if@blind.medical.health_insurance? %>
-        <p>Si</p>
-      <%else%>
-        <p>No</p>
+      <% if@blind.medical.health_insurance? != nil %>
+        <% if@blind.medical.health_insurance? %>
+          <p>Si</p>
+        <%else%>
+          <p>No</p>
+        <%end%>
       <%end%>
 
     </div>
@@ -251,18 +253,22 @@
    </div>
    <div class="field">
      <label>Baño</label>
-     <% if@blind.home.bathroom? %>
-        <p>Si</p>
-      <%else%>
-        <p>No</p>
+     <% if@blind.home.bathroom? != nil %>
+       <% if@blind.home.bathroom? %>
+          <p>Si</p>
+        <%else%>
+          <p>No</p>
+        <%end%>
       <%end%>
    </div>
    <div class="field">
      <label>Cocina</label>
-     <% if@blind.home.kitchen? %>
-        <p>Si</p>
-      <%else%>
-        <p>No</p>
+     <% if@blind.home.kitchen? != nil %>
+       <% if@blind.home.kitchen? %>
+          <p>Si</p>
+        <%else%>
+          <p>No</p>
+        <%end%>
       <%end%>
    </div>
  </div>
@@ -296,10 +302,12 @@
          <div class="four fields">
           <div class="field">
             <label>RECIBIO REHABILITACION</label>
-            <% if@blind.rehabilitation.received? %>
-              <p>Si</p>
-            <%else%>
-              <p>No</p>
+            <% if@blind.rehabilitation.received? != nil %>
+              <% if@blind.rehabilitation.received? %>
+                <p>Si</p>
+              <%else%>
+                <p>No</p>
+              <%end%>
             <%end%>
           </div>
           <div class="field">

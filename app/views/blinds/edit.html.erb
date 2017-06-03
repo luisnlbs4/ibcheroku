@@ -275,7 +275,15 @@
       <div class="field">
         <label>Cuenta con Seguro Médico</label>
         <div class="ui selection dropdown">
-               <input type="hidden" name="blind[health_insurance?]" value="<%=@blind.medical.health_insurance?%>">
+              <% if@blind.medical.health_insurance? == nil %>
+                <input type="hidden" name="blind[health_insurance?]" value="">
+              <%else%>
+                <% if@blind.medical.health_insurance? %>
+                  <input type="hidden" name="blind[health_insurance?]" value="Si">
+                <%else%>
+                  <input type="hidden" name="blind[health_insurance?]" value="No">
+                <%end%>
+              <%end%>               
                <i class="dropdown icon"></i>
                <div class="default text"></div>
                <div class="menu">
@@ -381,7 +389,15 @@
    <div class="field">
      <label>Baño</label>
      <div class="ui selection dropdown">
-               <input type="hidden" name="blind[bathrom?]" >
+              <% if@blind.home.bathroom? == nil %>
+                 <input type="hidden" name="blind[bathroom?]" value="">
+              <%else%>
+                <% if@blind.home.bathroom? %>
+                  <input type="hidden" name="blind[bathroom?]" value="Si">
+                <%else%>
+                  <input type="hidden" name="blind[bathroom?]" value="No">
+                <%end%> 
+              <%end%>  
                <i class="dropdown icon"></i>
                <div class="default text">Tiene baño?</div>
                <div class="menu">
@@ -393,7 +409,15 @@
    <div class="field">
      <label>Cocina</label>
      <div class="ui selection dropdown">
-               <input type="hidden" name="blind[kitchen?]" value="<%=@blind.home.kitchen?%>">
+               <% if@blind.home.kitchen? == nil %>
+                 <input type="hidden" name="blind[kitchen?]" value="">
+              <%else%>
+                <% if@blind.home.kitchen? %>
+                  <input type="hidden" name="blind[kitchen?]" value="Si">
+                <%else%>
+                  <input type="hidden" name="blind[kitchen?]" value="No">
+                <%end%> 
+              <%end%>  
                <i class="dropdown icon"></i>
                <div class="default text">Tiene cocina?</div>
                <div class="menu">
@@ -469,9 +493,17 @@
           <div class="field">
             <label>RECIBIO REHABILITACION</label>
             <div class="ui selection dropdown">
-               <input type="hidden" name="blind[received?]" value="<%=@blind.rehabilitation.received?%>">
+               <% if@blind.rehabilitation.received? == nil %>
+                 <input type="hidden" name="blind[received?]" value="">
+              <%else%>
+                <% if@blind.rehabilitation.received? %>
+                  <input type="hidden" name="blind[received?]" value="Si">
+                <%else%>
+                  <input type="hidden" name="blind[received?]" value="No">
+                <%end%> 
+              <%end%>  
                <i class="dropdown icon"></i>
-               <div class="default text">Tiene cocina?</div>
+               <div class="default text">Si/No</div>
                <div class="menu">
                   <div class="item" value= "true" >Si</div>
                   <div class="item" value= "false" >No</div>

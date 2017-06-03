@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   post '/user/:id/update_password' => 'user#update_password'
   post '/user' => 'user#create'
 
+
+  post 'message' => 'welcome#message'
+
   get '/blinds/new' => 'blinds#new'
   get '/blinds' => 'blinds#index'
   get '/blinds/:id/edit' => 'blinds#edit'

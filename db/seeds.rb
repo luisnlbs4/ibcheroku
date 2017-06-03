@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 	user = User.new
 	user.email = "ibc@gmail.com"
-	user.password = "123456"
-	user.password_confirmation = "123456"
+	user.password = "Ibc123.com"
+	user.password_confirmation = "Ibc123.com"
 	user.name = "Pepito"	
 	user.lastname = "Sanchez"
 	user.save
