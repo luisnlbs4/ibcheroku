@@ -50,23 +50,6 @@
         #main-content{
           background: url(<%= asset_path 'Fondo.png'%>)
        }
-       @media screen and (max-width: 615px ) {
-        #main-content{
-         background: url(<%= asset_path 'Fondo.png'%>)
-       }
-
-       @media screen and (max-width: 480px ) {
-          #main-content{
-          background: url(<%= asset_path 'Fondo.png'%>)
-         }
-
-         @media screen and (max-width: 380px ) {
-            #main-content{
-             background: url(<%= asset_path 'Fondo.png'%>)
-           }
-         }
-       }
-     }
     }
   </style>
 
@@ -163,7 +146,7 @@
        <%end%>
      </div>
     </div>
-    <div class="ui sidebar vertical left menu uncover animating visible" style="margin:auto">
+    <div class="ui sidebar vertical left menu" style="margin:auto">
       <% if !user_signed_in? %>
       <a class="green item active" href="#section1">Inicio</a>
       <a class="green item" href="#section2">¿Quiénes somos?</a>
