@@ -1,11 +1,16 @@
 
 
 <div class="ui form container ">
-  
+
   <div class="ui   segment">
-    <%if current_user.has_role? :Administrador%>  
+    <%if current_user.has_role? :Administrador%>
     <div class="ui header">
-      <strong>Lista de usuarios</strong>
+      <h1>Lista de usuarios</h1>
+    </div>
+
+    <div class="ui divider"></div>
+
+
       <p id="notice"><%= notice %></p>
       <table class="ui very basic table">
       <thead>
@@ -14,7 +19,8 @@
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Role</th>
-          <th>Accion</th>
+          <th>Acciones:</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -30,31 +36,30 @@
             </td>
             <td>
               <%if user.id != current_user.id%>
-                
+
               <form action="/lock_unlock" method="get">
                 <input type="hidden" name="id" value="<%=user.id%>">
                 <%if user.locked_at==nil%>
                   <input type="hidden" name="status" value ="true">
-                   <button type="input" class="ui red button">Bloquear</button>
+                   <button type="input" class="ui red  button">Bloquear</button>
                  <%else%>
                   <input type="hidden" name="status" value ="false">
-                   <button type="input" class="ui green button">Desbloquear</button>
+                   <button type="input" class="ui green  button">Desbloquear</button>
                 <%end%>
               </form>
               <%end%>
           </td>
           <td>
             <%if user.id != current_user.id%>
-            <a class="ui yellow button" href="/user/<%=user.id%>/edit_password"></i> Cambiar contraseña</a>
+            <a class="ui black button" href="/user/<%=user.id%>/edit_password"></i> Cambiar contraseña</a>
             <%end%>
           </td>
         </tr>
           <% end %>
       </tbody>
     </table>
-    </div>
       <%else%>
-        <h1>No deberias estar aqui</h1>   
+        <h1>No deberias estar aqui</h1>
       <%end%>
   </div>
 </div>

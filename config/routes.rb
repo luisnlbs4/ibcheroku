@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'familiars/create'
 
   resources :publications
   devise_for :users
@@ -31,6 +30,8 @@ Rails.application.routes.draw do
   post 'familiars' => 'familiars#create'
   post '/familiars/:id/update' => 'familiars#update'
 
+  get '/blinds/:id/rehabilitations' => "rehabilitations#index"
+  post 'rehabilitations' => 'rehabilitations#create'
 
   # get 'welcome/index'
   get '/reports' => 'blinds#reports'

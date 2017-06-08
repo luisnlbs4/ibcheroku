@@ -1,7 +1,7 @@
 
   <body>
 
-<div class="ui container green segment">
+<div class="ui  green segment">
 
 
    <div class="ui horizontal divider"><h1 class="ui green header center aligned">
@@ -32,7 +32,7 @@
 
 
 
-  <div class="ui container">
+  <div class="ui ">
   <table class="ui very basic table">
   <thead>
     <tr>
@@ -54,11 +54,13 @@
           <td><%= blind.first_name %> <%= blind.second_name %></td>
           <td><%= blind.first_lastname %>  </td>
           <td><%= blind.second_lastname %></td>
-          <td> <a class="ui yellow tiny button" href="/blinds/<%=blind.id%>/">Ver Copia</a></td>
+          <td> <a class="ui  blue tiny button" href="/blinds/<%=blind.id%>/">Ver Copia</a></td>
           <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
-          <td> <a class="ui green tiny button" href="/blinds/<%=blind.id%>/edit">Editar Copia</a></td>
+          <td> <a class="ui yellow tiny button" href="/blinds/<%=blind.id%>/edit">Editar Copia</a></td>
           <%end%>
-          <td> <a class="ui blue tiny button" href="/blinds/<%=blind.id+1%>/">Ver original</a></td>
+          <td> <a class="ui green tiny button" href="/blinds/<%=blind.id+1%>/">Ver original</a></td>
+          <td><a href="/blinds/<%=blind.id%>/rehabilitations" class="ui tiny teal button" ></i> Historial de rehabilitacion</a></td>
+
     </tr>
       <% end %>
   </tbody>

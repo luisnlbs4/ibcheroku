@@ -2,7 +2,7 @@ class BlindsController < ApplicationController
 
 	def index
 		user_auth
-		@blinds = Blind.all.order("first_lastname DESC")
+		@blinds = Blind.all.order("first_lastname ASC")
 
 		@tipoBusqueda = params[:busqueda]
 		@texto = params[:texto]
@@ -43,17 +43,8 @@ class BlindsController < ApplicationController
 				@home = Home.new(home_params)
 				@home.blind_id = @blind.id
 				if @home.save
-					@rehab = Rehabilitation.new(rehabilitation_params)
-					@rehab.blind_id = @blind.id
-					if @rehab.save
-						create_original(blind_params,medical_params,home_params,rehabilitation_params)
+						create_original(blind_params,medical_params,home_params)
 						redirect_to "/blinds", notice: "Guardado con Exito"
-					else
-						@blind.destroy
-						@medical.destroy
-						@home.destroy
-						render "new", notice: "No se pudo guardar"
-					end
 				else
 					@blind.destroy
 					@medical.destroy
@@ -69,10 +60,48 @@ class BlindsController < ApplicationController
 		end
 	end
 
+	def update
+		@blind = Blind.find(params[:id])
+		if @blind.update_attributes(blind_params)
+			@medical = @blind.medical
+			if @medical.update_attributes(medical_params)
+				@home = @blind.home
+				if @home.update_attributes(home_params)
+					@rehab = @blind.rehabilitations.last
+					if @rehab.update_attributes(rehabilitation_params)
+						redirect_to "/blinds/"+@blind.id.to_s, notice: "Editado con Exito"
+					else
+						render "edit", notice: "No se pudo editar"
+					end
+				else
+
+					render "edit", notice: "No se pudo editar"
+				end
+			else
+				render "edit", notice: "No se pudo editar"
+			end
+		else
+			render "edit", notice: "No se pudo editar"
+		end
+	end
+
+
+	def create_original(blind_params,medical_params,home_params)
+		@blind = Blind.new(blind_params)
+		@blind.original = true
+		@blind.save
+		@medical = Medical.new(medical_params)
+		@medical.blind_id = @blind.id
+		@medical.save
+		@home = Home.new(home_params)
+		@home.blind_id = @blind.id
+		@home.save
+	end
+
 	def reports
      user_auth
 	 @blinds = Blind.all
-   @blinds = @blinds.where(original: false)
+     @blinds = @blinds.where(original: false)
 	 @blinds = @blinds.joins(:medical)
 	 @grado= params[:grado]
 	 @caja= params[:caja]
@@ -119,48 +148,6 @@ class BlindsController < ApplicationController
 				format.xls # { send_data @blinds.to_csv(col_sep: "\t") }
 		   end
 
-	end
-
-	def update
-
-		@blind = Blind.find(params[:id])
-		if @blind.update_attributes(blind_params)
-			@medical = @blind.medical
-			if @medical.update_attributes(medical_params)
-				@home = @blind.home
-				if @home.update_attributes(home_params)
-					@rehab = @blind.rehabilitation
-					if @rehab.update_attributes(rehabilitation_params)
-						redirect_to "/blinds/"+@blind.id.to_s, notice: "Editado con Exito"
-					else
-						render "edit", notice: "No se pudo editar"
-					end
-				else
-
-					render "edit", notice: "No se pudo editar"
-				end
-			else
-				render "edit", notice: "No se pudo editar"
-			end
-		else
-			render "edit", notice: "No se pudo editar"
-		end
-	end
-
-
-	def create_original(blind_params,medical_params,home_params,rehabilitation_params)
-		@blind = Blind.new(blind_params)
-		@blind.original = true
-		@blind.save
-		@medical = Medical.new(medical_params)
-		@medical.blind_id = @blind.id
-		@medical.save
-		@home = Home.new(home_params)
-		@home.blind_id = @blind.id
-		@home.save
-		@rehab = Rehabilitation.new(rehabilitation_params)
-		@rehab.blind_id = @blind.id
-		@rehab.save
 	end
 
 	def blind_params

@@ -1,0 +1,124 @@
+<div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+               F.- DATOS DE PARENTESCO O RELACION SOCIAL
+          </div>
+            <table class="ui very basic table">
+            <thead>
+              <tr>
+                <th>RECIBIO REHABILITACION</th>
+                <th>Lugar</th>
+                <th>Desde:</th>
+                <th>Hasta</th>
+                <th>TIPO DE REHABILITACION</th>
+                <th>CAPACITACIÓN Y HABILIDADES</th>
+                <th>Fecha que se modifico</th>
+                <!--
+                <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+                <th>Accion</th>
+                <%end%>
+              -->
+              </tr>
+            </thead>
+            <tbody>
+                <% @rehabilitations.each do |rehab| %>
+              <tr>
+                    <td>
+                      <% if rehab.received? !=nil %>
+                        <% if rehab.received? %>
+                          Si
+                        <%else%>
+                          No
+                        <%end%>
+                      <%end%>
+                    </td>
+                    <td><%=rehab.place%></td>
+                    <td><%=rehab.first_date%>  </td>
+                    <td><%=rehab.last_date%></td>
+                    <td><%=rehab.type_rehab%></td>
+                    <td><%=rehab.training_skils%></td>
+                    <td><%=rehab.created_at%></td>
+                    <!--
+                    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+                    <td>
+                      <a href="/rehabilitations/<%=rehab.id%>/edit" class="ui green tiny button">Editar</a>
+                    </td>
+                    <td>
+                      <a href="/rehabilitations/<%=rehab.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a>
+                    </td>
+                    <%end%>
+                  -->
+
+             </tr>
+                <% end %>
+            </tbody>
+             <tfoot>
+              <tr>
+                <th colspan="9"><a href="/blinds/<%=params[:id]%>" class="ui blue button item  familiar " ></i>Ver Detalle Afiliado</a>
+                 <a class="ui green button item  rehab " ><i class="plus icon"></i> Agregar rehabilitacion </a>
+                </th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div id="rehab-modal" class="ui modal">
+      <div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+                 E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
+          </div>
+          <form action="/rehabilitations" method="post">
+          <input type="hidden" name="rehabilitation[blind_id]" value="<%=params[:id]%>" >
+          <input type="hidden" name="rehabilitation[received?]" value="true">
+           <div class="three fields">
+            <div class="field">
+              <label>Donde:</label>
+              <input  name="rehabilitation[place]" placeholder="Donde Recibio Rehabilitacion" type="text">
+            </div>
+            <div class="field">
+              <label>Desde:</label>
+              <input  name="rehabilitation[first_date]"  type="date">
+            </div>
+            <div class="field">
+              <label>Hasta:</label>
+              <input  name="rehabilitation[last_date]"  type="date">
+            </div>
+           </div>
+           <div class="field">
+            <label>TIPO DE REHABILITACION</label>
+            <div class="ui selection dropdown">
+                 <input type="hidden" name="rehabilitation[type_rehab]">
+                 <i class="dropdown icon"></i>
+                 <div class="default text">Seleccione tipo de rehabilitacion</div>
+                 <div class="menu">
+                    <div class="item" value= "Funcional" >Funcional</div>
+                    <div class="item" value= "Tecnica" >Tecnica</div>
+                    <div class="item" value= "Laboral" >Laboral</div>
+                    <div class="item" value= "Otros" >Otros</div>
+                </div>
+            </div>
+           </div>
+           <div class="field">
+            <label>CAPACITACIÓN Y HABILIDADES</label>
+            <input name="rehabilitation[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text">
+           </div>
+          </div>
+          </div>
+            <div class="ui center aligned basic segment">
+              <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
+            </div>
+          </form>
+          </div>
+
+
+
+          <script type="text/javascript">
+           $(document).ready(function(){
+               $('.rehab').click(function(){
+                   $('#rehab-modal').modal({blurring: true}).modal('show');
+               });
+                $('.ui.dropdown').dropdown();
+           });
+          </script>

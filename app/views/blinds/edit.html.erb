@@ -338,7 +338,7 @@
     <div class="ui fluid search multiple selection dropdown">
       <input type="hidden" name="blind[services]" value="<%=@blind.home.services%>">
       <i class="dropdown icon"></i>
-      <div class="default text">Tenecia</div>
+      <div class="default text">Servicios</div>
       <div class="menu">
         <div class="item" value= "Luz" >Luz</div>
         <div class="item" value= "Agua" >Agua</div>
@@ -493,10 +493,10 @@
           <div class="field">
             <label>RECIBIO REHABILITACION</label>
             <div class="ui selection dropdown">
-               <% if@blind.rehabilitation.received? == nil %>
+               <% if@blind.rehabilitations.last.received? == nil %>
                  <input type="hidden" name="blind[received?]" value="">
               <%else%>
-                <% if@blind.rehabilitation.received? %>
+                <% if@blind.rehabilitations.last.received? %>
                   <input type="hidden" name="blind[received?]" value="Si">
                 <%else%>
                   <input type="hidden" name="blind[received?]" value="No">
@@ -512,22 +512,22 @@
           </div>
           <div class="field">
             <label>Donde:</label>
-            <input  name="blind[place]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitation.place%>">
+            <input  name="blind[place]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitations.last.place%>">
           </div>
           <div class="field">
             <label>Desde:</label>
-            <input  name="blind[first_date]"  type="date" value="<%=@blind.rehabilitation.first_date%>">
+            <input  name="blind[first_date]"  type="date" value="<%=@blind.rehabilitations.last.first_date%>">
           </div>
           <div class="field">
             <label>Hasta:</label>
-            <input  name="blind[last_date]"  type="date" value="<%=@blind.rehabilitation.last_date%>">
+            <input  name="blind[last_date]"  type="date" value="<%=@blind.rehabilitations.last.last_date%>">
           </div>
         </div>
 
         <div class="field">
           <label>TIPO DE REHABILITACION</label>
           <div class="ui selection dropdown">
-               <input type="hidden" name="blind[type_rehab]" value="<%=@blind.rehabilitation.type_rehab%>">
+               <input type="hidden" name="blind[type_rehab]" value="<%=@blind.rehabilitations.last.type_rehab%>">
                <i class="dropdown icon"></i>
                <div class="default text">Seleccione tipo de rehabilitacion</div>
                <div class="menu">
@@ -540,7 +540,7 @@
         </div>
         <div class="field">
           <label>CAPACITACIÓN Y HABILIDADES</label>
-          <input name="blind[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitation.training_skils%>">
+          <input name="blind[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitations.last.training_skils%>">
          </div>
         </div>
       </div>

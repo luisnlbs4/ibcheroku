@@ -50,7 +50,11 @@
         <Cell><Data ss:Type="String"><%= blind.sex %></Data></Cell>
         <Cell><Data ss:Type="String"><%= blind.registration_date %></Data></Cell>
         <Cell><Data ss:Type="String"><%= blind.degree_instruction %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.rehabilitation.received? %></Data></Cell>
+        <% if  blind.rehabilitations.count == 0 %>
+        <Cell><Data ss:Type="String">No</Data></Cell>
+        <% else %>
+        <Cell><Data ss:Type="String">Si</Data></Cell>
+        <% end %>
         <Cell><Data ss:Type="String"><%= blind.current_occupation %></Data></Cell>
         <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
         <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>

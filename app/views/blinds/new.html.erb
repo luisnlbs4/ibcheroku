@@ -4,9 +4,9 @@
                });
   </script>
   <body>
-    
+
       <!-- formulario -->
-      <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %> 
+      <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
       <div class="ui form container ">
         <div class="ui   segment">
 
@@ -278,7 +278,7 @@
                <i class="dropdown icon"></i>
                <div class="default text"></div>
                <div class="menu">
-                  <div class="item" value= "true" >Si</div>
+                  <div class="item" value= "true" >true</div>
                   <div class="item" value= "false" >No</div>
               </div>
         </div>
@@ -329,7 +329,7 @@
     <div class="ui fluid search multiple selection dropdown">
       <input type="hidden" name="blind[services]">
       <i class="dropdown icon"></i>
-      <div class="default text">Tenecia</div>
+      <div class="default text">Servicios</div>
       <div class="menu">
         <div class="item" value= "Luz" >Luz</div>
         <div class="item" value= "Agua" >Agua</div>
@@ -384,7 +384,7 @@
                <i class="dropdown icon"></i>
                <div class="default text">Tiene baño?</div>
                <div class="menu">
-                  <div class="item" value= "true" >Si</div>
+                  <div class="item" value= "true" >true</div>
                   <div class="item" value= "false" >No</div>
               </div>
         </div>
@@ -457,68 +457,14 @@
 
 
       <br>
-
-
-      <div class="ui form container ">
-        <div class="ui   segment">
-          <div class="ui header">
-               E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
-          </div>
-         <div class="four fields">
-          <div class="field">
-            <label>RECIBIO REHABILITACION</label>
-            <div class="ui selection dropdown">
-               <input type="hidden" name="blind[received?]">
-               <i class="dropdown icon"></i>
-               <div class="default text">Si/No</div>
-               <div class="menu">
-                  <div class="item" value= "true" >Si</div>
-                  <div class="item" value= "false" >No</div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label>Donde:</label>
-            <input  name="blind[place]" placeholder="Donde Recibio Rehabilitacion" type="text">
-          </div>
-          <div class="field">
-            <label>Desde:</label>
-            <input  name="blind[first_date]"  type="date">
-          </div>
-          <div class="field">
-            <label>Hasta:</label>
-            <input  name="blind[last_date]"  type="date">
-          </div>
-        </div>
-
-        <div class="field">
-          <label>TIPO DE REHABILITACION</label>
-          <div class="ui selection dropdown">
-               <input type="hidden" name="blind[type_rehab]">
-               <i class="dropdown icon"></i>
-               <div class="default text">Seleccione tipo de rehabilitacion</div>
-               <div class="menu">
-                  <div class="item" value= "Funcional" >Funcional</div>
-                  <div class="item" value= "Tecnica" >Tecnica</div>
-                  <div class="item" value= "Laboral" >Laboral</div>
-                  <div class="item" value= "Otros" >Otros</div>
-              </div>
-            </div>
-        </div>
-        <div class="field">
-          <label>CAPACITACIÓN Y HABILIDADES</label>
-          <input name="blind[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text">
-         </div>
-        </div>
-      </div>
       <div class="ui center aligned basic segment">
         <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
       </div>
     </form>
     <%else%>
     <div class="ui segment">
-      <h1>No deberias estar aqui</h1> 
-      </div>  
+      <h1>No deberias estar aqui</h1>
+      </div>
     <%end%>
   <!-- Fin contacto -->
 
