@@ -7,12 +7,12 @@ class BlindsController < ApplicationController
 		@tipoBusqueda = params[:busqueda]
 		@texto = params[:texto]
 		if @tipoBusqueda == "apellido paterno"
-			@blinds = @blinds.where("first_lastname=?",@texto)
-			@blinds = @blinds.order("first_lastname DESC")
+			@blinds = @blinds.where("first_lastname LIKE ?", "%#{@texto}%")
+			@blinds = @blinds.order("first_lastname ASC")
 		end
 		if @tipoBusqueda == "apellido materno"
-			@blinds = @blinds.where("second_lastname=?",@texto)
-			@blinds = @blinds.order("second_lastname DESC")
+			@blinds = @blinds.where("second_lastname LIKE ?","%#{@texto}%")
+			@blinds = @blinds.order("second_lastname ASC")
 		end
 		@blinds = @blinds.paginate(page: params[:page],per_page:15).where(original: false)
 	end
