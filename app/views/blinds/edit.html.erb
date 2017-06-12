@@ -283,7 +283,7 @@
                 <%else%>
                   <input type="hidden" name="blind[health_insurance?]" value="No">
                 <%end%>
-              <%end%>               
+              <%end%>
                <i class="dropdown icon"></i>
                <div class="default text"></div>
                <div class="menu">
@@ -396,8 +396,8 @@
                   <input type="hidden" name="blind[bathroom?]" value="Si">
                 <%else%>
                   <input type="hidden" name="blind[bathroom?]" value="No">
-                <%end%> 
-              <%end%>  
+                <%end%>
+              <%end%>
                <i class="dropdown icon"></i>
                <div class="default text">Tiene baño?</div>
                <div class="menu">
@@ -416,8 +416,8 @@
                   <input type="hidden" name="blind[kitchen?]" value="Si">
                 <%else%>
                   <input type="hidden" name="blind[kitchen?]" value="No">
-                <%end%> 
-              <%end%>  
+                <%end%>
+              <%end%>
                <i class="dropdown icon"></i>
                <div class="default text">Tiene cocina?</div>
                <div class="menu">
@@ -477,76 +477,291 @@
 
     </div>
 
-
-
-
-
-      <br>
-
-
-      <div class="ui form container ">
-        <div class="ui   segment">
-          <div class="ui header">
-               E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
-          </div>
-         <div class="four fields">
-          <div class="field">
-            <label>RECIBIO REHABILITACION</label>
-            <div class="ui selection dropdown">
-               <% if@blind.rehabilitations.last.received? == nil %>
-                 <input type="hidden" name="blind[received?]" value="">
-              <%else%>
-                <% if@blind.rehabilitations.last.received? %>
-                  <input type="hidden" name="blind[received?]" value="Si">
-                <%else%>
-                  <input type="hidden" name="blind[received?]" value="No">
-                <%end%> 
-              <%end%>  
-               <i class="dropdown icon"></i>
-               <div class="default text">Si/No</div>
-               <div class="menu">
-                  <div class="item" value= "true" >Si</div>
-                  <div class="item" value= "false" >No</div>
+    <br>
+    <div class="ui form container ">
+            <div class="ui   segment">
+              <div class="ui header">
+                E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
               </div>
+                <table class="ui very basic table">
+                <thead>
+                  <tr>
+                    <th>Lugar</th>
+                    <th>Desde:</th>
+                    <th>Hasta</th>
+                    <th>TIPO DE REHABILITACION</th>
+                    <th>CAPACITACIÓN Y HABILIDADES</th>
+                    <th>Fecha que se modifico</th>
+                    <!--
+                    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+                    <th>Accion</th>
+                    <%end%>
+                  -->
+                  </tr>
+                </thead>
+                <tbody>
+                    <% @blind.rehabilitations.each do |rehab| %>
+                  <tr>
+                        <td><%=rehab.place%></td>
+                        <td><%=rehab.first_date%>  </td>
+                        <td><%=rehab.last_date%></td>
+                        <td><%=rehab.type_rehab%></td>
+                        <td><%=rehab.training_skils%></td>
+                        <td><%=rehab.created_at%></td>
+                        <!--
+                        <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+                        <td>
+                          <a href="/rehabilitations/<%=rehab.id%>/edit" class="ui green tiny button">Editar</a>
+                        </td>
+                        <td>
+                          <a href="/rehabilitations/<%=rehab.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a>
+                        </td>
+                        <%end%>
+                      -->
+
+                 </tr>
+                    <% end %>
+                </tbody>
+                 <tfoot>
+                  <tr>
+                    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador and !@blind.original%>
+                    <th colspan="9"><a class="ui green button item  rehab " ><i class="plus icon"></i> Agregar rehabilitacion </a></th>
+                    <%end%>
+
+                </tr>
+                </tfoot>
+              </table>
             </div>
           </div>
-          <div class="field">
-            <label>Donde:</label>
-            <input  name="blind[place]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitations.last.place%>">
-          </div>
-          <div class="field">
-            <label>Desde:</label>
-            <input  name="blind[first_date]"  type="date" value="<%=@blind.rehabilitations.last.first_date%>">
-          </div>
-          <div class="field">
-            <label>Hasta:</label>
-            <input  name="blind[last_date]"  type="date" value="<%=@blind.rehabilitations.last.last_date%>">
-          </div>
-        </div>
 
-        <div class="field">
-          <label>TIPO DE REHABILITACION</label>
-          <div class="ui selection dropdown">
-               <input type="hidden" name="blind[type_rehab]" value="<%=@blind.rehabilitations.last.type_rehab%>">
-               <i class="dropdown icon"></i>
-               <div class="default text">Seleccione tipo de rehabilitacion</div>
-               <div class="menu">
-                  <div class="item" value= "Funcional" >Funcional</div>
-                  <div class="item" value= "Tecnica" >Tecnica</div>
-                  <div class="item" value= "Laboral" >Laboral</div>
-                  <div class="item" value= "Otros" >Otros</div>
+    <br>
+
+    <% if !@blind.original%>
+    <div class="ui form container ">
+      <div class="ui   segment">
+        <div class="ui header">
+             F.- DATOS DE PARENTESCO O RELACION SOCIAL
+        </div>
+          <table class="ui very basic table">
+          <thead>
+            <tr>
+              <th>TIPO DE PARENTESCO</th>
+              <th>NOMBRES</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
+              <th>GRADO DE INSTRUCCION</th>
+              <th>OCUPACION</th>
+              <th>DISCAPACIDAD</th>
+              <th>FECHA DE NACIMIENTO</th>
+              <th>OBSERVACION</th>
+              <th>Telefono</th>
+              <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+              <th>Accion</th>
+              <%end%>
+            </tr>
+          </thead>
+          <tbody>
+              <% @blind.familiars.each do |familiar| %>
+            <tr>
+                  <td><%=familiar.relationship%></td>
+                  <td><%=familiar.names%></td>
+                  <td><%=familiar.first_lastname%>  </td>
+                  <td><%=familiar.second_lastname%></td>
+                  <td><%=familiar.degree_instruction%></td>
+                  <td><%=familiar.occupation%></td>
+                  <td><%=familiar.disability%>  </td>
+                  <td><%=familiar.birthday%></td>
+                  <td><%=familiar.observation%></td>
+                  <td><%=familiar.cellphone%></td>
+                  <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+                  <td>
+                    <a href="/familiars/<%=familiar.id%>/edit" class="ui green tiny button">Editar</a>
+                    <a href="/familiars/<%=familiar.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a>
+                  </td>
+                  <%end%>
+
+           </tr>
+              <% end %>
+          </tbody>
+            <tfoot>
+            <tr>
+              <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+              <th colspan="9"><a class="ui green button item  familiar " ><i class="plus icon"></i> Agregar Familiar</a></th>
+              <%end%>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <br>
+    <div class="ui center aligned basic segment">
+      <button type="input" class="ui green button"><i class="ui add icon"></i>Modificar ficha</button>
+    </div>
+  </form>
+
+
+    <div id="familiar-modal" class="ui modal">
+    <div class="ui form container ">
+      <div class="ui   segment">
+        <div class="ui header">
+             Formulario nuevo familiar
+        </div>
+        <form action="/familiars" method="post">
+          <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
+          <div class="four fields">
+
+              <div class="field">
+                <label>Nombres</label>
+                <input type="text" name="familiar[names]" placeholder="Primer y/o segundo nombre" required>
               </div>
+              <div class="field">
+                <label>Apellido Paterno</label>
+                <input name="familiar[first_lastname]" placeholder="Apellido paterno" type="text">
+              </div>
+              <div class="field">
+                <label>Apellido Materno</label>
+                <input name="familiar[second_lastname]"  placeholder="Apellido Materno" type="text">
+              </div>
+              <div class="field">
+                <label>Telefono</label>
+                <input name="familiar[cellphone]"  maxlength="12" placeholder="Fijo/celular" type="text">
+              </div>
+
+          </div>
+          <div class="four fields">
+              <div class="field">
+                <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
+                <label>Ocupacion</label>
+                <input name="familiar[occupation]" placeholder="Ocupacion" type="text">
+              </div>
+              <div class="field">
+                <label>Discapacidad</label>
+                <input type="text" name="familiar[disability]" placeholder="Discapacidad" >
+              </div>
+              <div class="field">
+                <label>Fecha de nacimiento</label>
+                <input name="familiar[birthday]"  type="date">
+              </div>
+              <div class="field">
+                <label>Observacion</label>
+                <input name="familiar[observation]"  placeholder="Observacion" type="text">
+              </div>
+
+
+          </div>
+          <div class = "two fields">
+            <div class="field">
+                <label>Parentesco</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="familiar[relationship]">
+                     <i class="dropdown icon"></i>
+                     <div class="default text">Parentesco</div>
+                     <div class="menu">
+                      <div class="item" value= "Padre" >Padre</div>
+                      <div class="item" value= "Madre" >Madre</div>
+                      <div class="item" value= "Esposo(a)" >Esposo(a)</div>
+                      <div class="item" value= "Hijo(a)" >Hijo(a)</div>
+                      <div class="item" value= "Hermano(a)" >Hermano(a)</div>
+                      <div class="item" value= "Cuñado(a)" >Cuñado(a)</div>
+                      <div class="item" value= "Tio(a)" >Tio(a)</div>
+                      <div class="item" value= "Abuelo(a)" >Abuelo(a)</div>
+                      <div class="item" value= "Sobrino(a)" >Sobrino(a)</div>
+                      <div class="item" value= "Primo(a)" >Primo(a)</div>
+                      <div class="item" value= "Tutor(a)" >Tutor(a)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Grado de instruccion</label>
+                <div class="ui selection dropdown">
+                   <input type="hidden" name="familiar[degree_instruction]">
+                   <i class="dropdown icon"></i>
+                   <div class="default text">Seleccione grado de instruccion</div>
+                   <div class="menu">
+                      <div class="item" value= "Ninguno" >Ninguno</div>
+                      <div class="item" value= "Primaria" >Primaria</div>
+                      <div class="item" value= "Secundaria" >Secundaria</div>
+                      <div class="item" value= "Tecnio" >Tecnio</div>
+                      <div class="item" value= "Universitario" >Universitario</div>
+                      <div class="item" value= "Licenciatura" >Licenciatura</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="ui center aligned basic segment">
+            <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
+          </div>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="rehab-modal" class="ui modal">
+  <div class="ui form container ">
+    <div class="ui   segment">
+      <div class="ui header">
+             E.- DATOS SOBRE LA REHABILITACION DEL INTERESADO
+      </div>
+      <form action="/rehabilitations" method="post">
+      <input type="hidden" name="rehabilitation[blind_id]" value="<%=@blind.id%>" >
+       <div class="three fields">
+        <div class="field">
+          <label>Donde:</label>
+          <input  name="rehabilitation[place]" placeholder="Donde Recibio Rehabilitacion" type="text">
+        </div>
+        <div class="field">
+          <label>Desde:</label>
+          <input  name="rehabilitation[first_date]"  type="date">
+        </div>
+        <div class="field">
+          <label>Hasta:</label>
+          <input  name="rehabilitation[last_date]"  type="date">
+        </div>
+       </div>
+       <div class="field">
+        <label>TIPO DE REHABILITACION</label>
+        <div class="ui selection dropdown">
+             <input type="hidden" name="rehabilitation[type_rehab]">
+             <i class="dropdown icon"></i>
+             <div class="default text">Seleccione tipo de rehabilitacion</div>
+             <div class="menu">
+                <div class="item" value= "Funcional" >Funcional</div>
+                <div class="item" value= "Tecnica" >Tecnica</div>
+                <div class="item" value= "Laboral" >Laboral</div>
+                <div class="item" value= "Otros" >Otros</div>
             </div>
         </div>
-        <div class="field">
-          <label>CAPACITACIÓN Y HABILIDADES</label>
-          <input name="blind[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text" value="<%=@blind.rehabilitations.last.training_skils%>">
-         </div>
+       </div>
+       <div class="field">
+        <label>CAPACITACIÓN Y HABILIDADES</label>
+        <input name="rehabilitation[training_skils]" placeholder="Donde Recibio Rehabilitacion" type="text">
+       </div>
+      </div>
+      </div>
+        <div class="ui center aligned basic segment">
+          <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>
         </div>
+      </form>
       </div>
-      <div class="ui center aligned basic segment">
-        <button type="input" class="ui green button"><i class="ui add icon"></i>Modificar ficha</button>
-      </div>
-    </form>
+  <%end%>
+      <script type="text/javascript">
+       $(document).ready(function(){
+           $('.familiar').click(function(){
+               $('#familiar-modal').modal({blurring: true}).modal('show');
+           });
+            $('.ui.dropdown').dropdown();
+       });
+      </script>
+
+      <script type="text/javascript">
+       $(document).ready(function(){
+           $('.rehab').click(function(){
+               $('#rehab-modal').modal({blurring: true}).modal('show');
+           });
+            $('.ui.dropdown').dropdown();
+       });
+      </script>
+
   <!-- Fin contacto -->
   </body>

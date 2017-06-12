@@ -301,7 +301,6 @@
                   <table class="ui very basic table">
                   <thead>
                     <tr>
-                      <th>RECIBIO REHABILITACION</th>
                       <th>Lugar</th>
                       <th>Desde:</th>
                       <th>Hasta</th>
@@ -318,15 +317,6 @@
                   <tbody>
                       <% @blind.rehabilitations.each do |rehab| %>
                     <tr>
-                          <td>
-                            <% if rehab.received? !=nil %>
-                              <% if rehab.received? %>
-                                Si
-                              <%else%>
-                                No
-                              <%end%>
-                            <%end%>
-                          </td>
                           <td><%=rehab.place%></td>
                           <td><%=rehab.first_date%>  </td>
                           <td><%=rehab.last_date%></td>
@@ -425,12 +415,9 @@
                Formulario nuevo familiar
           </div>
           <form action="/familiars" method="post">
-            <div class="six fields">
-                <div class="field">
-                  <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
-                  <label>Tipo de parentesco</label>
-                  <input name="familiar[relationship]" placeholder="Parentesco" type="text">
-                </div>
+            <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
+            <div class="four fields">
+
                 <div class="field">
                   <label>Nombres</label>
                   <input type="text" name="familiar[names]" placeholder="Primer y/o segundo nombre" required>
@@ -442,6 +429,55 @@
                 <div class="field">
                   <label>Apellido Materno</label>
                   <input name="familiar[second_lastname]"  placeholder="Apellido Materno" type="text">
+                </div>
+                <div class="field">
+                  <label>Telefono</label>
+                  <input name="familiar[cellphone]"  maxlength="12" placeholder="Fijo/celular" type="text">
+                </div>
+
+            </div>
+            <div class="four fields">
+                <div class="field">
+                  <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
+                  <label>Ocupacion</label>
+                  <input name="familiar[occupation]" placeholder="Ocupacion" type="text">
+                </div>
+                <div class="field">
+                  <label>Discapacidad</label>
+                  <input type="text" name="familiar[disability]" placeholder="Discapacidad" >
+                </div>
+                <div class="field">
+                  <label>Fecha de nacimiento</label>
+                  <input name="familiar[birthday]"  type="date">
+                </div>
+                <div class="field">
+                  <label>Observacion</label>
+                  <input name="familiar[observation]"  placeholder="Observacion" type="text">
+                </div>
+
+
+            </div>
+            <div class = "two fields">
+              <div class="field">
+                  <label>Parentesco</label>
+                  <div class="ui selection dropdown">
+                      <input type="hidden" name="familiar[relationship]">
+                       <i class="dropdown icon"></i>
+                       <div class="default text">Parentesco</div>
+                       <div class="menu">
+                        <div class="item" value= "Padre" >Padre</div>
+                        <div class="item" value= "Madre" >Madre</div>
+                        <div class="item" value= "Esposo(a)" >Esposo(a)</div>
+                        <div class="item" value= "Hijo(a)" >Hijo(a)</div>
+                        <div class="item" value= "Hermano(a)" >Hermano(a)</div>
+                        <div class="item" value= "Cuñado(a)" >Cuñado(a)</div>
+                        <div class="item" value= "Tio(a)" >Tio(a)</div>
+                        <div class="item" value= "Abuelo(a)" >Abuelo(a)</div>
+                        <div class="item" value= "Sobrino(a)" >Sobrino(a)</div>
+                        <div class="item" value= "Primo(a)" >Primo(a)</div>
+                        <div class="item" value= "Tutor(a)" >Tutor(a)</div>
+                    </div>
+                  </div>
                 </div>
                 <div class="field">
                   <label>Grado de instruccion</label>
@@ -458,29 +494,6 @@
                         <div class="item" value= "Licenciatura" >Licenciatura</div>
                     </div>
                   </div>
-                </div>
-            </div>
-            <div class="five fields">
-                <div class="field">
-                  <input type="hidden" name="familiar[blind_id]" value="<%=@blind.id%>" >
-                  <label>Ocupacion</label>
-                  <input name="familiar[occupation]" placeholder="Ocupacion" type="text">
-                </div>
-                <div class="field">
-                  <label>Discapacidad</label>
-                  <input type="text" name="familiar[disability]" placeholder="Discapacidad" required>
-                </div>
-                <div class="field">
-                  <label>Fecha de nacimiento</label>
-                  <input name="familiar[birthday]"  type="date">
-                </div>
-                <div class="field">
-                  <label>Observacion</label>
-                  <input name="familiar[observation]"  placeholder="Observacion" type="text">
-                </div>
-                <div class="field">
-                  <label>Telefono</label>
-                  <input name="familiar[cellphone]"  maxlength="8" placeholder="telefono/celular" type="text">
                 </div>
             </div>
             <div class="ui center aligned basic segment">

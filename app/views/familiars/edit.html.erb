@@ -12,11 +12,8 @@
                Editar Familiar
           </div>
           <form action="/familiars/<%=@familiar.id%>/update" method="post">
-            <div class="six fields">
-                <div class="field">
-                  <label>Tipo de parentesco</label>
-                  <input value = "<%=@familiar.relationship%>" name="familiar[relationship]" placeholder="Parentesco" type="text" >
-                </div>
+            <div class="four fields">
+                
                 <div class="field">
                   <label>Nombres</label>
                   <input type="text" value = "<%=@familiar.names%>" name="familiar[names]" placeholder="Primer y/o segundo nombre" required>
@@ -30,6 +27,53 @@
                   <input value = "<%=@familiar.second_lastname%>" name="familiar[second_lastname]"  placeholder="Apellido Materno" type="text">
                 </div>
                 <div class="field">
+                  <label>Telefono</label>
+                  <input value = "<%=@familiar.cellphone%>" name="familiar[cellphone]" maxlength="12"  placeholder="telefono/celular" type="text">
+                </div>
+                         
+            </div>
+            <div class="four fields">
+                <div class="field">
+                  <label>Ocupacion</label>
+                  <input value = "<%=@familiar.occupation%>" name="familiar[occupation]" placeholder="Ocupacion" type="text">
+                </div>
+                <div class="field">
+                  <label>Discapacidad</label>
+                  <input type="text" value = "<%=@familiar.disability%>" name="familiar[disability]" placeholder="Discapacidad">
+                </div>
+                <div class="field">
+                  <label>Fecha de nacimiento</label>
+                  <input value = "<%=@familiar.birthday%>" name="familiar[birthday]"  type="date">
+                </div>
+                <div class="field">
+                  <label>Observacion</label>
+                  <input value = "<%=@familiar.observation%>" name="familiar[observation]"  placeholder="Observacion" type="text">
+                </div>   
+                      
+            </div>
+            <div class = "two fields">
+              <div class="field">
+                  <label>Tipo de parentesco</label>
+                  <div class="ui selection dropdown">
+                      <input type="hidden" name="familiar[relationship]" value = "<%=@familiar.relationship%>">
+                       <i class="dropdown icon"></i>
+                       <div class="default text">Parentesco</div>
+                       <div class="menu">
+                        <div class="item" value= "Padre" >Padre</div>
+                        <div class="item" value= "Madre" >Madre</div>
+                        <div class="item" value= "Esposo(a)" >Esposo(a)</div>
+                        <div class="item" value= "Hijo(a)" >Hijo(a)</div>
+                        <div class="item" value= "Hermano(a)" >Hermano(a)</div>
+                        <div class="item" value= "Cuñado(a)" >Cuñado(a)</div>
+                        <div class="item" value= "Tio(a)" >Tio(a)</div>
+                        <div class="item" value= "Abuelo(a)" >Abuelo(a)</div>
+                        <div class="item" value= "Sobrino(a)" >Sobrino(a)</div>
+                        <div class="item" value= "Primo(a)" >Primo(a)</div>
+                        <div class="item" value= "Tutor(a)" >Tutor(a)</div>                        
+                    </div>
+                  </div>
+                </div>
+              <div class="field">
                   <label>Grado de instruccion</label>
                   <div class="ui selection dropdown">
                      <input type="hidden" value = "<%=@familiar.degree_instruction%>" name="familiar[degree_instruction]">
@@ -44,29 +88,7 @@
                         <div class="item" value= "Licenciatura" >Licenciatura</div> 
                     </div>
                   </div>
-                </div>         
-            </div>
-            <div class="five fields">
-                <div class="field">
-                  <label>Ocupacion</label>
-                  <input value = "<%=@familiar.occupation%>" name="familiar[occupation]" placeholder="Ocupacion" type="text">
                 </div>
-                <div class="field">
-                  <label>Discapacidad</label>
-                  <input type="text" value = "<%=@familiar.disability%>" name="familiar[disability]" placeholder="Discapacidad" required>
-                </div>
-                <div class="field">
-                  <label>Fecha de nacimiento</label>
-                  <input value = "<%=@familiar.birthday%>" name="familiar[birthday]"  type="date">
-                </div>
-                <div class="field">
-                  <label>Observacion</label>
-                  <input value = "<%=@familiar.observation%>" name="familiar[observation]"  placeholder="Observacion" type="text">
-                </div>   
-                <div class="field">
-                  <label>Telefono</label>
-                  <input value = "<%=@familiar.cellphone%>" name="familiar[cellphone]" maxlength="8"  placeholder="telefono/celular" type="text">
-                </div>      
             </div>
             <div class="ui center aligned basic segment">
               <button type="input" class="ui green button"><i class="ui add icon"></i>Guardar</button>

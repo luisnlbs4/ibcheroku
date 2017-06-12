@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525041916) do
+ActiveRecord::Schema.define(version: 20170612191425) do
 
   create_table "blinds", force: :cascade do |t|
     t.string   "first_name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170525041916) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "blind_id"
-    t.integer  "cellphone"
+    t.string   "cellphone"
   end
 
   add_index "familiars", ["blind_id"], name: "index_familiars_on_blind_id"

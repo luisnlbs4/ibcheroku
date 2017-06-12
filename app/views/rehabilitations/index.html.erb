@@ -6,7 +6,6 @@
             <table class="ui very basic table">
             <thead>
               <tr>
-                <th>RECIBIO REHABILITACION</th>
                 <th>Lugar</th>
                 <th>Desde:</th>
                 <th>Hasta</th>
@@ -23,15 +22,6 @@
             <tbody>
                 <% @rehabilitations.each do |rehab| %>
               <tr>
-                    <td>
-                      <% if rehab.received? !=nil %>
-                        <% if rehab.received? %>
-                          Si
-                        <%else%>
-                          No
-                        <%end%>
-                      <%end%>
-                    </td>
                     <td><%=rehab.place%></td>
                     <td><%=rehab.first_date%>  </td>
                     <td><%=rehab.last_date%></td>
