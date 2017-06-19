@@ -15,7 +15,7 @@ class UserController < ApplicationController
 		if @user.save
       role = params[:user][:role]
       addRoleToUser(@user,role)
-			redirect_to "/user", notice: "usuario creado exitosamente"
+			redirect_to "/user", notice: "Usuario creado exitosamente"
 		else
 			redirect_to "/user/new", notice: "Error al crear usuario"
 		end

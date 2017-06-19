@@ -45,6 +45,10 @@
       <th>Editar</th>
       <%end%>
       <th>Original</th>
+      <th>Hostorial</th>
+      <%if current_user.has_role? :Administrador %>
+        <th>Borrar</th>
+      <%end%>
     </tr>
   </thead>
   <tbody>
@@ -60,6 +64,9 @@
           <%end%>
           <td> <a class="ui green tiny button" href="/blinds/<%=blind.id+1%>/">Ver original</a></td>
           <td><a href="/blinds/<%=blind.id%>/rehabilitations" class="ui tiny teal button" ></i> Historial de rehabilitacion</a></td>
+          <%if current_user.has_role? :Administrador %>
+          <td><a href="/blinds/<%=blind.id%>/delete" class="ui tiny red button" onclick="return confirm('Esta seguro de borrar?')"></i> Borrar</a></td>
+          <%end%>
 
     </tr>
       <% end %>

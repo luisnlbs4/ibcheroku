@@ -174,7 +174,7 @@
                 <div class="item" value= "Bono" >Bono</div>
                 <div class="item" value= "Ingresos propios">Ingresos propios</div>
                 <div class="item" value= "Dependientes">Dependientes</div>
-                <div class="item" value= "Otro" onclick="habilitaInputOtrosIngresos()">Otro</div>
+                <div class="item" value= "Otros" onclick="habilitaInputOtrosIngresos()">Otros</div>
             </div>
           </div>
           <script language="JavaScript">
@@ -213,7 +213,7 @@
                   <div class="item" value= "Primaria" >Primaria</div>
                   <div class="item" value= "Secundaria" >Secundaria</div>
                   <div class="item" value= "Bachiller" >Bachiller</div>
-                  <div class="item" value= "Tecnico" >Tecnico</div>
+                  <div class="item" value= "Tecnio" >Tecnio</div>
                   <div class="item" value= "Universitario" >Universitario</div>
                   <div class="item" value= "Licenciatura" >Licenciatura</div>
                   <div class="item" value= "Ninguno" >Ninguno</div>
@@ -379,7 +379,7 @@
 
     <div class="field">
         <label>Especifique otro:</label>
-        <input name="blind[services_others]" id="serviciovivienda" placeholder="Otro" type="text" disabled>
+        <input name="blind[services_others]" id="serviciovivienda"placeholder="Otro" type="text" disabled>
     </div>
     </div>
 
@@ -391,13 +391,22 @@
       <i class="dropdown icon"></i>
       <div class="default text">Tenecia</div>
       <div class="menu">
+<<<<<<< HEAD
         <div class="item" onclick="deshabilitaInputVivienda()" value= "Propia" >Propia</div>
         <div class="item" onclick="deshabilitaInputVivienda()" value= "Alquilada" >Alquilada</div>
         <div class="item" onclick="deshabilitaInputVivienda()" value= "Anticretico" >Anticretico</div>
         <div class="item" onclick="deshabilitaInputVivienda()" value= "Contrato Mixto" >Contrato Mixto</div>
         <div class="item" onclick="deshabilitaInputVivienda()" value= "Prestada" >Prestada</div>
-        <div class="item" onclick="deshabilitaInputVivienda()" value= "Suegros" >Suegros</div>
         <div class="item" onclick="habilitaInputVivienda()" value= "Otro">Otro</div>
+=======
+        <div class="item" value= "Propia" >Propia</div>
+        <div class="item" value= "Alquilada" >Alquilada</div>
+        <div class="item" value= "Anticretico" >Anticretico</div>
+        <div class="item" value= "Contrato Mixto" >Contrato Mixto</div>
+        <div class="item" value= "Prestadao" >Prestadao</div>
+        <div class="item" value= "Suegros" >Suegros</div> 
+        <div class="item" value= "Otro" >Otro</div>     
+>>>>>>> ddfc3f2779832cad3a39eee1de4fdfa3b6853599
       </div>
     </div>
   </div>
@@ -416,37 +425,21 @@
       <input id="inputvivienda"name="blind[tenecia_others]" placeholder="Otro" type="text" disabled>
     </div>
   </div>
-  <div class="two fields">
-    <div class="field">
-      <label>Accesibilidad de la vivienda</label>
-      <div class="ui selection dropdown">
-        <input type="hidden" name="blind[accessibility]">
-        <i class="dropdown icon"></i>
-        <div class="default text">Seleccione accesibilidad</div>
-        <div class="menu">
-          <div class="item" onclick="deshabilitaInputAccess()" value= "Avenida" >Avenida</div>
-          <div class="item" onclick="deshabilitaInputAccess()" value= "Calle" >Calle</div>
-          <div class="item" onclick="deshabilitaInputAccess()" value= "Callejon" >Callejon</div>
-          <div class="item" onclick="deshabilitaInputAccess()" value= "Camino" >Camino</div>
-          <div class="item" onclick="habilitaInputAccess()" value= "Otro" >Otro</div>
-        </div>
+  <div class="field">
+    <label>Accesibilidad de la vivienda</label>
+    <div class="ui selection dropdown">
+      <input type="hidden" name="blind[accessibility]">
+      <i class="dropdown icon"></i>
+      <div class="default text">Seleccione accesibilidad</div>
+      <div class="menu">
+        <div class="item" value= "Avenida" >Avenida</div>
+        <div class="item" value= "Calle" >Calle</div>
+        <div class="item" value= "Callejon" >Callejon</div>
+        <div class="item" value= "Camino" >Camino</div>
       </div>
     </div>
-    <div class="field">
-        <label>Especifique otro:</label>
-        <input id="input_accessibility"name="blind[accessibility_others]" placeholder="Otro" type="text" disabled>
-    </div>
   </div>
-  <script language="JavaScript">
-       function habilitaInputAccess(){
-         document.getElementById("input_accessibility").disabled = false;
-       }
 
-       function deshabilitaInputAccess(){
-         document.getElementById("input_accessibility").disabled = true;
-         document.getElementById("input_accessibility").value = "";
-       }
-   </script>
   <div class="ui horizontal divider"><h5>La Vivienda Cuenta con: </h5></div>
   <div class="three fields">
    <div class="field">

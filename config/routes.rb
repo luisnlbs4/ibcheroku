@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   get '/blinds' => 'blinds#index'
   get '/blinds/:id/edit' => 'blinds#edit'
   get '/blinds/:id' => 'blinds#show'
+  get '/blinds/:id/delete' =>'blinds#delete'
   post '/blinds/:id/update' => 'blinds#update'
   post 'blinds' => 'blinds#create'
+
 
 
   get '/familiars/:id/delete' => 'familiars#delete'
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   post '/familiars/:id/update' => 'familiars#update'
 
   get '/blinds/:id/rehabilitations' => "rehabilitations#index"
+  get 'rehabilitations/:id/delete' => 'rehabilitations#delete'
   post 'rehabilitations' => 'rehabilitations#create'
 
   # get 'welcome/index'

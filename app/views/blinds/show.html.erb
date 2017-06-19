@@ -134,7 +134,7 @@
       <div class="three fields">
         <div class="field">
             <label>Ingresos del Beneficiario</label>
-            <p><%=@blind.beneficiary_income%></p>
+            <p><%=@blind.beneficiary_income.chomp("otro")%> <%=@blind.beneficiary_income_others%></p>
           </div>
         <div class="field">
           <label>Ocupacion Actual</label>
@@ -198,8 +198,8 @@
     </div>
     <div class="field">
       <label>Cuenta con Seguro Médico</label>
-      <% if@blind.medical.health_insurance? != nil %>
-        <% if@blind.medical.health_insurance? %>
+      <% if@blind.medical.health_insurance != nil %>
+        <% if@blind.medical.health_insurance %>
           <p>Si</p>
         <%else%>
           <p>No</p>
@@ -234,15 +234,19 @@
 
   <div class="field">
     <label>Servicios con que cuenta la vivienda</label>
-      <p><%=@blind.home.services%></p>
+      <p><%=@blind.home.services.chomp("otro")%> <%=@blind.home.services_others%></p>
   </div>
   <div class="field">
     <label>Tenencia de la vivienda</label>
-      <p><%=@blind.home.tenecia%></p>
+      <p><%=@blind.home.tenecia.chomp("otro")%> <%=@blind.home.tenecia_others%></p>
   </div>
   <div class="field">
     <label>Accesibilidad de la vivienda</label>
-      <p><%=@blind.home.accessibility%></p>
+      <%if @blind.home.accessibility=="otro" %>
+        <p><%=@blind.home.accessibility_others%></p>
+      <%else%>
+        <p><%=@blind.home.accessibility%></p>
+      <%end%>
   </div>
 
   <div class="ui horizontal divider"><h5>La Vivienda Cuenta con: </h5></div>
@@ -253,8 +257,8 @@
    </div>
    <div class="field">
      <label>Baño</label>
-     <% if@blind.home.bathroom? != nil %>
-       <% if@blind.home.bathroom? %>
+     <% if@blind.home.bathroom != nil %>
+       <% if@blind.home.bathroom %>
           <p>Si</p>
         <%else%>
           <p>No</p>
@@ -263,8 +267,8 @@
    </div>
    <div class="field">
      <label>Cocina</label>
-     <% if@blind.home.kitchen? != nil %>
-       <% if@blind.home.kitchen? %>
+     <% if@blind.home.kitchen != nil %>
+       <% if@blind.home.kitchen %>
           <p>Si</p>
         <%else%>
           <p>No</p>
@@ -276,15 +280,27 @@
          <div class="three fields">
             <div class="field">
               <label>Paredes</label>
-              <p><%=@blind.home.wall_type%></p>
+              <%if @blind.home.wall_type=="otro" %>
+                <p><%=@blind.home.wall_type_others%></p>
+              <%else%>
+                <p><%=@blind.home.wall_type%></p>
+              <%end%>
             </div>
             <div class="field">
               <label>Techo</label>
-              <p><%=@blind.home.roof_type%></p>
+              <%if @blind.home.roof_type=="otro" %>
+                <p><%=@blind.home.roof_type_others%></p>
+              <%else%>
+                <p><%=@blind.home.roof_type%></p>
+              <%end%>
             </div>
             <div class="field">
               <label>Piso</label>
-              <p><%=@blind.home.floor_type%></p>
+              <%if @blind.home.floor_type=="otro" %>
+                <p><%=@blind.home.floor_type_others%></p>
+              <%else%>
+                <p><%=@blind.home.floor_type%></p>
+              <%end%>
             </div>
          </div>
         </div>
@@ -320,7 +336,7 @@
                           <td><%=rehab.place%></td>
                           <td><%=rehab.first_date%>  </td>
                           <td><%=rehab.last_date%></td>
-                          <td><%=rehab.type_rehab%></td>
+                          <td><%=rehab.type_rehab.chomp("otro")%> <%=rehab.type_rehab_others%></td>
                           <td><%=rehab.training_skils%></td>
                           <td><%=rehab.created_at%></td>
                           <!--
@@ -526,18 +542,34 @@
             <input  name="rehabilitation[last_date]"  type="date">
           </div>
          </div>
-         <div class="field">
-          <label>TIPO DE REHABILITACION</label>
-          <div class="ui selection dropdown">
-               <input type="hidden" name="rehabilitation[type_rehab]">
-               <i class="dropdown icon"></i>
-               <div class="default text">Seleccione tipo de rehabilitacion</div>
-               <div class="menu">
-                  <div class="item" value= "Funcional" >Funcional</div>
-                  <div class="item" value= "Tecnica" >Tecnica</div>
-                  <div class="item" value= "Laboral" >Laboral</div>
-                  <div class="item" value= "Otros" >Otros</div>
-              </div>
+         <div class=" two fields">
+           <div class="field">
+             <label>TIPO DE REHABILITACION</label>
+             <div class="ui selection dropdown">
+                  <input type="hidden" name="rehabilitation[type_rehab]">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Seleccione tipo de rehabilitacion</div>
+                  <div class="menu">
+                     <div class="item" value= "Funcional" onclick="deshabilitaInputrehabilitacion()" >Funcional</div>
+                     <div class="item" value= "Tecnica" onclick="deshabilitaInputrehabilitacion()" >Tecnica</div>
+                     <div class="item" value= "Laboral" onclick="deshabilitaInputrehabilitacion()" >Laboral</div>
+                     <div class="item" value= "Otro" onclick="habilitaInputrehabilitacion()">Otro</div>
+                 </div>
+             </div>
+           </div>
+           <script language="JavaScript">
+                function habilitaInputrehabilitacion(){
+                  document.getElementById("tiporehabilitacion").disabled = false;
+                }
+
+                function deshabilitaInputrehabilitacion(){
+                  document.getElementById("tiporehabilitacion").disabled = true;
+                  document.getElementById("tiporehabilitacion").value = "";
+                }
+            </script>
+          <div class="field">
+            <label>Especifique otro:</label>
+                <input id="tiporehabilitacion"name="rehabilitation[type_rehab_others]" placeholder="Otro" type="text" disabled>
           </div>
          </div>
          <div class="field">

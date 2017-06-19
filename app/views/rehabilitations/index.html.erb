@@ -1,5 +1,6 @@
 <div class="ui form container ">
         <div class="ui   segment">
+
           <div class="ui header">
                F.- DATOS DE PARENTESCO O RELACION SOCIAL
           </div>
@@ -12,11 +13,9 @@
                 <th>TIPO DE REHABILITACION</th>
                 <th>CAPACITACIÓN Y HABILIDADES</th>
                 <th>Fecha que se modifico</th>
-                <!--
-                <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
+                <%if current_user.has_role? :Administrador%>
                 <th>Accion</th>
                 <%end%>
-              -->
               </tr>
             </thead>
             <tbody>
@@ -25,27 +24,25 @@
                     <td><%=rehab.place%></td>
                     <td><%=rehab.first_date%>  </td>
                     <td><%=rehab.last_date%></td>
-                    <td><%=rehab.type_rehab%></td>
+                    <td><%=rehab.type_rehab.chomp("otro")%> <%=rehab.type_rehab_others%></td>
                     <td><%=rehab.training_skils%></td>
                     <td><%=rehab.created_at%></td>
-                    <!--
-                    <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
-                    <td>
-                      <a href="/rehabilitations/<%=rehab.id%>/edit" class="ui green tiny button">Editar</a>
-                    </td>
+
+                    <%if current_user.has_role? :Administrador%>
                     <td>
                       <a href="/rehabilitations/<%=rehab.id%>/delete" class="ui red tiny button"  onclick="return confirm('Esta seguro de borrar?')">Borrar</a>
                     </td>
                     <%end%>
-                  -->
-
              </tr>
                 <% end %>
             </tbody>
+
              <tfoot>
               <tr>
                 <th colspan="9"><a href="/blinds/<%=params[:id]%>" class="ui blue button item  familiar " ></i>Ver Detalle Afiliado</a>
+                  <%if current_user.has_role? :Administrador or current_user.has_role? :Modificador %>
                  <a class="ui green button item  rehab " ><i class="plus icon"></i> Agregar rehabilitacion </a>
+                  <%end%>
                 </th>
             </tr>
             </tfoot>
@@ -76,6 +73,7 @@
               <input  name="rehabilitation[last_date]"  type="date">
             </div>
            </div>
+           <div class=" two fields">
            <div class="field">
             <label>TIPO DE REHABILITACION</label>
             <div class="ui selection dropdown">
@@ -83,11 +81,26 @@
                  <i class="dropdown icon"></i>
                  <div class="default text">Seleccione tipo de rehabilitacion</div>
                  <div class="menu">
-                    <div class="item" value= "Funcional" >Funcional</div>
-                    <div class="item" value= "Tecnica" >Tecnica</div>
-                    <div class="item" value= "Laboral" >Laboral</div>
-                    <div class="item" value= "Otros" >Otros</div>
+                    <div class="item" value= "Funcional" onclick="deshabilitaInputrehabilitacion()" >Funcional</div>
+                    <div class="item" value= "Tecnica" onclick="deshabilitaInputrehabilitacion()" >Tecnica</div>
+                    <div class="item" value= "Laboral" onclick="deshabilitaInputrehabilitacion()" >Laboral</div>
+                    <div class="item" value= "Otro" onclick="habilitaInputrehabilitacion()">Otro</div>
                 </div>
+            </div>
+          </div>
+            <script language="JavaScript">
+                 function habilitaInputrehabilitacion(){
+                   document.getElementById("tiporehabilitacion").disabled = false;
+                 }
+
+                 function deshabilitaInputrehabilitacion(){
+                   document.getElementById("tiporehabilitacion").disabled = true;
+                   document.getElementById("tiporehabilitacion").value = "";
+                 }
+             </script>
+            <div class="field">
+              <label>Especifique otro:</label>
+                <input id="tiporehabilitacion" name="rehabilitation[type_rehab_others]" placeholder="Otros" type="text" disabled>
             </div>
            </div>
            <div class="field">

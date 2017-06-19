@@ -159,35 +159,49 @@
         </div>
       </div>
 
-      <div class="three fields">
-        <div class="field">
-            <label>Ingresos del Beneficiario</label>
-            <div class="ui fluid search multiple selection dropdown">
+       <div class="four fields">
+          <div class="field">
+              <label>Ingresos del Beneficiario</label>
+              <div class="ui fluid search multiple selection dropdown">
                <input type="hidden" name="blind[beneficiary_income]"value="<%=@blind.beneficiary_income%>">
                <i class="dropdown icon"></i>
                <div class="default text">Seleccione tipos de ingreso</div>
                <div class="menu">
-                <div class="item" value= "Sueldo" >Sueldo</div>
-                <div class="item" value= "Subsidio" >Subsidio</div>
-                <div class="item" value= "Renta(s)" >Renta(s)</div>
-                <div class="item" value= "Ahorro(s)" >Ahorro(s)</div>
+                <div class="item" value= "Ninguno" onclick="deshabilitaInputOtrosIngresos()">Ninguno</div>
+                <div class="item" value= "Sueldo">Sueldo</div>
+                <div class="item" value= "Subsidio">Subsidio</div>
+                <div class="item" value= "Renta(s)">Renta(s)</div>
+                <div class="item" value= "Ahorro(s)">Ahorro(s)</div>
                 <div class="item" value= "Bono" >Bono</div>
-                <div class="item" value= "Ingresos propios" >Ingresos propios</div>
-                <div class="item" value= "Dependientes" >Dependientes</div>
-                <div class="item" value= "Otros" >Otros</div>
+                <div class="item" value= "Ingresos propios">Ingresos propios</div>
+                <div class="item" value= "Dependientes">Dependientes</div>
+                <div class="item" value= "Otro" onclick="habilitaInputOtrosIngresos()">Otro</div>
             </div>
           </div>
-          </div>
-        <div class="field">
-          <label>Ocupacion Actual</label>
-          <input name="blind[current_occupation]"  placeholder="Ocupacion Actual" type="text" value="<%=@blind.current_occupation%>">
         </div>
-        <div class="field">
-          <label>Ocupacion Anterior</label>
-          <input name="blind[previous_occupation]"  placeholder="Ocupacion Anterior" type="text" value="<%=@blind.previous_occupation%>">
-        </div>
-      </div>
+          <script language="JavaScript">
+               function habilitaInputOtrosIngresos(){
+                 document.getElementById("otrosingresos").disabled = false;
+               }
 
+               function deshabilitaInputOtrosIngresos(){
+                 document.getElementById("otrosingresos").disabled = true;
+                 document.getElementById("otrosingresos").value = "";
+               }
+           </script>
+          <div class="field">
+            <label>Especifique otros:</label>
+            <input name="blind[beneficiary_income_others]" id="otrosingresos" placeholder="Otro" type="text" value="<%=@blind.beneficiary_income_others%>" disabled>
+          </div>
+          <div class="field">
+            <label>Ocupacion Actual</label>
+            <input name="blind[current_occupation]"  placeholder="Ocupacion Actual" type="text" value="<%=@blind.current_occupation%>">
+          </div>
+          <div class="field">
+            <label>Ocupacion Anterior</label>
+            <input name="blind[previous_occupation]"  placeholder="Ocupacion Anterior" type="text" value="<%=@blind.previous_occupation%>">
+          </div>
+        </div>
       <div class="two fields">
         <div class="field">
             <label>Grado de Instruccion</label>
@@ -232,7 +246,7 @@
                <div class="default text">Seleccione tipo de ceguera</div>
                <div class="menu">
                   <div class="item" value= "Ceguera total" >Ceguera total</div>
-                  <div class="item" value= "Bajo vision" >Bajo vision</div>
+                  <div class="item" value= "Baja vision" >Baja vision</div>
                   <div class="item" value= "O.I." >O.I.</div>
                   <div class="item" value= "O.D." >O.D.</div>
                   <div class="item" value= "A.O." >A.O.</div>
@@ -275,27 +289,44 @@
       <div class="field">
         <label>Cuenta con Seguro Médico</label>
         <div class="ui selection dropdown">
-              <% if@blind.medical.health_insurance? == nil %>
-                <input type="hidden" name="blind[health_insurance?]" value="">
+              <% if@blind.medical.health_insurance == nil %>
+                <input type="hidden" name="blind[health_insurance]" value="">
               <%else%>
-                <% if@blind.medical.health_insurance? %>
-                  <input type="hidden" name="blind[health_insurance?]" value="Si">
+                <% if@blind.medical.health_insurance %>
+                  <input type="hidden" name="blind[health_insurance]" value="Si">
                 <%else%>
-                  <input type="hidden" name="blind[health_insurance?]" value="No">
+                  <input type="hidden" name="blind[health_insurance]" value="No">
                 <%end%>
               <%end%>
                <i class="dropdown icon"></i>
                <div class="default text"></div>
                <div class="menu">
-                  <div class="item" value= "true" >Si</div>
-                  <div class="item" value= "false" >No</div>
+                 <div class="item" value= "true" onclick="habilitaInputSeguroMedico()">Si</div>
+                 <div class="item" value= "false" onclick="deshabilitaInputSeguroMedico()">No</div>
               </div>
         </div>
-      <div class="field">
-        <label>Nombre de la institución del Seguro Médico</label>
-        <input name="blind[name_health_insurance]" placeholder="Ingrese la Region" type="text" value="<%=@blind.medical.name_health_insurance%>">
-      </div>
     </div>
+    <script language="JavaScript">
+         function habilitaInputSeguroMedico(){
+           document.getElementById("seguromedico").disabled = false;
+         }
+
+         function deshabilitaInputSeguroMedico(){
+           document.getElementById("seguromedico").disabled = true;
+           document.getElementById("seguromedico").value = "";
+         }
+     </script>
+    <%if@blind.medical.health_insurance%>
+    <div class="field">
+      <label>Nombre de la institución del Seguro Médico</label>
+      <input  id="seguromedico" name="blind[name_health_insurance]" placeholder="Ingrese la Region" type="text" value="<%=@blind.medical.name_health_insurance%>">
+    </div>
+    <%else%>
+    <div class="field">
+      <label>Nombre de la institución del Seguro Médico</label>
+      <input  id="seguromedico" name="blind[name_health_insurance]" placeholder="Ingrese la Region" type="text" value="" disabled>
+    </div>
+    <%end%>
   </div>
 </div>
 <br>
@@ -332,7 +363,7 @@
         </div>
     </div>
   </div>
-
+  <div class="two fields">
   <div class="field">
     <label>Servicios con que cuenta la vivienda</label>
     <div class="ui fluid search multiple selection dropdown">
@@ -342,13 +373,29 @@
       <div class="menu">
         <div class="item" value= "Luz" >Luz</div>
         <div class="item" value= "Agua" >Agua</div>
-        <div class="item" value= "Alcantarillado" >Alcantarillado</div>
-        <div class="item" value= "Gas domicilario" >Gas domicilario</div>
-        <div class="item" value= "Teléfono" >Teléfono</div>
-        <div class="item" value= "Otro" >Otro</div>
+        <div class="item" value= "Alcantarillado">Alcantarillado</div>
+        <div class="item" value= "Gas domicilario">Gas domicilario</div>
+        <div class="item" value= "Teléfono">Teléfono</div>
+        <div class="item" onclick="habilitaInputServicioVivienda()" value= "Otro">Otro</div>
       </div>
     </div>
   </div>
+  <script language="JavaScript">
+       function habilitaInputServicioVivienda(){
+         document.getElementById("serviciovivienda").disabled = false;
+       }
+
+       function deshabilitaInputServicioVivienda(){
+         document.getElementById("serviciovivienda").disabled = true;
+         document.getElementById("serviciovivienda").value = "";
+       }
+   </script>
+    <div class="field">
+      <label>Especifique otro:</label>
+      <input name="blind[services_others]" id="serviciovivienda" placeholder="Otros" type="text" value="<%=@blind.home.services_others%>">
+    </div>
+  </div>
+  <div class="two fields">
   <div class="field">
     <label>Tenencia de la vivienda</label>
     <div class="ui selection dropdown">
@@ -356,15 +403,39 @@
       <i class="dropdown icon"></i>
       <div class="default text">Tenecia</div>
       <div class="menu">
-        <div class="item" value= "Propia" >Propia</div>
-        <div class="item" value= "Alquilada" >Alquilada</div>
-        <div class="item" value= "Anticretico" >Anticretico</div>
-        <div class="item" value= "Contrato Mixto" >Contrato Mixto</div>
-        <div class="item" value= "Prestadao" >Prestadao</div>
-        <div class="item" value= "Otro" >Otro</div>
+        <div class="item" onclick="deshabilitaInputVivienda()" value= "Propia" >Propia</div>
+        <div class="item" onclick="deshabilitaInputVivienda()" value= "Alquilada" >Alquilada</div>
+        <div class="item" onclick="deshabilitaInputVivienda()" value= "Anticretico" >Anticretico</div>
+        <div class="item" onclick="deshabilitaInputVivienda()" value= "Contrato Mixto" >Contrato Mixto</div>
+        <div class="item" onclick="deshabilitaInputVivienda()" value= "Prestada" >Prestada</div>
+        <div class="item" onclick="deshabilitaInputVivienda()" value= "Suegros" >Suegros</div>
+        <div class="item" onclick="habilitaInputVivienda()" value= "Otro">Otro</div>
       </div>
     </div>
   </div>
+  <script language="JavaScript">
+       function habilitaInputVivienda(){
+         document.getElementById("inputvivienda").disabled = false;
+       }
+
+       function deshabilitaInputVivienda(){
+         document.getElementById("inputvivienda").disabled = true;
+         document.getElementById("inputvivienda").value = "";
+       }
+   </script>
+   <% if @blind.home.tenecia == "otro"%>
+    <div class="field">
+      <label>Especifique otro:</label>
+      <input id="inputvivienda" name="blind[tenecia_others]" placeholder="Otro" type="text" value="<%=@blind.home.tenecia_others%>">
+    </div>
+    <% else %>
+    <div class="field">
+      <label>Especifique otro:</label>
+      <input id="inputvivienda" name="blind[tenecia_others]" placeholder="Otro" type="text" value="" disabled>
+    </div>
+    <% end %>
+  </div>
+  <div class="two fields">
   <div class="field">
     <label>Accesibilidad de la vivienda</label>
     <div class="ui selection dropdown">
@@ -372,12 +443,36 @@
       <i class="dropdown icon"></i>
       <div class="default text">Seleccione accesibilidad</div>
       <div class="menu">
-        <div class="item" value= "Avenida" >Avenida</div>
-        <div class="item" value= "Calle" >Calle</div>
-        <div class="item" value= "Callejon" >Callejon</div>
-        <div class="item" value= "Callejon" >Callejon</div>
+        <div class="item" onclick="deshabilitaInputAccess()" value= "Avenida" >Avenida</div>
+        <div class="item" onclick="deshabilitaInputAccess()" value= "Calle" >Calle</div>
+        <div class="item" onclick="deshabilitaInputAccess()" value= "Callejon" >Callejon</div>
+        <div class="item" onclick="deshabilitaInputAccess()" value= "Camino" >Camino</div>
+        <div class="item" onclick="habilitaInputAccess()" value= "Otro" >Otro</div>
       </div>
     </div>
+  </div>
+  <script language="JavaScript">
+       function habilitaInputAccess(){
+         document.getElementById("input_accessibility").disabled = false;
+       }
+
+       function deshabilitaInputAccess(){
+         document.getElementById("input_accessibility").disabled = true;
+         document.getElementById("input_accessibility").value = "";
+       }
+   </script>
+    <%if @blind.home.accessibility == "otro"%>
+    <div class="field">
+      <label>Especifique otro:</label>
+        <input id="input_accessibility" name="blind[accessibility_others]" placeholder="Otro" type="text" value="<%=@blind.home.accessibility_others%>">
+    </div>
+    <%else%>
+    <div class="field">
+      <label>Especifique otro:</label>
+        <input id="input_accessibility" name="blind[accessibility_others]" placeholder="Otro" type="text" value="" disabled>
+    </div>
+    <%end%>
+
   </div>
 
   <div class="ui horizontal divider"><h5>La Vivienda Cuenta con: </h5></div>
@@ -389,13 +484,13 @@
    <div class="field">
      <label>Baño</label>
      <div class="ui selection dropdown">
-              <% if@blind.home.bathroom? == nil %>
-                 <input type="hidden" name="blind[bathroom?]" value="">
+              <% if@blind.home.bathroom == nil %>
+                 <input type="hidden" name="blind[bathroom]" value="">
               <%else%>
-                <% if@blind.home.bathroom? %>
-                  <input type="hidden" name="blind[bathroom?]" value="Si">
+                <% if@blind.home.bathroom %>
+                  <input type="hidden" name="blind[bathroom]" value="Si">
                 <%else%>
-                  <input type="hidden" name="blind[bathroom?]" value="No">
+                  <input type="hidden" name="blind[bathroom]" value="No">
                 <%end%>
               <%end%>
                <i class="dropdown icon"></i>
@@ -409,13 +504,13 @@
    <div class="field">
      <label>Cocina</label>
      <div class="ui selection dropdown">
-               <% if@blind.home.kitchen? == nil %>
-                 <input type="hidden" name="blind[kitchen?]" value="">
+               <% if@blind.home.kitchen == nil %>
+                 <input type="hidden" name="blind[kitchen]" value="">
               <%else%>
-                <% if@blind.home.kitchen? %>
-                  <input type="hidden" name="blind[kitchen?]" value="Si">
+                <% if@blind.home.kitchen %>
+                  <input type="hidden" name="blind[kitchen]" value="Si">
                 <%else%>
-                  <input type="hidden" name="blind[kitchen?]" value="No">
+                  <input type="hidden" name="blind[kitchen]" value="No">
                 <%end%>
               <%end%>
                <i class="dropdown icon"></i>
@@ -428,7 +523,7 @@
    </div>
  </div>
 
-         <div class="three fields">
+           <div class="two fields">
             <div class="field">
               <label>Paredes</label>
               <div class="ui selection dropdown">
@@ -436,13 +531,38 @@
                <i class="dropdown icon"></i>
                <div class="default text">Seleccione tipo de pared</div>
                <div class="menu">
-                  <div class="item" value= "Adobe" >Adobe</div>
-                  <div class="item" value= "Ladrillo" >Ladrillo</div>
-                  <div class="item" value= "Madera" >Madera</div>
-                  <div class="item" value= "Otros" >Otros</div>
-              </div>
+                  <div class="item" value= "Adobe"  onclick="deshabilitaInputParedes()">Adobe</div>
+                  <div class="item" value= "Ladrillo"  onclick="deshabilitaInputParedes()">Ladrillo</div>
+                  <div class="item" value= "Madera"  onclick="deshabilitaInputParedes()" >Madera</div>
+                  <div class="item" value= "Otro" onclick="habilitaInputParedes()">Otro</div>
               </div>
             </div>
+          </div>
+          <script language="JavaScript">
+               function habilitaInputParedes(){
+                 document.getElementById("inputparedes").disabled = false;
+               }
+
+               function deshabilitaInputParedes(){
+                 document.getElementById("inputparedes").disabled = true;
+                 document.getElementById("inputparedes").value = "";
+               }
+           </script>
+
+          <% if @blind.home.wall_type == "otro"%>
+          <div class="field">
+            <label>Especifique otro:</label>
+            <input id="inputparedes" name="blind[wall_type_others]" placeholder="Otros" type="text" value="<%=@blind.home.wall_type_others%>">
+          </div>
+          <% else %>
+          <div class="field">
+            <label>Especifique otro:</label>
+            <input id="inputparedes" name="blind[wall_type_others]" placeholder="Otros" type="text" value="" disabled>
+          </div>
+          <% end %>
+
+            </div>
+            <div class="two fields">
             <div class="field">
               <label>Techo</label>
               <div class="ui selection dropdown">
@@ -450,13 +570,39 @@
                <i class="dropdown icon"></i>
                <div class="default text">Seleccione tipo de techo</div>
                <div class="menu">
-                  <div class="item" value= "Calamina" >Calamina</div>
-                  <div class="item" value= "Teja" >Teja</div>
-                  <div class="item" value= "Paja" >Paja</div>
-                  <div class="item" value= "Otros" >Otros</div>
+                  <div class="item" value= "Calamina"  onclick="deshabilitaInputTecho()">Calamina</div>
+                  <div class="item" value= "Teja" onclick="deshabilitaInputTecho()" >Teja</div>
+                  <div class="item" value= "Paja"  onclick="deshabilitaInputTecho()">Paja</div>
+                  <div class="item" value= "Otro" onclick="habilitaInputTecho()">Otro</div>
               </div>
               </div>
             </div>
+
+            <script language="JavaScript">
+                 function habilitaInputTecho(){
+                   document.getElementById("inputTecho").disabled = false;
+                 }
+
+                 function deshabilitaInputTecho(){
+                   document.getElementById("inputTecho").disabled = true;
+                   document.getElementById("inputTecho").value = "";
+                 }
+             </script>
+
+            <% if @blind.home.roof_type == "otro"%>
+            <div class="field">
+              <label>Especifique otro:</label>
+              <input id="inputTecho" name="blind[roof_type_others]" placeholder="Otros" type="text" value="<%=@blind.home.roof_type_others%>">
+            </div>
+            <% else %>
+            <div class="field">
+              <label>Especifique otro:</label>
+              <input id="inputTecho" name="blind[roof_type_others]" placeholder="Otros" type="text" value="" disabled>
+            </div>
+            <% end %>
+
+            </div>
+            <div class="two fields">
             <div class="field">
               <label>Piso</label>
               <div class="ui selection dropdown">
@@ -464,12 +610,38 @@
                <i class="dropdown icon"></i>
                <div class="default text">Seleccione tipo de piso</div>
                <div class="menu">
-                 <div class="item" value= "Adobe" >Tierra</div>
-                 <div class="item" value= "Ladrillo" >Cemento</div>
-                 <div class="item" value= "Madera" >Madera</div>
-                 <div class="item" value= "Otros" >Otro</div>
+                       <div class="item" value= "Tierra" onclick="deshabilitaInputPiso()">Tierra</div>
+                       <div class="item" value= "Cemento" onclick="deshabilitaInputPiso()">Cemento</div>
+                       <div class="item" value= "Madera" onclick="deshabilitaInputPiso()">Madera</div>
+                       <div class="item" value= "Loza" onclick="deshabilitaInputPiso()">Loza</div>
+                       <div class="item" value= "Vaciado" onclick="deshabilitaInputPiso()">Vaciado</div>
+                       <div class="item" value= "Otros" onclick="habilitaInputPiso()">Otro</div>
+               </div>
               </div>
-              </div>
+            </div>
+            <script language="JavaScript">
+                 function habilitaInputPiso(){
+                   document.getElementById("inputPiso").disabled = false;
+                 }
+
+                 function deshabilitaInputPiso(){
+                   document.getElementById("inputPiso").disabled = true;
+                   document.getElementById("inputPiso").value = "";
+                 }
+             </script>
+
+             <% if @blind.home.floor_type == "otro" %>
+             <div class="field">
+               <label>Especifique otro:</label>
+               <input id="inputPiso" name="blind[floor_type_others]" placeholder="Otros" type="text" value="<%=@blind.home.floor_type_others%>">
+             </div>
+             <% else %>
+             <div class="field">
+               <label>Especifique otro:</label>
+               <input id="inputPiso" name="blind[floor_type_others]" placeholder="Otros" type="text" value="" disabled>
+             </div>
+             <% end %>
+
             </div>
          </div>
         </div>
@@ -505,7 +677,7 @@
                         <td><%=rehab.place%></td>
                         <td><%=rehab.first_date%>  </td>
                         <td><%=rehab.last_date%></td>
-                        <td><%=rehab.type_rehab%></td>
+                        <td><%=rehab.type_rehab.chomp("otro")%> <%=rehab.type_rehab_others%></td>
                         <td><%=rehab.training_skils%></td>
                         <td><%=rehab.created_at%></td>
                         <!--
@@ -719,18 +891,34 @@
           <input  name="rehabilitation[last_date]"  type="date">
         </div>
        </div>
-       <div class="field">
-        <label>TIPO DE REHABILITACION</label>
-        <div class="ui selection dropdown">
-             <input type="hidden" name="rehabilitation[type_rehab]">
-             <i class="dropdown icon"></i>
-             <div class="default text">Seleccione tipo de rehabilitacion</div>
-             <div class="menu">
-                <div class="item" value= "Funcional" >Funcional</div>
-                <div class="item" value= "Tecnica" >Tecnica</div>
-                <div class="item" value= "Laboral" >Laboral</div>
-                <div class="item" value= "Otros" >Otros</div>
-            </div>
+       <div class=" two fields">
+         <div class="field">
+           <label>TIPO DE REHABILITACION</label>
+           <div class="ui selection dropdown">
+                <input type="hidden" name="rehabilitation[type_rehab]">
+                <i class="dropdown icon"></i>
+                <div class="default text">Seleccione tipo de rehabilitacion</div>
+                <div class="menu">
+                   <div class="item" value= "Funcional" onclick="deshabilitaInputrehabilitacion()" >Funcional</div>
+                   <div class="item" value= "Tecnica" onclick="deshabilitaInputrehabilitacion()" >Tecnica</div>
+                   <div class="item" value= "Laboral" onclick="deshabilitaInputrehabilitacion()" >Laboral</div>
+                   <div class="item" value= "Otro" onclick="habilitaInputrehabilitacion()">Otro</div>
+               </div>
+           </div>
+         </div>
+         <script language="JavaScript">
+              function habilitaInputrehabilitacion(){
+                document.getElementById("tiporehabilitacion").disabled = false;
+              }
+
+              function deshabilitaInputrehabilitacion(){
+                document.getElementById("tiporehabilitacion").disabled = true;
+                document.getElementById("tiporehabilitacion").value = "";
+              }
+          </script>
+        <div class="field">
+          <label>Especifique otro:</label>
+              <input id="tiporehabilitacion"name="rehabilitation[type_rehab_others]" placeholder="Otro" type="text" disabled>
         </div>
        </div>
        <div class="field">
@@ -763,5 +951,5 @@
        });
       </script>
 
-  <!-- Fin contacto -->
-  </body>
+
+</body>

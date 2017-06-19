@@ -27,6 +27,15 @@ class BlindsController < ApplicationController
 		@blind = Blind.find(params[:id])
 	end
 
+	def delete
+	    user_auth
+	  	@blind = Blind.find(params[:id])
+	  	if @blind.destroy
+	  		redirect_to "/blinds/", notice: "Afiliado borrado"
+	  	else
+	  		redirect_to "/blinds/", notice: "Error al borrar"
+	  	end
+	end
 
 	def edit
 		user_auth
@@ -34,6 +43,10 @@ class BlindsController < ApplicationController
 	end
 
 	def create
+
+		params[:blind][:health_insurance] = convert_si_to_true(params[:blind][:health_insurance])
+		params[:blind][:kitchen] = convert_si_to_true(params[:blind][:kitchen])
+		params[:blind][:bathroom] = convert_si_to_true(params[:blind][:bathroom])
 
 		@blind = Blind.new(blind_params)
 		if @blind.save
@@ -60,21 +73,24 @@ class BlindsController < ApplicationController
 		end
 	end
 
+	def convert_si_to_true(param)
+		return param == "si"
+	end
+
 	def update
 		@blind = Blind.find(params[:id])
+
+		params[:blind][:health_insurance] = convert_si_to_true(params[:blind][:health_insurance])
+		params[:blind][:kitchen] = convert_si_to_true(params[:blind][:kitchen])
+		params[:blind][:bathroom] = convert_si_to_true(params[:blind][:bathroom])
+		
 		if @blind.update_attributes(blind_params)
 			@medical = @blind.medical
 			if @medical.update_attributes(medical_params)
 				@home = @blind.home
 				if @home.update_attributes(home_params)
-					@rehab = @blind.rehabilitations.last
-					if @rehab.update_attributes(rehabilitation_params)
-						redirect_to "/blinds/"+@blind.id.to_s, notice: "Editado con Exito"
-					else
-						render "edit", notice: "No se pudo editar"
-					end
+						redirect_to "/blinds/"+@blind.id.to_s, notice: "Editado con Exito"					
 				else
-
 					render "edit", notice: "No se pudo editar"
 				end
 			else
@@ -151,19 +167,21 @@ class BlindsController < ApplicationController
 	end
 
 	def blind_params
-		params.require(:blind).permit(:first_name,:second_name,:first_lastname,:second_lastname,:lastname_married,:civil_status,:address,:zone,:province,:department,:nationality,:language,:sex,:registration_date,:birthday,:country_birth,:city_birth,:province_birth,:ci,:cellphone,:beneficiary_income,:current_occupation,:previous_occupation,:degree_instruction,:other_studies)
+		params.require(:blind).permit(:first_name,:second_name,:first_lastname,:second_lastname,:lastname_married,:civil_status,:address,:zone,:province,:department,:nationality,:language,:sex,:registration_date,:birthday,:country_birth,:city_birth,:province_birth,:ci,:cellphone,:beneficiary_income,:current_occupation,:previous_occupation,:degree_instruction,:other_studies,:beneficiary_income_others)
 	end
 
 	def medical_params
-		params.require(:blind).permit(:type_blindness,:causes_blindness,:time_blindness,:general_diagnosis,:medical_attention_place,:additional_disability,:health_insurance?,:name_health_insurance)
+		params.require(:blind).permit(:type_blindness,:causes_blindness,:time_blindness,:general_diagnosis,:medical_attention_place,:additional_disability,:health_insurance,:name_health_insurance)
 	end
 
 	def home_params
-		params.require(:blind).permit(:zone,:home_type,:services,:tenecia,:accessibility,:rooms,:bathroom?,:kitchen?,:wall_type,:roof_type,:floor_type)
+		params.require(:blind).permit(:zone,:home_type,:services,:tenecia,:accessibility,:rooms,:bathroom,:kitchen,:wall_type,:roof_type,:floor_type,:tenecia_others,:wall_type_others,:roof_type_others,:floor_type_others,:services_others,:accessibility_others)
 	end
 
 	def rehabilitation_params
-		params.require(:blind).permit(:received?,:place,:first_date,:last_date,:type_rehab,:training_skils)
+		params.require(:blind).permit(:recived,:place,:first_date,:last_date,:type_rehab,:training_skils)
+
+
 	end
 
 end

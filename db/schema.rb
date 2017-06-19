@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612191425) do
+ActiveRecord::Schema.define(version: 20170616225456) do
 
   create_table "blinds", force: :cascade do |t|
     t.string   "first_name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170612191425) do
     t.string   "address"
     t.string   "zone"
     t.string   "province"
-    t.string   "department",          default: "cochabamba"
+    t.string   "department",                default: "cochabamba"
     t.string   "nationality"
     t.string   "language"
     t.date     "registration_date"
@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(version: 20170612191425) do
     t.string   "previous_occupation"
     t.string   "degree_instruction"
     t.string   "other_studies"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "sex"
-    t.boolean  "original",            default: false
+    t.boolean  "original",                  default: false
     t.string   "status"
+    t.string   "beneficiary_income_others"
   end
 
   create_table "familiars", force: :cascade do |t|
@@ -69,15 +70,21 @@ ActiveRecord::Schema.define(version: 20170612191425) do
     t.string   "tenecia"
     t.string   "accessibility"
     t.integer  "rooms"
-    t.boolean  "bathroom?"
-    t.boolean  "kitchen?"
+    t.boolean  "bathroom"
+    t.boolean  "kitchen"
     t.string   "wall_type"
     t.string   "roof_type"
     t.string   "floor_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "blind_id"
     t.string   "home_type"
+    t.string   "tenecia_others"
+    t.string   "wall_type_others"
+    t.string   "roof_type_others"
+    t.string   "floor_type_others"
+    t.string   "services_others"
+    t.string   "accessibility_others"
   end
 
   add_index "homes", ["blind_id"], name: "index_homes_on_blind_id"
@@ -89,7 +96,7 @@ ActiveRecord::Schema.define(version: 20170612191425) do
     t.string   "general_diagnosis"
     t.string   "medical_attention_place"
     t.string   "additional_disability"
-    t.boolean  "health_insurance?"
+    t.boolean  "health_insurance"
     t.string   "name_health_insurance"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -110,15 +117,16 @@ ActiveRecord::Schema.define(version: 20170612191425) do
   end
 
   create_table "rehabilitations", force: :cascade do |t|
-    t.boolean  "received?"
+    t.boolean  "recived"
     t.string   "place"
     t.date     "first_date"
     t.date     "last_date"
     t.string   "type_rehab"
     t.string   "training_skils"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "blind_id"
+    t.string   "type_rehab_others"
   end
 
   add_index "rehabilitations", ["blind_id"], name: "index_rehabilitations_on_blind_id"
