@@ -56,15 +56,26 @@
         <Cell><Data ss:Type="String">Si</Data></Cell>
         <% end %>
         <Cell><Data ss:Type="String"><%= blind.current_occupation %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <% blind.familiars.each do |familiar| %>
+          <% @familiarscount = 0 %>
+          <% if familiar.relationship == "hijo(a)" %>
+            <% @familiarscount=@familiarscount+1%>
+          <% end  %>
+        <% end %>
+
+        <Cell><Data ss:Type="String"><%= @familiarscount.to_s %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= blind.nationality %></Data></Cell>
         <Cell><Data ss:Type="String"><%= blind.home.tenecia %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
         <Cell><Data ss:Type="String"><%= blind.medical.type_blindness %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.medical.health_insurance? %></Data></Cell>
+        <% if blind.medical.health_insurance?%>
+        <Cell><Data ss:Type="String">si</Data></Cell>
+        <% else %>
+        <Cell><Data ss:Type="String">no</Data></Cell>
+        <% end%>
         <Cell><Data ss:Type="String"><%= blind.medical.additional_disability %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= blind.ci %></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
 
       </Row>
     <% end %>
