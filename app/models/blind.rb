@@ -3,6 +3,7 @@ class Blind < ActiveRecord::Base
 	has_one :home
 	has_many :rehabilitations
 	has_many :familiars
+  validates :ci, :uniqueness=>{message:"Ya esta registrado"}
   before_destroy :destroy_blind
 	def self.to_csv(options = {})
     CSV.generate(options) do |csv|

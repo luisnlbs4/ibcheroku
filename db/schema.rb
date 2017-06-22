@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616225456) do
+ActiveRecord::Schema.define(version: 20170622060805) do
 
   create_table "blinds", force: :cascade do |t|
     t.string   "first_name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170616225456) do
     t.boolean  "original",                  default: false
     t.string   "status"
     t.string   "beneficiary_income_others"
+    t.text     "social_diagnosis"
   end
 
   create_table "familiars", force: :cascade do |t|

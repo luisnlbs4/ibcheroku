@@ -28,7 +28,9 @@
       </div>
 
     <br>
-
+     <div class="ui header">
+               <%= notice %>
+      </div>
     <form action="/blinds" method="post" onsubmit="return confirm('Quiere enviar el formulario?');">>
     <div class="ui form">
       <div class="ui   segment">
@@ -44,19 +46,19 @@
         </div>
         <div class="field">
           <label>Segundo Nombre</label>
-          <input  name="blind[second_name]"  placeholder="Segundo nombre" type="text">
+          <input  name="blind[second_name]"  placeholder="Segundo nombre" type="text" required>
         </div>
         <div class="field">
           <label>Apellido Paterno</label>
-          <input name="blind[first_lastname]" placeholder="Apellido paterno" type="text">
+          <input name="blind[first_lastname]" placeholder="Apellido paterno" type="text" required>
         </div>
         <div class="field">
           <label>Apellido Materno</label>
-          <input name="blind[second_lastname]"  placeholder="Apellido Materno" type="text">
+          <input name="blind[second_lastname]"  placeholder="Apellido Materno" type="text" required>
         </div>
         <div class="field">
           <label>Apellido Casada</label>
-          <input name="blind[lastname_married]" placeholder="Apellido Casada" type="text">
+          <input name="blind[lastname_married]" placeholder="Apellido Casada" type="text" required>
         </div>
         <div class="field">
           <label>Estado Civil</label>
@@ -79,19 +81,19 @@
       <div class="four fields">
         <div class="field">
           <label>Dirección</label>
-          <input name="blind[address]"  placeholder="Dirección" type="text">
+          <input name="blind[address]"  placeholder="Dirección" type="text"required>
         </div>
         <div class="field">
           <label>Zona</label>
-          <input name="blind[zone]"  placeholder="Zona" type="text">
+          <input name="blind[zone]"  placeholder="Zona" type="text"required>
         </div>
         <div class="field">
           <label>Provincia-Cantón</label>
-          <input name="blind[province]"  placeholder="Provincia-Cantón" type="text">
+          <input name="blind[province]"  placeholder="Provincia-Cantón" type="text"required>
         </div>
         <div class="field">
           <label>Departamento</label>
-          <input name="blind[department]"  value="Cochabamba" type="text">
+          <input name="blind[department]"  value="Cochabamba" type="text"required>
         </div>
       </div>
 
@@ -100,11 +102,11 @@
       <div class="five fields">
         <div class="field">
           <label>Nacionalidad</label>
-          <input name="blind[nationality]"  placeholder="Nacionalidad" type="text">
+          <input name="blind[nationality]"  placeholder="Nacionalidad" type="text"required>
         </div>
         <div class="field">
           <label>Idioma</label>
-          <input name="blind[language]"  placeholder="Idioma" type="text">
+          <input name="blind[language]"  placeholder="Idioma" type="text"required>
         </div>
         <div class="field">
           <label>Sexo</label>
@@ -120,11 +122,11 @@
         </div>
         <div class="field">
           <label>FECHA DE REGISTRO AL IBC</label>
-          <input type="date" name="blind[registration_date]">
+          <input type="date" name="blind[registration_date]" required>
         </div>
         <div class="field">
           <label>CODIGO DE REGISTRO(SIGMA)</label>
-          <input  placeholder="CODIGO DE REGISTRO(SIGMA)" type="text">
+          <input  placeholder="CODIGO DE REGISTRO(SIGMA)" type="text"disabled>
         </div>
       </div>
 
@@ -134,27 +136,27 @@
       <div class="six fields">
         <div class="field">
           <label>Fecha de Nacimiento</label>
-          <input type="date" name="blind[birthday]">
+          <input type="date" name="blind[birthday]" required>
         </div>
             <div class="field">
             <label>País</label>
-            <input name="blind[country_birth]"  placeholder="Pais" type="text">
+            <input name="blind[country_birth]"  placeholder="Pais" type="text" required>
           </div>
           <div class="field">
             <label>Ciudad</label>
-            <input name="blind[city_birth]"  placeholder="Ciudad" type="text">
+            <input name="blind[city_birth]"  placeholder="Ciudad" type="text" required>
           </div>
           <div class="field">
             <label>Provincia</label>
-            <input name="blind[province_birth]"  placeholder="Idioma" type="text">
+            <input name="blind[province_birth]"  placeholder="Idioma" type="text" required>
           </div>
         <div class="field">
           <label>Documento de Identificación y Número</label>
-          <input name="blind[ci]"  placeholder="CI" type="text">
+          <input name="blind[ci]"  placeholder="CI" type="text" required>
         </div>
         <div class="field">
           <label>Teléfono o Celular de Referencia</label>
-          <input name="blind[cellphone]"  placeholder="Teléfono o Celular" type="text">
+          <input name="blind[cellphone]"  placeholder="Teléfono o Celular" type="text" required>
         </div>
       </div>
 
@@ -194,11 +196,11 @@
         </div>
         <div class="field">
           <label>Ocupacion Actual</label>
-          <input name="blind[current_occupation]"  placeholder="Ocupacion Actual" type="text">
+          <input name="blind[current_occupation]"  placeholder="Ocupacion Actual" type="text" required>
         </div>
         <div class="field">
           <label>Ocupacion Anterior</label>
-          <input name="blind[previous_occupation]"  placeholder="Ocupacion Anterior" type="text">
+          <input name="blind[previous_occupation]"  placeholder="Ocupacion Anterior" type="text" required>
         </div>
       </div>
 
@@ -222,7 +224,7 @@
           </div>
         <div class="field">
           <label>Otros estudios</label>
-          <input name="blind[other_studies]"  placeholder="Otros estudios" type="text">
+          <input name="blind[other_studies]"  placeholder="Otros estudios" type="text" required>
         </div>
       </div>
 
@@ -268,22 +270,22 @@
       </div>
       <div class="field">
         <label>TIEMPO DE LA CEGUERA (Años - Meses)</label>
-        <input name="blind[time_blindness]" placeholder="Ingrese la Region" type="text">
+        <input name="blind[time_blindness]" placeholder="Ingrese la Region" type="text" required>
       </div>
     </div>
 
     <div class="ui horizontal divider"><h5>CONDICIÓN GENERAL DE SALUD DEL BENEFICIARIO</h5></div>
     <div class="field">
       <label>Diagnóstico médico general(Especifique)</label>
-      <input name="blind[general_diagnosis]" placeholder="Diagnostico Médico" type="text">
+      <input name="blind[general_diagnosis]" placeholder="Diagnostico Médico" type="text" required>
     </div>
     <div class="field">
       <label>Dónde recibió atencion médica</label>
-      <input name="blind[medical_attention_place]" placeholder="Ingrese la Region" type="text">
+      <input name="blind[medical_attention_place]" placeholder="Ingrese la Region" type="text" required>
     </div>
     <div class="field">
       <label>Discapacidad adicional</label>
-      <input name="blind[additional_disability]" placeholder="Ingrese la Region" type="text">
+      <input name="blind[additional_disability]" placeholder="Ingrese la Region" type="text" required>
     </div>
     <div class="two fields">
       <div class="field">
@@ -451,7 +453,7 @@
   <div class="three fields">
    <div class="field">
      <label>Numero de habitaciones</label>
-     <input name="blind[rooms]" type="text" maxlength="2" placeholder="Nro">
+     <input name="blind[rooms]" type="text" maxlength="2" placeholder="Nro" required>
    </div>
    <div class="field">
      <label>Baño</label>
@@ -575,6 +577,19 @@
           </div>
          </div>
         </div>
+
+        <br>
+        <div class="ui form container ">
+        <div class="ui   segment">
+          <div class="ui header">
+              DIAGNOSTICO SOCIAL
+          </div>
+           <div class="field">
+             <textarea rows="4" cols="50" name="blind[social_diagnosis]"></textarea>
+           </div>
+          </div>
+        </div>
+
       </div>
 
     </div>

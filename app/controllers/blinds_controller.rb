@@ -167,7 +167,7 @@ class BlindsController < ApplicationController
 	end
 
 	def blind_params
-		params.require(:blind).permit(:first_name,:second_name,:first_lastname,:second_lastname,:lastname_married,:civil_status,:address,:zone,:province,:department,:nationality,:language,:sex,:registration_date,:birthday,:country_birth,:city_birth,:province_birth,:ci,:cellphone,:beneficiary_income,:current_occupation,:previous_occupation,:degree_instruction,:other_studies,:beneficiary_income_others)
+		params.require(:blind).permit(:first_name,:second_name,:first_lastname,:second_lastname,:lastname_married,:civil_status,:address,:zone,:province,:department,:nationality,:language,:sex,:registration_date,:birthday,:country_birth,:city_birth,:province_birth,:ci,:cellphone,:beneficiary_income,:current_occupation,:previous_occupation,:degree_instruction,:other_studies,:beneficiary_income_others,:social_diagnosis)
 	end
 
 	def medical_params

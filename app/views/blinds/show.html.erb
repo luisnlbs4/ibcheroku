@@ -364,6 +364,7 @@
                 </table>
               </div>
             </div>
+
       <br>
       <% if !@blind.original%>
       <div class="ui form container ">
@@ -422,7 +423,18 @@
           </table>
         </div>
       </div>
-
+      
+      <br>
+            <div class="ui form container ">
+              <div class="ui   segment">
+                <div class="ui header">
+                    DIAGNOSTICO SOCIAL
+                </div>
+                <div class="field">
+                   <p><%=@blind.social_diagnosis%></p>
+                </div>
+              </div>
+            </div>
 
       <div id="familiar-modal" class="ui modal">
       <div class="ui form container ">
